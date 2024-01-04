@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { RxAvatar } from "react-icons/rx";
-
+import axios from "axios";
 
 
 const SignUp = () => {
@@ -11,19 +11,54 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [file, setFile] = useState(null);
 
     const [avatar, setAvatar] = useState(null);
 
-    const handleFile = (e) => {
-        setAvatar(e.target.files[0]);
+    const handleFile = (pics) => {
+        setAvatar(pics);
+
+        const data = new FormData();
+        data.append("file", pics);
+        data.append("upload_preset", "panda-shop");
+        data.append("cloud_name", "ddcn60bx4");
+        fetch("https://api.cloudinary.com/v1_1/ddcn60bx4/image/upload", {
+            method: "POST",
+            body: data,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setFile(data.url.toString());
+                console.log(data.url.toString());
+            })
+            .catch((err) => {
+                console.log(err);
+
+            });
     };
 
-    const handleSignUp = (e) => {
+    const handleRegister = async(e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            alert("Password don't match!");
+        } else {
+            const data = {
+                name: name,
+                email: email,
+                password: password,
+                avatar: file
+            }
+            try {
+                await axios.post("http://localhost:3000/api/user/register", data);
+                alert("Registration complete.Please login to your account");
+            } catch (err) {
+                console.log(err.message);
+            }
+        }
     };
 
     return (
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleRegister}>
             <div className='px-4 py-1.5'>
                 <p className='text-md font-medium'>Full Name</p>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder='Enter your full name' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
@@ -61,7 +96,7 @@ const SignUp = () => {
                 <div className='px-4'>
                     <label htmlFor="file-input">
                         <p className='text-sm font-medium border border-gray-300 w-fit py-1.5 px-4 rounded-md cursor-pointer'>Upload a file</p>
-                        <input type="file" name="avatar" id="file-input" className='sr-only' onChange={handleFile} />
+                        <input type="file" name="avatar" id="file-input" className='sr-only' onChange={(e) => handleFile(e.target.files[0])} />
                     </label>
                 </div>
             </div>
