@@ -1,13 +1,27 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { toast } from 'react-toastify';
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const [passShow, setPassShow] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    console.log(email);
 
-    const handleLogin = (e) => {
+    const navigate = useNavigate();
+
+    const handleLogin = async(e) => {
         e.preventDefault();
+        try {
+            await axios.post("http://localhost:3000/api/user/login", {email, password}, {withCredentials: true});
+            toast.success("Login success!");
+            navigate("/");
+        } catch(err) {
+            toast.error(err.response.data.message);
+            console.log(err);
+        }
     }
 
     return (

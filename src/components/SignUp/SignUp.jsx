@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
@@ -49,10 +50,15 @@ const SignUp = () => {
                 avatar: file
             }
             try {
-                await axios.post("http://localhost:3000/api/user/register", data);
-                alert("Registration complete.Please login to your account");
+                const res = await axios.post("http://localhost:3000/api/user/register", data);
+                toast.success(res.data.message);
+                setName("");
+                setEmail("");
+                setPassword("");
+                setConfirmPassword("");
+                setAvatar();
             } catch (err) {
-                console.log(err.message);
+                toast.error(err.response.data.message);
             }
         }
     };
