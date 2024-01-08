@@ -7,7 +7,6 @@ const Dropdown = ({data, setDropdown}) => {
     const handleCategory = (i) => {
         navigate(`/products?category=${i.title}`);
         setDropdown(false);
-        window.location.reload();
     };
     return (
         <div className='absolute w-[270px] bg-slate-50 z-30 rounded-b-md top-[60px] left-0 pb-2 transition ease-in duration-700'>
