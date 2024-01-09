@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDown, IoIosArrowForward, IoIosArrowUp, IoIosSearch, IoMdHeartEmpty } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import {productData, categoriesData} from "../../static/data";
@@ -7,6 +7,10 @@ import Dropdown from "../Dropdown/Dropdown";
 import Navbar from "../Navbar/Navbar";
 import { IoCartOutline } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../../redux/features/userSlice";
+import Cart from "../Cart/Cart";
+import Wishlist from "../Wishlist/Wishlist";
 
 
 const Header = ({activeHeading}) => {
@@ -14,6 +18,8 @@ const Header = ({activeHeading}) => {
     const [searchData, setSearchData] = useState(null);
     const [active, setActive] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const [wishlistOpen, setWishlistOpen] = useState(false);
 
     const handleSearch = (e) => {
         const term = e.target.value;
@@ -30,6 +36,13 @@ const Header = ({activeHeading}) => {
             setActive(false);
         }
     });
+
+    const {user, isAuthenticated} = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchUser());
+    }, [])
     
     return (
         <div>
@@ -87,18 +100,34 @@ const Header = ({activeHeading}) => {
                         </div>
 
                         <div className="flex items-center">
-                            <div className="relative px-3">
+                            <div className="relative px-3 cursor-pointer" onClick={(() => setWishlistOpen(!wishlistOpen))}>
                                 <IoMdHeartEmpty size={30} className="text-white"/>
                                 <span className="absolute top-0 right-2 rounded-full bg-black text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
                             </div>
-                            <div className="relative px-3">
+                            <div className="relative px-3 cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
                                 <IoCartOutline size={30} className="text-white"/>
                                 <span className="absolute top-0 right-2 rounded-full bg-black text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
                             </div>
                             <div className="relative px-3">
-                                <RxAvatar size={30} className="text-white"/>
+                                {
+                                    isAuthenticated ? 
+                                    <Link to="/profile">
+                                    <img src={user.user.avatar} alt="" className="w-8 h-8 rounded-full object-cover"/>
+                                    </Link> : 
+                                    <Link to="/auth">
+                                    <RxAvatar size={30} className="text-white"/>
+                                    </Link>
+                                }
+                                
                                 
                             </div>
+
+                            {
+                                cartOpen ? <Cart setCartOpen={setCartOpen}/> : null
+                            }
+                            {
+                                wishlistOpen ? <Wishlist setWishlistOpen={setWishlistOpen}/> : null
+                            }
                         </div>
                     </div>
         </div>

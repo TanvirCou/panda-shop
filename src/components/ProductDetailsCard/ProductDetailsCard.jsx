@@ -14,7 +14,7 @@ const ProductDetailsCard = ({data, setOpen}) => {
     };
 
     const handleDecrementCount = () => {
-        setCount((prev) => (prev > 0) ? (prev - 1) : prev);
+        setCount((prev) => (prev > 1) ? (prev - 1) : prev);
     };
 
     return (

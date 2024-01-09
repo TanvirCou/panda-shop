@@ -7,11 +7,15 @@ import ProductDetailsCard from '../ProductDetailsCard/ProductDetailsCard';
 const ProductCart = ({data}) => {
     const [click, setClick] = useState(false);
     const [open, setOpen] = useState(false);
+
+    const d = data.name;
+    const product_name = d.replace(/\s+/g, '-');
+
     return (
         <div>
             <div className='w-full h-[340px] bg-white rounded-md shadow-sm relative'>
                 <div>
-                <Link to={`/product/${data.id}`}>
+                <Link to={`/product/${product_name}`}>
                 <div className='h-[170px] w-full flex items-center justify-center py-3 px-4'>
                     <img src={data.image_Url[0].url} alt="" className='h-full w-full object-contain'/>
                 </div>

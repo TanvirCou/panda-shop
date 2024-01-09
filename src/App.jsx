@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import ActivationPage from "./pages/ActivationPage/ActivationPage";
-import { ToastContainer, toast} from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,10 +16,10 @@ import Products from "./pages/Products/Products";
 import BestSelling from "./pages/BestSelling/BestSelling";
 import Events from "./pages/Events/Events";
 import FAQ from "./pages/FAQ/FAQ";
+import ProductInformation from "./pages/ProductInformation/ProductInformation";
 
 function App() {
-  const {user} = useSelector(state => state.user);
-  console.log(user);
+  const { isLoading } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,29 +40,34 @@ function App() {
   // }, [])
 
   return (
-    <BrowserRouter>
+    <>
+  
+      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} /> 
-        <Route path="/products" element={<Products/>} /> 
-        <Route path="/best-selling" element={<BestSelling/>} />
-        <Route path="/events" element={<Events/>} />
-        <Route path="/faq" element={<FAQ/>} />   
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:name" element={<ProductInformation />} />
+        <Route path="/best-selling" element={<BestSelling />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/activation/:token" element={<ActivationPage />} />
       </Routes>
       <ToastContainer
-position="bottom-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="dark"
-/>
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </BrowserRouter>
+
+    </>
   )
 }
 
