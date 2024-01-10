@@ -17,6 +17,7 @@ import BestSelling from "./pages/BestSelling/BestSelling";
 import Events from "./pages/Events/Events";
 import FAQ from "./pages/FAQ/FAQ";
 import ProductInformation from "./pages/ProductInformation/ProductInformation";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const { isLoading } = useSelector(state => state.user);
@@ -52,6 +53,7 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/activation/:token" element={<ActivationPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <ToastContainer
         position="bottom-center"

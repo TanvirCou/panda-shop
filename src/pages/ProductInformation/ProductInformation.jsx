@@ -4,6 +4,8 @@ import Footer from '../../components/Footer/Footer';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import { useParams } from 'react-router-dom';
 import { productData } from '../../static/data';
+import ProductDetailsInfo from '../../components/ProductDetailsInfo/ProductDetailsInfo';
+import RelatedProducts from '../../components/RelatedProducts/RelatedProducts';
 
 const ProductInformation = () => {
     const [data, setData] = useState();
@@ -19,6 +21,8 @@ const ProductInformation = () => {
         <div className='bg-white'>
             <Header />
             <ProductInfo data={data}/>
+            <ProductDetailsInfo data={data}/>
+            <RelatedProducts data={data} />
             <Footer/>
         </div>
     );

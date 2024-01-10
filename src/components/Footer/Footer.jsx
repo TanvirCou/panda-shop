@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-    <div className='bg-black mt-6 w-full'> 
+    <div className='bg-black w-full'> 
             <div className='bg-teal-500 w-full block md:flex justify-between items-center py-10 px-8'>
                 <p className='text-white text-3xl font-medium leading-10'><span className='text-gray-800'>Subscribe</span> us for get news <br /> events and offers</p>
                 <div>
