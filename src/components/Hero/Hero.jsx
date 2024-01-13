@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <div className='min-h-[70vh] md:min-h-[80vh] w-full bg-no-repeat flex flex-col justify-center items-center' 
+        <div className='min-h-[70vh] md:min-h-[80vh] mt-20 md:mt-0 bg-center md:bg-left w-full bg-no-repeat flex flex-col justify-center items-center' 
         style={{backgroundImage: "url(https://themes.rslahmed.dev/rafcart/assets/images/banner-2.jpg)"}} >
             <div className='w-[90%] md:w-[60%] '>
                 <p className='text-5xl font-medium text-gray-700 leading-[1.2]'>Best Collection for <br /> home Decoration</p>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import Navbar from "../Navbar/Navbar";
 import { IoCartOutline } from "react-icons/io5";
-import { RxAvatar } from "react-icons/rx";
+import { RxAvatar, RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../redux/features/userSlice";
 import Cart from "../Cart/Cart";
@@ -20,6 +20,7 @@ const Header = ({activeHeading}) => {
     const [dropdown, setDropdown] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [wishlistOpen, setWishlistOpen] = useState(false);
+    const [mobileSidebar, setMobileSidebar] = useState(false);
 
     const handleSearch = (e) => {
         const term = e.target.value;
@@ -131,7 +132,66 @@ const Header = ({activeHeading}) => {
                         </div>
                     </div>
         </div>
+
+        <div className="w-full h-[65px] fixed top-0 left-0 bg-white block md:hidden">
+            <div className="flex items-center justify-between px-4 h-full">
+                <div>
+                    <BiMenuAltLeft size={35} className="cursor-pointer" onClick={() => setMobileSidebar(true)}/>
+                </div>
+                <p className="text-3xl font-semibold font-[poppins]">Panda-Shop</p>
+                <div className="relative px-3 cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
+                    <IoCartOutline size={30} className="text-black"/>
+                    <span className="absolute top-0 right-2 rounded-full bg-teal-500 text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
+                </div>
+
+            {
+                mobileSidebar ? 
+                <div className='fixed top-0 left-0 w-full h-screen bg-[#0000004d] z-10'>
+                    <div className='transition duration-500 ease-in fixed top-0 left-0 bg-white min-h-full w-[65%] shadow-sm flex flex-col overflow-y-scroll '>
+                        <div className="flex items-center justify-between w-full px-2 py-2">
+                    <div className="relative cursor-pointer" onClick={(() => setWishlistOpen(!wishlistOpen))}>
+                                <IoMdHeartEmpty size={30} color="black"/>
+                                <span className="absolute top-0 right-0 rounded-full bg-teal-500 text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
+                            </div>
+                    <div className=''>
+                            <RxCross2 size={30} className='cursor-pointer' onClick={() => setMobileSidebar(false)} />
+                        </div>
+                        </div>
+                        <div className="py-2 flex justify-center">
+                        <div className='w-[90%] relative'>
+                    <input type="search" value={search} onChange={handleSearch} className='border border-teal-500 border-solid rounded-md w-full h-10 placeholder:font-medium px-2 focus:outline-teal-600' placeholder='Search product....'/>
+                    <IoIosSearch size={25} className='absolute mx-1 right-0 top-2' />
+                    <div className="absolute min-h-[30vh] z-[9] shadow-sm bg-slate-50">
+                    {
+                        (searchData && searchData.length !== 0) ? searchData.map((i, index) => {
+                            return (
+                                <Link to={`/product/${i.id}`} key={index}>
+                                    <div className="w-full flex items-center py-2">
+                                        <img src={i.image_Url[0].url} alt="" className="w-12 h-12 mr-3 object-cover"/>
+                                        <p className="w-3/4 ">{i.name}</p>
+                                    </div>
+                                </Link>
+                            )
+                        }) : null
+                    }
+                    </div>
+                </div>
+                        </div>
+                        <Navbar active={activeHeading}/>
+                        <div className='flex items-center bg-black rounded-md px-4 py-2 mx-4 my-3 w-fit cursor-pointer'>
+                            <p className='font-medium text-white'>Become Seller</p>
+                            <IoIosArrowForward size={15} className='text-white ml-1'/>
+                        </div>
+                    </div> 
+                </div>
+                
+                : null
+            }
+
+            
+            </div>
         </div>
+    </div>
     );
 };
 
