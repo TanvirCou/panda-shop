@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import ProductInfo from '../../components/ProductInfo/ProductInfo';
+import Header from '../../components/Shared/Header/Header';
+import Footer from '../../components/Shared/Footer/Footer';
+import ProductInfo from '../../components/ProductInformation/ProductInfo/ProductInfo';
 import { useParams } from 'react-router-dom';
 import { productData } from '../../static/data';
-import ProductDetailsInfo from '../../components/ProductDetailsInfo/ProductDetailsInfo';
-import RelatedProducts from '../../components/RelatedProducts/RelatedProducts';
+import ProductDetailsInfo from '../../components/ProductInformation/ProductDetailsInfo/ProductDetailsInfo';
+import RelatedProducts from '../../components/ProductInformation/RelatedProducts/RelatedProducts';
 
 const ProductInformation = () => {
     const [data, setData] = useState();

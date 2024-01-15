@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Hero from '../../components/Hero/Hero';
-import Category from '../../components/Category/Category';
-import BestDeal from '../../components/BestDeal/BestDeal';
-import Featured from '../../components/Featured/Featured';
-import PopularEvent from '../../components/PopularEvent/PopularEvent';
-import Sponsored from '../../components/Sponsored/Sponsored';
-import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Shared/Header/Header';
+import Hero from '../../components/Home/Hero/Hero';
+import Category from '../../components/Home/Category/Category';
+import BestDeal from '../../components/Home/BestDeal/BestDeal';
+import Featured from '../../components/Home/Featured/Featured';
+import PopularEvent from '../../components/Home/PopularEvent/PopularEvent';
+import Sponsored from '../../components/Home/Sponsored/Sponsored';
+import Footer from '../../components/Shared/Footer/Footer';
 
 const Home = () => {
     return (

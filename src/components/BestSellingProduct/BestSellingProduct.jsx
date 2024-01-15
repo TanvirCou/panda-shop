@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { productData } from '../../static/data';
-import ProductCart from '../ProductCart/ProductCart';
+import ProductCart from '../Shared/ProductCart/ProductCart';
 
 const BestSellingProduct = () => {
     const [data, setData] = useState([]);

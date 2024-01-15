@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Shared/Header/Header';
 import BestSellingProduct from '../../components/BestSellingProduct/BestSellingProduct';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Shared/Footer/Footer';
 
 const BestSelling = () => {
     return (

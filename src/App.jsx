@@ -1,7 +1,8 @@
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import ActivationPage from "./pages/ActivationPage/ActivationPage";
@@ -18,14 +19,21 @@ import Events from "./pages/Events/Events";
 import FAQ from "./pages/FAQ/FAQ";
 import ProductInformation from "./pages/ProductInformation/ProductInformation";
 import Profile from "./pages/Profile/Profile";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./Routes/ProtectedRoute";
+import ProtectedShopRoute from "./Routes/ProtectedShopRoute";
+import ShopAuth from "./pages/ShopAuth/ShopAuth";
+import ShopActivationPage from "./pages/ShopActivationPage/ShopActivationPage";
+import { fetchShop } from "./redux/features/shopSlice";
+import ShopHome from "./pages/ShopHome/ShopHome";
 
 function App() {
-  const { isAuthenticated } = useSelector(state => state.user);
+  const { isLoading } = useSelector(state => state.user);
+  const { loading } = useSelector(state => state.shop);
   const dispatch = useDispatch();
-console.log(isAuthenticated);
+
   useEffect(() => {
     dispatch(fetchUser());
+    dispatch(fetchShop());
   }, [])
 
   // useEffect(() => {
@@ -43,18 +51,22 @@ console.log(isAuthenticated);
 
   return (
     <>
-  
+   {isLoading || loading ? "null" :
       <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:name" element={<ProductInformation />} />
         <Route path="/best-selling" element={<BestSelling />} />
         <Route path="/events" element={<Events />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/auth" element={<Auth />} />
+        <Route path="/auth" element={ <Auth />} />
         <Route path="/activation/:token" element={<ActivationPage />} />
-        <Route path="/profile" element={ <Profile /> } />
+        <Route path="/profile" element={<ProtectedRoute> <Profile /> </ProtectedRoute>  } />
+        <Route path="/shop-auth" element={<ShopAuth />} />
+        <Route path="/shop/:id" element={<ProtectedShopRoute> <ShopHome /> </ProtectedShopRoute>} />
+        <Route path="/shop-activation/:token" element={<ShopActivationPage />} />
       </Routes>
       <ToastContainer
         position="bottom-center"
@@ -68,7 +80,7 @@ console.log(isAuthenticated);
         pauseOnHover
         theme="dark"
       />
-    </BrowserRouter>
+    </BrowserRouter>}
 
     </>
   )

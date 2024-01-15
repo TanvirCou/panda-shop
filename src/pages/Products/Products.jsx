@@ -1,7 +1,7 @@
 import React from 'react';
-import AllProducts from '../../components/AllProducts/AllProducts';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import AllProducts from '../../components/Products/AllProducts/AllProducts';
+import Header from '../../components/Shared/Header/Header';
+import Footer from '../../components/Shared/Footer/Footer';
 
 const Products = () => {
     return (

@@ -5,12 +5,7 @@ import { MdOutlinePermMedia } from "react-icons/md";
 
 const ProfileInfo = ({active}) => {
     const { user } = useSelector(state => state.user);
-    console.log(user?.user);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
+    
 
   const [name, setName] = useState(user?.user?.name);
   const [email, setEmail] = useState(user?.user?.email);

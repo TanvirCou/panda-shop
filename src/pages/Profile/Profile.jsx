@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Shared/Header/Header';
 import ProfileSidebar from '../../components/Profile/ProfileSidebar';
 import ProfileInfo from '../../components/Profile/ProfileInfo';
 import OrderInfo from '../../components/Profile/OrderInfo';

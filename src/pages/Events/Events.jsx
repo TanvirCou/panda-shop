@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import EventCard from '../../components/EventCard/EventCard';
+import Header from '../../components/Shared/Header/Header';
+import Footer from '../../components/Shared/Footer/Footer';
+import EventCard from '../../components/Shared/EventCard/EventCard';
 
 const Events = () => {
     return (
