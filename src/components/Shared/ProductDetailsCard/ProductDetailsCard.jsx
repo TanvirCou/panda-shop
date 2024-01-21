@@ -4,10 +4,16 @@ import { FiMessageCircle } from "react-icons/fi";
 import { useState } from 'react';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { IoCartOutline } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addToCart } from '../../../redux/features/cartSlice';
 
 const ProductDetailsCard = ({data, setOpen}) => {
     const [count, setCount] = useState(1);
     const [click, setClick] = useState(false);
+
+    const { cart } = useSelector(state => state.cart);
+    const dispatch = useDispatch();
 
     const handleIncrementCount = () => {
         setCount((prev) => prev + 1);
@@ -16,6 +22,22 @@ const ProductDetailsCard = ({data, setOpen}) => {
     const handleDecrementCount = () => {
         setCount((prev) => (prev > 1) ? (prev - 1) : prev);
     };
+
+    const addToCartHandler = (id) => {
+        const isItemsExits = cart && cart.find(i => i.id === id);
+        if(isItemsExits) {
+            toast.error("Items is already in cart");
+        } else {
+            if(data.stock < count) {
+                toast.error("Product stock limited");
+            } else {
+                const cartData = {...data, qty: count};
+            dispatch(addToCart(cartData));
+            localStorage.setItem("cartItems", JSON.stringify([...cart, cartData]));
+            toast.success("Item added to cart successfully");
+            }
+        }
+    }
 
     return (
         <div className='bg-white'>
@@ -73,7 +95,7 @@ const ProductDetailsCard = ({data, setOpen}) => {
                                      </div>
                                 </div>
 
-                                <div className='flex items-center bg-black w-fit px-4 py-2 rounded-md cursor-pointer my-6'>
+                                <div className='flex items-center bg-black w-fit px-4 py-2 rounded-md cursor-pointer my-6' onClick={() => addToCartHandler(data.id)}>
                                     <p className='text-white font-medium mr-2'>Add to Cart</p>
                                     <IoCartOutline size={20} color='white' />
                                 </div>

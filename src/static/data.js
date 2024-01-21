@@ -319,7 +319,7 @@ export const navItems = [
       discount_price: 1099,
       rating: 5,
       total_sell: 80,
-      stock: 10
+      stock: 2
     },
     {
       id: 3,

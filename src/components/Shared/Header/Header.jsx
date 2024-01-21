@@ -22,6 +22,8 @@ const Header = ({activeHeading}) => {
     const [wishlistOpen, setWishlistOpen] = useState(false);
     const [mobileSidebar, setMobileSidebar] = useState(false);
 
+    const { cart } = useSelector(state => state.cart);
+
     const handleSearch = (e) => {
         const term = e.target.value;
         setSearch(term);
@@ -109,7 +111,7 @@ const Header = ({activeHeading}) => {
                             </div>
                             <div className="relative px-3 cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
                                 <IoCartOutline size={30} className="text-white"/>
-                                <span className="absolute top-0 right-2 rounded-full bg-black text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
+                                <span className="absolute top-0 right-2 rounded-full bg-black text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">{cart && cart.length}</span>
                             </div>
                             <div className="relative px-3">
                                 {
@@ -143,7 +145,7 @@ const Header = ({activeHeading}) => {
                 <p className="text-3xl font-semibold font-[poppins]">Panda-Shop</p>
                 <div className="relative px-3 cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
                     <IoCartOutline size={30} className="text-black"/>
-                    <span className="absolute top-0 right-2 rounded-full bg-teal-500 text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">0</span>
+                    <span className="absolute top-0 right-2 rounded-full bg-teal-500 text-white text-[12px] w-4 h-4 text-center p-0 m-0 leading-snug font-mono">{cart && cart.length}</span>
                 </div>
 
             {
