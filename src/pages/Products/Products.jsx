@@ -1,14 +1,22 @@
-import React from 'react';
 import AllProducts from '../../components/Products/AllProducts/AllProducts';
 import Header from '../../components/Shared/Header/Header';
 import Footer from '../../components/Shared/Footer/Footer';
+import { useSelector } from 'react-redux';
+import LoadingAnimation from '../../components/Loader/LoadingAnimation';
 
 const Products = () => {
+    const { isProductLoading } = useSelector(state => state.product);
     return (
         <div className='bg-gray-100'>
-            <Header activeHeading={3}/>
-            <AllProducts />
-            <Footer />
+            {
+                isProductLoading ? <LoadingAnimation /> :
+                    <>
+                        <Header activeHeading={3} />
+                        <AllProducts />
+                        <Footer />
+                    </>
+            }
+
         </div>
     );
 };

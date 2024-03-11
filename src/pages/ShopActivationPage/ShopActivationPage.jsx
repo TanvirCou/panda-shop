@@ -1,24 +1,24 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ShopActivationPage = () => {
-    const {token} = useParams();
+    const { token } = useParams();
     const [error, setError] = useState(false);
 
     useEffect(() => {
         if (token) {
-        const activationId = async() => {
-            try {
-                const res = await axios.post("http://localhost:3000/api/shop/shop-activation", {activation_token: token});
-                console.log(res);
-            } catch (err) {
-                console.log(err);
-                setError(true);
+            const activationId = async () => {
+                try {
+                    const res = await axios.post("http://localhost:3000/api/shop/shop-activation", { activation_token: token });
+                    console.log(res);
+                } catch (err) {
+                    console.log(err);
+                    setError(true);
+                }
             }
+            activationId();
         }
-        activationId();
-    }
     }, []);
 
     return (

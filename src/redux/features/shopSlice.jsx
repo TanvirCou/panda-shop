@@ -6,13 +6,15 @@ export const fetchShop = createAsyncThunk("shop/fetchShop", async() => {
     return res.data;
 });
 
+export const fetchAllShop = createAsyncThunk("shop/fetchAllShop", async() => {
+    const res = await axios.get("http://localhost:3000/api/shop/admin-all-shops", {withCredentials: true});
+    return res.data;
+});
+
 export const shopSlice = createSlice({
     name: "shop",
     initialState: {
-        loading: false,
-        isShop: false,
-        shop: [],
-        error: null
+        loading: true
     },
     extraReducers: (builder) => {
         builder.addCase(fetchShop.pending, (state) => {
@@ -31,6 +33,21 @@ export const shopSlice = createSlice({
             state.loading = false,
             state.isShop = false,
             state.shop = [],
+            state.error = action.payload
+        });
+
+        builder.addCase(fetchAllShop.pending, (state) => {
+            state.allShopLoading = true,
+            state.shop = [],
+            state.error = null
+        });
+        builder.addCase(fetchAllShop.fulfilled, (state, action) => {
+            state.allShopLoading = false,
+            state.allShops = action.payload,
+            state.error = null
+        });
+        builder.addCase(fetchAllShop.rejected, (state, action) => {
+            state.allShopLoading = false,
             state.error = action.payload
         });
     },

@@ -2,22 +2,26 @@ import axios from 'axios';
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { toast } from 'react-toastify';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { fetchShop } from '../../../redux/features/shopSlice';
 
 const ShopLogin = () => {
     const [passShow, setPassShow] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-   
 
-    const handleLogin = async(e) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:3000/api/shop/shop-login", {email, password}, {withCredentials: true});
+            await axios.post("http://localhost:3000/api/shop/shop-login", { email, password }, { withCredentials: true });
             toast.success("Login success!");
-            window.location.reload();
-            
-        } catch(err) {
+            navigate(`/shop/dashboard`);
+            dispatch(fetchShop());
+        } catch (err) {
             toast.error(err.response.data.message);
             console.log(err);
         }

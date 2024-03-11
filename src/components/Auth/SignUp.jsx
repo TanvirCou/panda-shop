@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import { RxAvatar } from "react-icons/rx";
@@ -5,7 +6,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 
 
-const SignUp = () => {
+const SignUp = ({ setActive }) => {
     const [passShow, setPassShow] = useState(false);
     const [confirmPassShow, setConfirmPassShow] = useState(false);
     const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const SignUp = () => {
             });
     };
 
-    const handleRegister = async(e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             alert("Password don't match!");
@@ -57,6 +58,7 @@ const SignUp = () => {
                 setPassword("");
                 setConfirmPassword("");
                 setAvatar();
+                setActive(true);
             } catch (err) {
                 toast.error(err.response.data.message);
             }
@@ -77,7 +79,7 @@ const SignUp = () => {
                 <p className='text-md font-medium'>Password</p>
                 <div className='relative flex justify-end items-center'>
                     <input type={!passShow ? `password` : `text`} value={password} onChange={(e) => setPassword(e.target.value)} required minLength="6" placeholder='Enter your password' className='flex justify-center w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500 ' />
-                    {!passShow ? 
+                    {!passShow ?
                         <IoEye size={22} onClick={() => setPassShow(true)} className='cursor-pointer absolute mx-1.5' /> :
                         <IoEyeOff size={22} onClick={() => setPassShow(false)} className='cursor-pointer  absolute mx-1.5' />
                     }
@@ -87,7 +89,7 @@ const SignUp = () => {
                 <p className='text-md font-medium'>Confirm Password</p>
                 <div className='relative flex justify-end items-center'>
                     <input type={!confirmPassShow ? `password` : `text`} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder='Enter your password again' className='flex justify-center w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500 ' />
-                    {!confirmPassShow ? 
+                    {!confirmPassShow ?
                         <IoEye size={22} onClick={() => setConfirmPassShow(true)} className='cursor-pointer absolute mx-1.5' /> :
                         <IoEyeOff size={22} onClick={() => setConfirmPassShow(false)} className='cursor-pointer  absolute mx-1.5' />
                     }

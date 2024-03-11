@@ -1,4 +1,3 @@
-import React from 'react';
 import { categoriesData } from '../../../static/data';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,8 +11,8 @@ const Category = () => {
             {categoriesData && categoriesData.map((i, index) => (
                 <div key={index} onClick={() => handleClick(i)} >
                     <div className='flex items-center h-[100px] w-full justify-center cursor-pointer'>
-                        <p className='text-center text-sm md:text-base font-medium'>{i.title}</p>
-                        <img src={i.image_Url} alt="" className='w-24 h-24 ml-3'/>
+                        <p className='text-center text-sm md:text-base font-medium w-28'>{i.title}</p>
+                        <img src={i.image_Url} alt="" className='w-24 h-24 ml-3' />
                     </div>
                 </div>
             ))}

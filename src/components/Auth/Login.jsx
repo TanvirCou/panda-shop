@@ -2,7 +2,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { toast } from 'react-toastify';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../../redux/features/userSlice';
 
 const Login = () => {
     const [passShow, setPassShow] = useState(false);
@@ -10,15 +12,16 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handleLogin = async(e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:3000/api/user/login", {email, password}, {withCredentials: true});
+            await axios.post("http://localhost:3000/api/user/login", { email, password }, { withCredentials: true });
             toast.success("Login success!");
             navigate("/");
-            window.location.reload();
-        } catch(err) {
+            dispatch(fetchUser());
+        } catch (err) {
             toast.error(err.response.data.message);
             console.log(err);
         }

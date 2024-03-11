@@ -1,9 +1,9 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { navItems } from '../../../static/data';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({active}) => {
-    
+const Navbar = ({ active }) => {
+
     return (
         <div className='block md:flex items-center mt-2 md:mt-0'>
             {navItems && navItems.map((i, index) => (

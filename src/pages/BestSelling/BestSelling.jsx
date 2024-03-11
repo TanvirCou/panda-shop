@@ -2,13 +2,21 @@ import React from 'react';
 import Header from '../../components/Shared/Header/Header';
 import BestSellingProduct from '../../components/BestSellingProduct/BestSellingProduct';
 import Footer from '../../components/Shared/Footer/Footer';
+import { useSelector } from 'react-redux';
+import LoadingAnimation from '../../components/Loader/LoadingAnimation';
 
 const BestSelling = () => {
+    const { isProductLoading } = useSelector(state => state.product);
     return (
         <div className='bg-gray-100'>
-            <Header activeHeading={2}/>
-            <BestSellingProduct />
-            <Footer />
+            {
+                isProductLoading ? <LoadingAnimation /> :
+                    <>
+                        <Header activeHeading={2} />
+                        <BestSellingProduct />
+                        <Footer />
+                    </>
+            }
         </div>
     );
 };
