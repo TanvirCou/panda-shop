@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { RxCross1 } from 'react-icons/rx';
-import { FiMessageCircle } from "react-icons/fi";
 import { useState } from 'react';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
 import { IoCartOutline } from 'react-icons/io5';
@@ -95,10 +94,10 @@ const ProductDetailsCard = ({ data, setOpen }) => {
                                         <p className='text-sm font-medium px-2'>{shopAvgRating ? `(${shopAvgRating}/5) Ratings` : "No review"}</p>
                                     </div>
                                 </div>
-                                <div className='flex items-center bg-black w-fit px-4 py-2 rounded-md my-3 cursor-pointer mx-2'>
+                                {/* <div className='flex items-center bg-black w-fit px-4 py-2 rounded-md my-3 cursor-pointer mx-2'>
                                     <p className='text-white font-medium mr-2'>Send Message</p>
                                     <FiMessageCircle size={20} color='white' />
-                                </div>
+                                </div> */}
                                 <p className='font-medium text-red-600 p-2'>({data.sold_out}) Sold out</p>
                             </div>
 

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { FiMessageCircle } from "react-icons/fi";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -172,10 +171,10 @@ const ProductInfo = ({ data, eventData }) => {
 
                                         </div>
 
-                                        <div className='flex items-center bg-teal-600 w-fit px-4 py-2 rounded-md cursor-pointer' onClick={() => handleClick(data?.shop._id)}>
+                                        {/* <div className='flex items-center bg-teal-600 w-fit px-4 py-2 rounded-md cursor-pointer' onClick={() => handleClick(data?.shop._id)}>
                                             <p className='text-white font-medium mr-2'>Send Message</p>
                                             <FiMessageCircle size={20} color='white' />
-                                        </div>
+                                        </div> */}
 
 
                                     </div>

@@ -8,9 +8,9 @@ const AdminHeader = () => {
     const { user } = useSelector(state => state.user);
 
     return (
-        <div className='w-full h-16 flex items-center justify-between px-5 md:px-8 shadow-md z-30 top-0 left-0 sticky'>
+        <div className='w-full h-16 flex items-center justify-between px-5 md:px-8 shadow-md z-30 top-0 left-0 fixed'>
             <Link to="/">
-                <div className='font-bold text-3xl cursor-pointer items-center font-[Poppins] 
+                <div className='font-bold text-3xl cursor-pointer items-center font-[Poppins]
                 text-gray-800'>
                     Panda-Shop
                 </div>
