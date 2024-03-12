@@ -2,17 +2,17 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchOrder = createAsyncThunk("order/fetchOrder", async(userId) => {
-    const res = await axios.get(`http://localhost:3000/api/order/get-all-orders/${userId}`);
+    const res = await axios.get(`https://panda-shop.onrender.com/api/order/get-all-orders/${userId}`);
     return res.data;
 });
 
 export const fetchShopOrder = createAsyncThunk("order/fetchShopOrder", async(shopId) => {
-    const res = await axios.get(`http://localhost:3000/api/order/get-shop-all-orders/${shopId}`);
+    const res = await axios.get(`https://panda-shop.onrender.com/api/order/get-shop-all-orders/${shopId}`);
     return res.data;
 });
 
 export const fetchAdminOrder = createAsyncThunk("order/fetchAdminOrder", async() => {
-    const res = await axios.get(`http://localhost:3000/api/order/admin-all-orders`, {withCredentials: true});
+    const res = await axios.get(`https://panda-shop.onrender.com/api/order/admin-all-orders`, {withCredentials: true});
     return res.data;
 });
 

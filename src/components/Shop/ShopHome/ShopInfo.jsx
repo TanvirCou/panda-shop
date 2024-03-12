@@ -11,7 +11,7 @@ const ShopInfo = ({ data, products, id }) => {
     const dispatch = useDispatch();
 
     const handleLogout = async () => {
-        await axios.get("http://localhost:3000/api/shop/logout", { withCredentials: true });
+        await axios.get("https://panda-shop.onrender.com/api/shop/logout", { withCredentials: true });
         dispatch(fetchShop());
         navigate("/");
 

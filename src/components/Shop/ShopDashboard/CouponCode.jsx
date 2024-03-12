@@ -25,7 +25,7 @@ const CouponCode = () => {
     const fetchCouponCodes = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:3000/api/coupon-code/all-coupon-codes/${shop.shop._id}`, { withCredentials: true });
+            const res = await axios.get(`https://panda-shop.onrender.com/api/coupon-code/all-coupon-codes/${shop.shop._id}`, { withCredentials: true });
             console.log(res.data);
             setCouponCodes(res.data);
             setLoading(false);
@@ -45,7 +45,7 @@ const CouponCode = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:3000/api/coupon-code/delete-coupon-code/${id}`, { withCredentials: true });
+            const res = await axios.delete(`https://panda-shop.onrender.com/api/coupon-code/delete-coupon-code/${id}`, { withCredentials: true });
             toast.success(res.data.message);
             fetchCouponCodes();
         } catch (error) {
@@ -65,7 +65,7 @@ const CouponCode = () => {
             shopId: shop.shop._id
         };
         try {
-            await axios.post("http://localhost:3000/api/coupon-code/create-coupon-code", couponCodeData, { withCredentials: true });
+            await axios.post("https://panda-shop.onrender.com/api/coupon-code/create-coupon-code", couponCodeData, { withCredentials: true });
             toast.success("Coupon code created successfully");
             setOpen(false);
             setName("");

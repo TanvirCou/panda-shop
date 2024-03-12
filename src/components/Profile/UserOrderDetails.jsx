@@ -33,7 +33,7 @@ const UserOrderDetails = () => {
             orderId: id
         };
         try {
-            await axios.put("http://localhost:3000/api/product/create-new-review", reviewDetails, { withCredentials: true });
+            await axios.put("https://panda-shop.onrender.com/api/product/create-new-review", reviewDetails, { withCredentials: true });
             setOpen(false);
             setRefresh(!refresh);
             setReview("");
@@ -60,7 +60,7 @@ const UserOrderDetails = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.put(`http://localhost:3000/api/order/order-refund/${id}`, { status: "Processing for Refund" });
+            const res = await axios.put(`https://panda-shop.onrender.com/api/order/order-refund/${id}`, { status: "Processing for Refund" });
             toast.success(res.data.message);
             setRefresh(!refresh);
         } catch (error) {

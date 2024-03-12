@@ -27,7 +27,7 @@ const WithdrawMoney = () => {
         e.preventDefault();
 
         try {
-            await axios.put("http://localhost:3000/api/shop/update-payment-methods", { bankInfo }, { withCredentials: true });
+            await axios.put("https://panda-shop.onrender.com/api/shop/update-payment-methods", { bankInfo }, { withCredentials: true });
             toast.success("Payment Method added");
             setPaymentMethod(false);
             setOpen(false);
@@ -49,7 +49,7 @@ const WithdrawMoney = () => {
         e.preventDefault();
 
         try {
-            await axios.delete("http://localhost:3000/api/shop/delete-withdraw-method", { withCredentials: true });
+            await axios.delete("https://panda-shop.onrender.com/api/shop/delete-withdraw-method", { withCredentials: true });
             toast.success("Payment Method deleted");
             dispatch(fetchShop());
         } catch (error) {
@@ -64,7 +64,7 @@ const WithdrawMoney = () => {
             toast.error("You can't withdraw this amount of money");
         } else {
             try {
-                const res = await axios.post("http://localhost:3000/api/withdraw/create-withdraw-request", { amount: withdrawAmount }, { withCredentials: true });
+                const res = await axios.post("https://panda-shop.onrender.com/api/withdraw/create-withdraw-request", { amount: withdrawAmount }, { withCredentials: true });
                 toast.success("Withdraw request successfully done");
                 dispatch(fetchShop());
                 setOpen(false);

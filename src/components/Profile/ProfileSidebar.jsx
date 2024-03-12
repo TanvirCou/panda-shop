@@ -17,7 +17,7 @@ const ProfileSidebar = ({ active, setActive }) => {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/api/user/logout", { withCredentials: true });
+            const res = await axios.get("https://panda-shop.onrender.com/api/user/logout", { withCredentials: true });
             toast.success(res.data.message);
             dispatch(fetchUser());
             navigate("/");

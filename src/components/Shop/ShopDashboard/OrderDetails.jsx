@@ -30,7 +30,7 @@ const OrderDetails = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.put(`http://localhost:3000/api/order/update-order-status/${data._id}`, { status }, { withCredentials: true });
+            const res = await axios.put(`https://panda-shop.onrender.com/api/order/update-order-status/${data._id}`, { status }, { withCredentials: true });
             console.log(res.data);
             toast.success("Order status updated");
             dispatch(fetchShopOrder(shop.shop._id));
@@ -47,7 +47,7 @@ const OrderDetails = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.put(`http://localhost:3000/api/order/order-refund-success/${data._id}`, { status }, { withCredentials: true });
+            const res = await axios.put(`https://panda-shop.onrender.com/api/order/order-refund-success/${data._id}`, { status }, { withCredentials: true });
             console.log(res.data);
             toast.success(res.data.message);
             dispatch(fetchShopOrder(shop.shop._id));

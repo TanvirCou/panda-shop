@@ -55,7 +55,7 @@ const ShopSettings = () => {
         };
 
         try {
-            const res = await axios.put("http://localhost:3000/api/shop/update-shop-info", shop, { withCredentials: true });
+            const res = await axios.put("https://panda-shop.onrender.com/api/shop/update-shop-info", shop, { withCredentials: true });
             toast.success(res.data.message);
             console.log(res);
             dispatch(fetchShop());

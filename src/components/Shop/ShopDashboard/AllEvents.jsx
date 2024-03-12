@@ -19,7 +19,7 @@ const DashboardProducts = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:3000/api/event/delete-event/${id}`, { withCredentials: true });
+            const res = await axios.delete(`https://panda-shop.onrender.com/api/event/delete-event/${id}`, { withCredentials: true });
             toast.success(res.data.message);
             console.log(res.data);
             dispatch(fetchEvent(shop.shop._id));

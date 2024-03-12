@@ -75,7 +75,7 @@ const CreateProduct = () => {
             shopId: shop.shop._id
         };
         try {
-            await axios.post("http://localhost:3000/api/product/create-product", newProduct);
+            await axios.post("https://panda-shop.onrender.com/api/product/create-product", newProduct);
             toast.success("Product created successfully");
             dispatch(fetchProduct(shop.shop._id));
             setName("");

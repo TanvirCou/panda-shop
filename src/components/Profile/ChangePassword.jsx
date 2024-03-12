@@ -15,7 +15,7 @@ const ChangePassword = () => {
             toast.error("Password don't match");
         } else {
             try {
-                const res = await axios.put("http://localhost:3000/api/user/update-user-password", { oldPassword, newPassword }, { withCredentials: true });
+                const res = await axios.put("https://panda-shop.onrender.com/api/user/update-user-password", { oldPassword, newPassword }, { withCredentials: true });
                 toast.success("Password change SuccessFully");
                 console.log((res.data));
                 setOldPassword("");

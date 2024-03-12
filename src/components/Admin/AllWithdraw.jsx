@@ -15,7 +15,7 @@ const AllWithdraw = () => {
     const fetchAllWithdraw = async () => {
         setLoading(true);
         try {
-            const res = await axios.get("http://localhost:3000/api/withdraw/get-all-withdraw-request", { withCredentials: true });
+            const res = await axios.get("https://panda-shop.onrender.com/api/withdraw/get-all-withdraw-request", { withCredentials: true });
             setData(res.data);
             setLoading(false);
         } catch (error) {
@@ -37,7 +37,7 @@ const AllWithdraw = () => {
             toast.error("You need to update your status for update");
         } else {
             try {
-                const res = await axios.put(`http://localhost:3000/api/withdraw//update-withdraw-request/${withdrawData._id}`, { sellerId: withdrawData?.shop._id }, { withCredentials: true });
+                const res = await axios.put(`https://panda-shop.onrender.com/api/withdraw//update-withdraw-request/${withdrawData._id}`, { sellerId: withdrawData?.shop._id }, { withCredentials: true });
                 console.log(res.data);
                 toast.success("Status updated successfully");
                 setOpen(false);

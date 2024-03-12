@@ -23,7 +23,7 @@ const AdminUsers = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.delete(`http://localhost:3000/api/user/delete-user/${userId}`, { withCredentials: true });
+            const res = await axios.delete(`https://panda-shop.onrender.com/api/user/delete-user/${userId}`, { withCredentials: true });
             toast.success(res.data.message);
             setOpen(false);
             dispatch(fetchAllUser());

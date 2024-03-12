@@ -56,7 +56,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   const getStripeApiKey = async () => {
-    const res = await axios.get("http://localhost:3000/api/payment/stripe-api-key");
+    const res = await axios.get("https://panda-shop.onrender.com/api/payment/stripe-api-key");
     setStripeApiKey(res.data.stripeApiKey);
   }
 
@@ -75,7 +75,7 @@ function App() {
   // useEffect(() => {
   //  const getUser = async() => {
   //   try {
-  //     const res = await axios.get("http://localhost:3000/api/user/get", {withCredentials: true});
+  //     const res = await axios.get("https://panda-shop.onrender.com/api/user/get", {withCredentials: true});
   //     toast.success(res.data.message);
   //   } catch(err) {
   //     console.log(err);

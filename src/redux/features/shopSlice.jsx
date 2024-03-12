@@ -2,12 +2,12 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchShop = createAsyncThunk("shop/fetchShop", async() => {
-    const res = await axios.get("http://localhost:3000/api/shop/get", {withCredentials: true});
+    const res = await axios.get("https://panda-shop.onrender.com/api/shop/get", {withCredentials: true});
     return res.data;
 });
 
 export const fetchAllShop = createAsyncThunk("shop/fetchAllShop", async() => {
-    const res = await axios.get("http://localhost:3000/api/shop/admin-all-shops", {withCredentials: true});
+    const res = await axios.get("https://panda-shop.onrender.com/api/shop/admin-all-shops", {withCredentials: true});
     return res.data;
 });
 

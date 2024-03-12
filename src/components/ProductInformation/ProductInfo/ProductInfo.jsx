@@ -71,7 +71,7 @@ const ProductInfo = ({ data, eventData }) => {
     const handleClick = async (shopId) => {
         try {
 
-            const res = await axios.post(`http://localhost:3000/api/chat/createChat`, { userId: shopId }, { withCredentials: true });
+            const res = await axios.post(`https://panda-shop.onrender.com/api/chat/createChat`, { userId: shopId }, { withCredentials: true });
             console.log(res.data);
             // if (!chats.find(c => c._id === res.data._id)) {
             //     setChats([res.data, ...chats]);

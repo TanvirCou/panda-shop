@@ -63,7 +63,7 @@ const ProfileInfo = () => {
         };
 
         try {
-            const res = await axios.put("http://localhost:3000/api/user/update-user-info", user, { withCredentials: true });
+            const res = await axios.put("https://panda-shop.onrender.com/api/user/update-user-info", user, { withCredentials: true });
             toast.success(res.data.message);
             dispatch(fetchUser());
             setAvatar(null);

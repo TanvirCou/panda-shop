@@ -45,7 +45,7 @@ const AddressInfo = () => {
         };
 
         try {
-            await axios.put("http://localhost:3000/api/user/update-user-addresses", address, { withCredentials: true });
+            await axios.put("https://panda-shop.onrender.com/api/user/update-user-addresses", address, { withCredentials: true });
             toast.success("Address updated successfully");
             dispatch(fetchUser());
             setCountry("");
@@ -63,7 +63,7 @@ const AddressInfo = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/user/delete-user-address/${id}`, { withCredentials: true });
+            await axios.delete(`https://panda-shop.onrender.com/api/user/delete-user-address/${id}`, { withCredentials: true });
             toast.success("Address deleted successfully");
             dispatch(fetchUser());
         } catch (error) {

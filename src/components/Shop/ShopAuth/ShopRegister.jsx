@@ -57,7 +57,7 @@ const ShopRegister = ({ setActive }) => {
                 avatar: file
             }
             try {
-                const res = await axios.post("http://localhost:3000/api/shop/shop-register", data);
+                const res = await axios.post("https://panda-shop.onrender.com/api/shop/shop-register", data);
                 toast.success(res.data.message);
                 setName("");
                 setEmail("");

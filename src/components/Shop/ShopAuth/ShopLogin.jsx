@@ -17,7 +17,7 @@ const ShopLogin = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:3000/api/shop/shop-login", { email, password }, { withCredentials: true });
+            await axios.post("https://panda-shop.onrender.com/api/shop/shop-login", { email, password }, { withCredentials: true });
             toast.success("Login success!");
             navigate(`/shop/dashboard`);
             dispatch(fetchShop());

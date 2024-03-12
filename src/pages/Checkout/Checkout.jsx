@@ -52,7 +52,7 @@ const Checkout = () => {
         e.preventDefault();
         const name = couponCode;
 
-        const res = await axios.get(`http://localhost:3000/api/coupon-code/get-coupon-value/${name}`);
+        const res = await axios.get(`https://panda-shop.onrender.com/api/coupon-code/get-coupon-value/${name}`);
 
         const shopId = res.data.couponCode?.shopId;
         const couponCodeValue = res.data.couponCode?.value
@@ -165,7 +165,7 @@ const Checkout = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/api/order/create-order", order);
+            const res = await axios.post("https://panda-shop.onrender.com/api/order/create-order", order);
             toast.success("order successfully");
             console.log(res.data)
             setActive(3);
@@ -187,7 +187,7 @@ const Checkout = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:3000/api/payment/process", paymentData);
+            const res = await axios.post("https://panda-shop.onrender.com/api/payment/process", paymentData);
 
             const client_secret = res.data.client_secret;
 
@@ -210,7 +210,7 @@ const Checkout = () => {
                         type: "Credit Card"
                     };
 
-                    const res = await axios.post("http://localhost:3000/api/order/create-order", order);
+                    const res = await axios.post("https://panda-shop.onrender.com/api/order/create-order", order);
                     toast.success("order successfully");
                     console.log(res.data)
                     setActive(3);
@@ -238,7 +238,7 @@ const Checkout = () => {
         };
 
         try {
-            const res = await axios.post("http://localhost:3000/api/order/create-order", order);
+            const res = await axios.post("https://panda-shop.onrender.com/api/order/create-order", order);
             toast.success("order successfully");
             console.log(res.data)
             setActive(3);

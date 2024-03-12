@@ -11,7 +11,7 @@ const ActivationPage = () => {
         if (token) {
             const activationId = async () => {
                 try {
-                    const res = await axios.post("http://localhost:3000/api/user/activation", { activation_token: token });
+                    const res = await axios.post("https://panda-shop.onrender.com/api/user/activation", { activation_token: token });
                     console.log(res);
                 } catch (err) {
                     console.log(err);

@@ -51,7 +51,7 @@ const SignUp = ({ setActive }) => {
                 avatar: file
             }
             try {
-                const res = await axios.post("http://localhost:3000/api/user/register", data);
+                const res = await axios.post("https://panda-shop.onrender.com/api/user/register", data);
                 toast.success(res.data.message);
                 setName("");
                 setEmail("");

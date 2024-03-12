@@ -2,22 +2,22 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const createEvent = createAsyncThunk("event/createEvent", async(newEvent) => {
-    const res = await axios.post("http://localhost:3000/api/event/create-event", newEvent);
+    const res = await axios.post("https://panda-shop.onrender.com/api/event/create-event", newEvent);
     return res.data;
 });
 
 export const fetchEvent = createAsyncThunk("event/fetchEvent", async(shopId) => {
-    const res = await axios.get(`http://localhost:3000/api/event/all-events/${shopId}`);
+    const res = await axios.get(`https://panda-shop.onrender.com/api/event/all-events/${shopId}`);
     return res.data;
 });
 
 export const deleteEvent = createAsyncThunk("product/deleteProduct", async(eventId) => {
-    const res = await axios.delete(`http://localhost:3000/api/event/delete-event/${eventId}`, {withCredentials: true});
+    const res = await axios.delete(`https://panda-shop.onrender.com/api/event/delete-event/${eventId}`, {withCredentials: true});
     return res.data;
 });
 
 export const fetchAllEvent = createAsyncThunk("event/fetchAllEvent", async() => {
-    const res = await axios.get(`http://localhost:3000/api/event/get-all-events`);
+    const res = await axios.get(`https://panda-shop.onrender.com/api/event/get-all-events`);
     return res.data;
 });
 

@@ -92,7 +92,7 @@ const CreateEvent = () => {
             shopId: shop.shop._id
         };
         try {
-            await axios.post("http://localhost:3000/api/event/create-event", newEvent);
+            await axios.post("https://panda-shop.onrender.com/api/event/create-event", newEvent);
             toast.success("Event created successfully");
             dispatch(fetchAllEvent());
             dispatch(fetchEvent(shop.shop._id));
