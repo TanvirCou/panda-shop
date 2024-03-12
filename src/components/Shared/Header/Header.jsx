@@ -148,7 +148,7 @@ const Header = ({ activeHeading }) => {
                         <BiMenuAltLeft size={35} className="cursor-pointer" onClick={() => setMobileSidebar(true)} />
                     </div>
                     <Link to="/">
-                        <p className="text-2xl font-bold font-[Poppins] cursor-pointer">Panda-Shop</p>
+                        <p className="text-3xl font-semibold font-[Poppins] cursor-pointer text-gray-800">Panda-Shop</p>
                     </Link>
                     <div className="relative px-3 cursor-pointer" onClick={() => setCartOpen(!cartOpen)}>
                         <IoCartOutline size={30} className="text-black" />
