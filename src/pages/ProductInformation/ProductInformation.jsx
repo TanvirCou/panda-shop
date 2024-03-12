@@ -19,7 +19,7 @@ const ProductInformation = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         if (eventData !== null) {
