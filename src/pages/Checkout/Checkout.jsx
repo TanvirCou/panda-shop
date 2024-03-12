@@ -37,7 +37,7 @@ const Checkout = () => {
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("latestOrder"));
         setOrderData(data?.orderData);
-        setShippingData(data.shippingAddress);
+        setShippingData(data?.shippingAddress);
     }, [active]);
 
     console.log(orderData);
