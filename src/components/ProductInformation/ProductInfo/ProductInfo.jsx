@@ -95,7 +95,7 @@ const ProductInfo = ({ data, eventData }) => {
         <>
             {
                 data ?
-                    <div className='py-6 w-full flex justify-center'>
+                    <div className='py-6 w-full flex justify-center pt-16 md:pt-0'>
                         <div className='w-[90%]'>
                             <div className='block md:flex w-full'>
                                 {
@@ -109,7 +109,7 @@ const ProductInfo = ({ data, eventData }) => {
                                                 {
                                                     data?.images.map((i, index) => (
                                                         <div key={index} className={`${select === index ? "border-2 border-gray-200 shadow-sm rounded-md" : null} cursor-pointer pr-2`} onClick={() => setSelect(index)}>
-                                                            <img src={i} alt="" className="w-[200px]" />
+                                                            <img src={i} alt="" className="w-[120px] md:w-[200px]" />
                                                         </div>
                                                     ))
                                                 }

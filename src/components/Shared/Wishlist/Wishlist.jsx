@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { IoHeartOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import WishItem from './WishItem';
@@ -9,7 +9,7 @@ const Wishlist = ({setWishlistOpen}) => {
     const { wishList } = useSelector(state => state.wishList);
 
     return (
-        <div className='fixed top-0 left-0 w-full h-screen bg-[#0000004d] z-10'>
+        <div className='fixed top-0 left-0 w-full h-screen bg-[#0000004d] z-30'>
             <div className='transition duration-500 ease-in fixed top-0 right-0 bg-white min-h-full w-[70%] md:w-[25%] shadow-sm '>
             {
                     wishList && wishList.length === 0 ? (

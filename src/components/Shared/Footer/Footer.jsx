@@ -11,9 +11,9 @@ const Footer = () => {
     return (
         <div className='bg-black w-full'>
             <div className='bg-teal-500 w-full block md:flex justify-between items-center py-10 px-8'>
-                <p className='text-white text-3xl font-medium leading-10'><span className='text-gray-800'>Subscribe</span> us for get news <br /> events and offers</p>
+                <p className='text-white text-2xl md:text-3xl font-medium leading-10'><span className='text-gray-800'>Subscribe</span> us for get news <br /> events and offers</p>
                 <div>
-                    <input type="email" placeholder='Enter your email' className='h-10 w-60 px-2 rounded-md placeholder:font-medium focus:outline-gray-600' />
+                    <input type="email" placeholder='Enter your email' className='h-10 w-52 md:w-60 px-2 rounded-md placeholder:font-medium focus:outline-gray-600' />
                     <button className='w-fit px-3 py-2 mx-2 rounded-md bg-black text-white font-medium'>Submit</button>
                 </div>
             </div>

@@ -26,7 +26,7 @@ const Cart = ({ setCartOpen }) => {
     const totalPrice = cart.reduce((acc, item) => acc + item.qty * item.discountPrice, 0);
 
     return (
-        <div className='fixed top-0 left-0 w-full h-screen bg-[#0000004d] z-10'>
+        <div className='fixed top-0 left-0 w-full h-screen bg-[#0000004d] z-30'>
             <div className='transition duration-500 ease-in fixed top-0 right-0 bg-white min-h-full w-[70%] md:w-[25%] shadow-sm '>
                 {
                     cart && cart.length === 0 ? (

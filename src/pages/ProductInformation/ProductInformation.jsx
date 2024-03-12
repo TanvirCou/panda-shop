@@ -17,7 +17,9 @@ const ProductInformation = () => {
     const [searchParams] = useSearchParams();
     const eventData = searchParams.get("isEvent");
 
-    console.log(eventData);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (eventData !== null) {

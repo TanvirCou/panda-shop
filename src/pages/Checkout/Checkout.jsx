@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../../components/Shared/Header/Header';
 import Footer from '../../components/Shared/Footer/Footer';
 import CheckoutBar from '../../components/Checkout/CheckoutBar';
 import Shipping from '../../components/Checkout/Shipping';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Payment from '../../components/Checkout/Payment';
@@ -36,16 +36,15 @@ const Checkout = () => {
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("latestOrder"));
-        setOrderData(data.orderData);
+        setOrderData(data?.orderData);
         setShippingData(data.shippingAddress);
     }, [active]);
 
-    console.log(shippingData);
+    console.log(orderData);
 
     const location = useLocation();
     const stripe = useStripe();
     const elements = useElements();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleCode = async (e) => {
