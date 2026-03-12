@@ -28,7 +28,7 @@ const Profile = () => {
                     <Header />
                     <div className='flex-1 overflow-hidden'>
                         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full'>
-                            <div className='flex gap-4 md:gap-6 h-full py-4 md:py-6 overflow-hidden'>
+                            <div className='flex gap-4 md:gap-6 h-full pb-4 pt-[70px] md:pt-6 md:pb-6 overflow-hidden'>
                                 
                                 <div className='flex-shrink-0 w-14 md:w-64 h-full'>
                                     <ProfileSidebar active={active} setActive={setActive} />

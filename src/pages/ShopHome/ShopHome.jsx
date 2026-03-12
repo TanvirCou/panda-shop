@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import LoadingAnimation from "../../components/Loader/LoadingAnimation";
 import Footer from "../../components/Shared/Footer/Footer";
 import Header from "../../components/Shared/Header/Header";
@@ -20,9 +20,13 @@ const ShopHome = () => {
   const { events, isEventLoading } = useSelector((state) => state.event);
   const dispatch = useDispatch();
 
+  const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   useEffect(() => {
     setShopLoading(true);
@@ -55,7 +59,7 @@ const ShopHome = () => {
           <LoadingAnimation />
         </div>
       ) : (
-        <main className="flex-1 pt-[60px] md:pt-0">
+        <main className="flex-1 pt-[50px] md:pt-0">
           
           <div className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-teal-500 h-2" />
 

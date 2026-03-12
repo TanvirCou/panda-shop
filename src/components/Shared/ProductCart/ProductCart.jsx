@@ -12,7 +12,6 @@ import ProductDetailsCard from '../ProductDetailsCard/ProductDetailsCard';
 const ProductCart = ({ data, isEvent }) => {
     const [click, setClick] = useState(false);
     const [open, setOpen] = useState(false);
-    const [hovered, setHovered] = useState(false);
     const { wishList } = useSelector(state => state.wishList);
     const { cart } = useSelector(state => state.cart);
     const dispatch = useDispatch();
@@ -60,8 +59,6 @@ const ProductCart = ({ data, isEvent }) => {
     return (
         <div
             className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-emerald-100 transition-all duration-300 overflow-hidden flex flex-col"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
         >
             
             {discountPct > 0 && (
@@ -71,7 +68,7 @@ const ProductCart = ({ data, isEvent }) => {
             )}
 
             
-            <div className={`absolute top-3 right-3 z-10 flex flex-col gap-1.5 transition-all duration-300 translate-x-0 opacity-100 md:${hovered ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+            <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5 transition-all duration-300 translate-x-0 opacity-100 lg:translate-x-10 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100">
                 <button
                     onClick={() => click ? handleRemoveFromWishList(data) : handleAddToWishList(data)}
                     title={click ? 'Remove from wishlist' : 'Add to wishlist'}
@@ -86,13 +83,13 @@ const ProductCart = ({ data, isEvent }) => {
                 >
                     <IoEyeOutline size={17} />
                 </button>
-                <button
+                {/* <button
                     onClick={() => addToCartHandler(data?._id)}
                     title="Add to cart"
                     className="w-8 h-8 rounded-xl flex items-center justify-center bg-white text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 shadow-md border border-gray-100 transition-colors duration-200"
                 >
                     <IoCartOutline size={17} />
-                </button>
+                </button> */}
             </div>
 
             
@@ -153,7 +150,7 @@ const ProductCart = ({ data, isEvent }) => {
             
             <button
                 onClick={() => addToCartHandler(data?._id)}
-                className={`w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-xs font-bold tracking-wide transition-all duration-300 opacity-100 max-h-12 md:${hovered ? 'opacity-100 max-h-12' : 'opacity-0 max-h-0 overflow-hidden py-0'}`}
+                className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-[11px] font-black tracking-wide transition-all duration-300 opacity-100 max-h-12 lg:opacity-0 lg:max-h-0 lg:overflow-hidden lg:py-0 lg:group-hover:opacity-100 lg:group-hover:max-h-12 lg:group-hover:py-2.5"
             >
                 <IoCartOutline size={15} />
                 ADD TO CART

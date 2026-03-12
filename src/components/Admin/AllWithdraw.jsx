@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { FiCheck, FiClock, FiEdit2, FiX } from "react-icons/fi";
 import { PiMoney } from "react-icons/pi";
 import { toast } from "react-toastify";
@@ -146,58 +147,61 @@ const AllWithdraw = () => {
             </div>
 
             
-            {open && withdrawData && (
-                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative">
-                        <button
-                            onClick={() => setOpen(false)}
-                            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
-                        >
-                            <FiX size={16} />
-                        </button>
+            {open && withdrawData && 
+                ReactDOM.createPortal(
+                    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
+                        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative">
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <FiX size={16} />
+                            </button>
 
-                        <div className="space-y-4">
-                            
-                            <div>
-                                <h3 className="text-base font-black text-gray-900">Update Withdrawal</h3>
-                                <p className="text-xs text-gray-400 mt-0.5">
-                                    Shop: <span className="font-semibold text-gray-600">{withdrawData?.shop?.name}</span> · Amount: <span className="font-semibold text-indigo-600">${withdrawData?.amount?.toFixed(2)}</span>
-                                </p>
-                            </div>
+                            <div className="space-y-4">
+                                
+                                <div>
+                                    <h3 className="text-base font-black text-gray-900">Update Withdrawal</h3>
+                                    <p className="text-xs text-gray-400 mt-0.5">
+                                        Shop: <span className="font-semibold text-gray-600">{withdrawData?.shop?.name}</span> · Amount: <span className="font-semibold text-indigo-600">${withdrawData?.amount?.toFixed(2)}</span>
+                                    </p>
+                                </div>
 
-                            
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">New Status</label>
-                                <select
-                                    value={status}
-                                    onChange={e => setStatus(e.target.value)}
-                                    className="w-full h-10 px-3 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-400/40 focus:border-indigo-400 transition-all"
-                                >
-                                    <option value="">Select status…</option>
-                                    <option value="Processing" disabled>{withdrawData.status} (current)</option>
-                                    <option value="Succeed">Succeed</option>
-                                </select>
-                            </div>
+                                
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">New Status</label>
+                                    <select
+                                        value={status}
+                                        onChange={e => setStatus(e.target.value)}
+                                        className="w-full h-10 px-3 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-400/40 focus:border-indigo-400 transition-all"
+                                    >
+                                        <option value="">Select status…</option>
+                                        <option value="Processing" disabled>{withdrawData.status} (current)</option>
+                                        <option value="Succeed">Succeed</option>
+                                    </select>
+                                </div>
 
-                            
-                            <div className="flex gap-3 pt-1">
-                                <button
-                                    onClick={() => setOpen(false)}
-                                    className="flex-1 h-10 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    onClick={handleUpdate}
-                                    className="flex-1 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-sm font-semibold text-white hover:from-indigo-500 hover:to-blue-500 transition-all shadow-md shadow-indigo-200"
-                                >
-                                    Update
-                                </button>
+                                
+                                <div className="flex gap-3 pt-1">
+                                    <button
+                                        onClick={() => setOpen(false)}
+                                        className="flex-1 h-10 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={handleUpdate}
+                                        className="flex-1 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-sm font-semibold text-white hover:from-indigo-500 hover:to-blue-500 transition-all shadow-md shadow-indigo-200"
+                                    >
+                                        Update
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </div>,
+                    document.body
+                )
+            }
         </div>
     );
 };

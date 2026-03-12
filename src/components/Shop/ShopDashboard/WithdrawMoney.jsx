@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import ReactDOM from "react-dom";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiArrowRight, FiX } from "react-icons/fi";
 import { IoCardOutline } from "react-icons/io5";
@@ -19,17 +20,18 @@ const FormField = ({ label, required, children }) => (
     </div>
 );
 
-/* ── Modal shell ── */
-const Modal = ({ onClose, children }) => (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
-            <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors z-10">
-                <FiX size={16} />
-            </button>
-            {children}
-        </div>
-    </div>
-);
+const Modal = ({ onClose, children }) =>
+    ReactDOM.createPortal(
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
+                <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors z-10">
+                    <FiX size={16} />
+                </button>
+                {children}
+            </div>
+        </div>,
+        document.body
+    );
 
 const WithdrawMoney = () => {
     const { shop, loading } = useSelector(state => state.shop);

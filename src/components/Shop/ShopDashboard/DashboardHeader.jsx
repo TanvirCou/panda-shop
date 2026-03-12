@@ -25,13 +25,13 @@ const DashboardHeader = () => {
                 <Link
                     to={`/shop/${shop.shop._id}`}
                     title="View Public Shop"
-                    className="hidden md:flex w-9 h-9 items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+                    className="flex w-9 h-9 items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
                 >
                     <IoStorefrontOutline size={18} />
                 </Link>
 
                 
-                <div className="hidden md:block w-px h-6 bg-white/20 mx-1" />
+                <div className="block w-px h-6 bg-white/20 mx-1" />
 
                 
                 <Link to={`/shop/${shop.shop._id}`} className="flex items-center gap-2.5">

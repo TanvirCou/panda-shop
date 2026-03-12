@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="w-full bg-gray-950">
             
             <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-teal-500 w-full">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-8 md:px-12 py-10">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6 px-8 md:px-12 py-10">
                     <div>
                         <p className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight">
                             Subscribe for news,<br className="hidden md:block" /> events &amp; offers
@@ -36,14 +36,14 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-8 md:px-12 pt-14 pb-8">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-800">
                     
-                    <div className="lg:col-span-1">
+                    <div className="lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
                         <p className="text-2xl font-black text-white tracking-tight">
                             Panda<span className="text-emerald-400">Shop</span>
                         </p>
-                        <p className="text-gray-400 text-sm mt-3 mb-5 leading-relaxed">
+                        <p className="text-gray-400 text-sm mt-3 mb-5 leading-relaxed max-w-sm">
                             The home and elements needed to create beautiful products.
                         </p>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center lg:justify-start gap-3">
                             {[
                                 { Icon: AiFillFacebook, label: "Facebook" },
                                 { Icon: AiOutlineTwitter, label: "Twitter" },
@@ -62,7 +62,7 @@ const Footer = () => {
                     </div>
 
                     
-                    <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
                         {[
                             { heading: "Company", links: footerProductLinks },
                             { heading: "Shop", links: footercompanyLinks },
@@ -90,17 +90,19 @@ const Footer = () => {
                 </div>
 
                 
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-7">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-7 text-center md:text-left">
                     
                     <img
                         src="https://hamart-shop.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffooter-payment.a37c49ac.png&w=640&q=75"
                         alt="Payment methods"
                         className="h-8 object-contain opacity-60"
                     />
-                    <p className="text-gray-500 text-sm font-medium">Terms · Privacy Policy</p>
-                    <p className="text-gray-500 text-sm font-medium">
-                        © {new Date().getFullYear()} PandaShop, All rights reserved.
-                    </p>
+                    <div>
+                        <p className="text-gray-500 text-sm font-medium">Terms · Privacy Policy</p>
+                        <p className="text-gray-500 text-sm font-medium">
+                            © {new Date().getFullYear()} PandaShop, All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

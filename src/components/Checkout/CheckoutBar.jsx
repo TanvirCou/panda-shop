@@ -8,7 +8,7 @@ const CheckoutBar = ({ active }) => {
     ];
 
     return (
-        <div className="w-full flex justify-center pt-24 pb-12 md:pt-16 md:pb-16 bg-gray-50">
+        <div className="w-full flex justify-center px-4 md:px-0 pt-24 pb-12 md:pt-16 md:pb-16 bg-gray-50">
             <div className="relative w-full max-w-xl px-4 flex justify-between items-center">
                 
                 <div className="absolute top-5 left-8 right-8 h-[2px] bg-gray-200 -z-0 rounded-full" />

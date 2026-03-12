@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaShopify } from "react-icons/fa";
 import { FiEye, FiSearch, FiX } from "react-icons/fi";
@@ -135,42 +136,45 @@ const AdminShops = () => {
             </div>
 
             
-            {open && (
-                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative">
-                        <button
-                            onClick={() => setOpen(false)}
-                            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
-                        >
-                            <FiX size={16} />
-                        </button>
+            {open &&
+                ReactDOM.createPortal(
+                    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
+                        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 relative">
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-xl hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <FiX size={16} />
+                            </button>
 
-                        <div className="flex flex-col items-center gap-4 text-center pt-2">
-                            <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center">
-                                <AiOutlineDelete size={22} className="text-red-500" />
-                            </div>
-                            <div>
-                                <h3 className="text-base font-black text-gray-900">Delete Shop?</h3>
-                                <p className="text-sm text-gray-400 mt-1">This action cannot be undone. All shop data will be permanently removed.</p>
-                            </div>
-                            <div className="flex gap-3 w-full mt-1">
-                                <button
-                                    onClick={() => setOpen(false)}
-                                    className="flex-1 h-10 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    onClick={handleDelete}
-                                    className="flex-1 h-10 rounded-xl bg-gradient-to-r from-red-500 to-rose-500 text-sm font-semibold text-white hover:from-red-400 hover:to-rose-400 transition-all shadow-md shadow-red-200"
-                                >
-                                    Delete Shop
-                                </button>
+                            <div className="flex flex-col items-center gap-4 text-center pt-2">
+                                <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center">
+                                    <AiOutlineDelete size={22} className="text-red-500" />
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-black text-gray-900">Delete Shop?</h3>
+                                    <p className="text-sm text-gray-400 mt-1">This action cannot be undone. All shop data will be permanently removed.</p>
+                                </div>
+                                <div className="flex gap-3 w-full mt-1">
+                                    <button
+                                        onClick={() => setOpen(false)}
+                                        className="flex-1 h-10 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        onClick={handleDelete}
+                                        className="flex-1 h-10 rounded-xl bg-gradient-to-r from-red-500 to-rose-500 text-sm font-semibold text-white hover:from-red-400 hover:to-rose-400 transition-all shadow-md shadow-red-200"
+                                    >
+                                        Delete Shop
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </div>,
+                    document.body
+                )
+            }
         </div>
     );
 };

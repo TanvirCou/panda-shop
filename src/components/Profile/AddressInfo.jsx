@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Country, State } from "country-state-city";
 import { useState } from "react";
+import ReactDOM from "react-dom";
 import { AiOutlineDelete } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -121,70 +122,73 @@ const AddressInfo = () => {
             )}
 
             
-            {open && (
-                <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-                    <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-                        <button
-                            onClick={() => setOpen(false)}
-                            className="absolute right-4 top-4 w-9 h-9 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors z-10"
-                        >
-                            <RxCross1 size={14} />
-                        </button>
-                        <div className="p-6">
-                            <h2 className="text-xl font-bold text-gray-900 mb-1">Add New Address</h2>
-                            <p className="text-sm text-gray-500 mb-6">Fill in the details for your new delivery address.</p>
-                            <form onSubmit={handleCreateAddress} className="space-y-4">
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>Country</label>
-                                    <select required value={country} onChange={(e) => setCountry(e.target.value)} className={selectClass}>
-                                        <option value="">Choose your country</option>
-                                        {Country.getAllCountries().map((c) => (
-                                            <option key={c.isoCode} value={c.isoCode}>{c.name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>City / State</label>
-                                    <select required value={city} onChange={(e) => setCity(e.target.value)} className={selectClass}>
-                                        <option value="">Choose your city</option>
-                                        {State.getStatesOfCountry(country).map((s) => (
-                                            <option key={s.isoCode} value={s.isoCode}>{s.name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>Zip Code</label>
-                                    <input required type="number" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter your zip code" className={inputClass} />
-                                </div>
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>Address Line 1</label>
-                                    <input required type="text" value={address1} onChange={(e) => setAddress1(e.target.value)} placeholder="Street address, house no." className={inputClass} />
-                                </div>
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>Address Line 2 <span className="text-gray-400 normal-case font-medium">(Optional)</span></label>
-                                    <input type="text" value={address2} onChange={(e) => setAddress2(e.target.value)} placeholder="Apartment, suite, floor, etc." className={inputClass} />
-                                </div>
-                                <div>
-                                    <label className={`${labelClass} block mb-2`}>Address Type</label>
-                                    <select required value={addressType} onChange={(e) => setAddressType(e.target.value)} className={selectClass}>
-                                        <option value="">Choose address type</option>
-                                        {addressTypeData.map((t) => (
-                                            <option key={t.name} value={t.name}>{t.name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    className="w-full py-3 bg-gray-900 hover:bg-emerald-600 disabled:bg-gray-300 text-white text-sm font-bold rounded-xl transition-all duration-300 mt-2"
-                                >
-                                    {loading ? "Saving..." : "Save Address"}
-                                </button>
-                            </form>
+            {open &&
+                ReactDOM.createPortal(
+                    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
+                        <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="absolute right-4 top-4 w-9 h-9 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors z-10"
+                            >
+                                <RxCross1 size={14} />
+                            </button>
+                            <div className="p-6">
+                                <h2 className="text-xl font-bold text-gray-900 mb-1">Add New Address</h2>
+                                <p className="text-sm text-gray-500 mb-6">Fill in the details for your new delivery address.</p>
+                                <form onSubmit={handleCreateAddress} className="space-y-4">
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>Country</label>
+                                        <select required value={country} onChange={(e) => setCountry(e.target.value)} className={selectClass}>
+                                            <option value="">Choose your country</option>
+                                            {Country.getAllCountries().map((c) => (
+                                                <option key={c.isoCode} value={c.isoCode}>{c.name}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>City / State</label>
+                                        <select required value={city} onChange={(e) => setCity(e.target.value)} className={selectClass}>
+                                            <option value="">Choose your city</option>
+                                            {State.getStatesOfCountry(country).map((s) => (
+                                                <option key={s.isoCode} value={s.isoCode}>{s.name}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>Zip Code</label>
+                                        <input required type="number" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Enter your zip code" className={inputClass} />
+                                    </div>
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>Address Line 1</label>
+                                        <input required type="text" value={address1} onChange={(e) => setAddress1(e.target.value)} placeholder="Street address, house no." className={inputClass} />
+                                    </div>
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>Address Line 2 <span className="text-gray-400 normal-case font-medium">(Optional)</span></label>
+                                        <input type="text" value={address2} onChange={(e) => setAddress2(e.target.value)} placeholder="Apartment, suite, floor, etc." className={inputClass} />
+                                    </div>
+                                    <div>
+                                        <label className={`${labelClass} block mb-2`}>Address Type</label>
+                                        <select required value={addressType} onChange={(e) => setAddressType(e.target.value)} className={selectClass}>
+                                            <option value="">Choose address type</option>
+                                            {addressTypeData.map((t) => (
+                                                <option key={t.name} value={t.name}>{t.name}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="w-full py-3 bg-gray-900 hover:bg-emerald-600 disabled:bg-gray-300 text-white text-sm font-bold rounded-xl transition-all duration-300 mt-2"
+                                    >
+                                        {loading ? "Saving..." : "Save Address"}
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </div>,
+                    document.body
+                )
+            }
         </div>
     );
 };

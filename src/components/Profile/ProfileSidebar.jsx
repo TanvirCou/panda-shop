@@ -42,7 +42,7 @@ const ProfileSidebar = ({ active, setActive }) => {
   };
 
   return (
-    <div className="sticky top-6">
+    <div className="sticky top-0">
       
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         {NAV_ITEMS.map(({ id, label, icon: Icon }) => (

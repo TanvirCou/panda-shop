@@ -14,8 +14,7 @@ It implements complete user authentication, product management, order processing
 
 ## 📺 Live Demo
 
-- **Client:** [https://panda-shop-webapps.netlify.app/](https://panda-shop-webapps.netlify.app/)
-- **Server:** [https://panda-shop-server-production.up.railway.app/](https://panda-shop-server-production.up.railway.app/)
+🔗 [https://panda-shop-webapps.netlify.app/](https://panda-shop-webapps.netlify.app/)
 
 ---
 
@@ -241,6 +240,7 @@ npm run dev       # or yarn dev / pnpm dev
 - **Push Notifications** — Order updates and promotional alerts
 - **Product Recommendations** — AI-powered personalized suggestions
 - **Mobile App** — React Native companion application
+- **Light/Dark Mode Theme** — Support for user-controlled theme switching
 
 ---
 

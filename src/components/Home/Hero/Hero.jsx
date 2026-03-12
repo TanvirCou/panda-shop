@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
     return (
         <div
-            className="relative min-h-[75vh] md:min-h-[82vh] mt-[60px] md:mt-0 w-full flex items-center overflow-hidden bg-cover bg-center md:bg-right"
+            className="relative min-h-[75vh] md:min-h-[82vh] mt-[60px] md:mt-0 w-full flex items-center overflow-hidden bg-cover bg-right"
             style={{ backgroundImage: "url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&auto=format&fit=crop&q=80)" }}
         >
             

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { IoBagHandleOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +30,7 @@ const Cart = ({ setCartOpen }) => {
 
     const totalPrice = cart.reduce((acc, item) => acc + item.qty * item.discountPrice, 0);
 
-    return (
+    return ReactDOM.createPortal(
         <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[150]"
             onClick={handleClose}
@@ -109,7 +110,8 @@ const Cart = ({ setCartOpen }) => {
                     </>
                 )}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

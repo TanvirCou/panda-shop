@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { IoCalendarOutline, IoChatbubbleOutline, IoGridOutline, IoStorefrontOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import EventCard from '../../Shared/EventCard/EventCard';
 import ProductCart from '../../Shared/ProductCart/ProductCart';
 import Ratings from '../../Shared/Ratings/Ratings';
 
@@ -22,7 +23,7 @@ const ShopData = ({ products, events, id }) => {
     return (
         <div className="w-full flex flex-col min-h-full">
             
-            <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+            <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-6 gap-3 ">
                 <div className="flex gap-1 bg-gray-100/70 p-1 rounded-2xl">
                     {TABS.map(tab => {
                         const Icon = tab.icon;
@@ -76,9 +77,9 @@ const ShopData = ({ products, events, id }) => {
             {active === 2 && (
                 <div>
                     {events?.events.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                        <div className="flex flex-col gap-4">
                             {events.events.map((item, index) => (
-                                <ProductCart data={item} isEvent={true} key={index} />
+                                <EventCard data={item} isEvent={true} key={index} />
                             ))}
                         </div>
                     ) : (

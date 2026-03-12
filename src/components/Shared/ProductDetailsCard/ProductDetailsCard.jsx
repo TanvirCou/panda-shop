@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { IoCartOutline, IoClose, IoHeart, IoHeartOutline, IoStar } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -62,12 +63,12 @@ const ProductDetailsCard = ({ data, setOpen }) => {
 
     if (!data) return null;
 
-    return (
+    return ReactDOM.createPortal(
         <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[150] flex items-center justify-center p-4"
             onClick={(e) => e.target === e.currentTarget && setOpen(false)}
         >
-            <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto">
+            <div className="relative bg-white rounded-md md:rounded-3xl shadow-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto">
 
                 
                 <button
@@ -202,7 +203,8 @@ const ProductDetailsCard = ({ data, setOpen }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

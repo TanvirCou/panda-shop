@@ -18,7 +18,7 @@ const Events = () => {
         <div className="min-h-screen bg-gray-50">
             <Header activeHeading={4} />
 
-            <div className="mx-4 md:mx-12 mt-[90px] md:mt-12 mb-12">
+            <div className="mx-4 md:mx-12 pt-[90px] md:pt-8 mb-12">
                 
                 <div className="flex items-center justify-between mb-8 pb-5 border-b border-gray-100">
                     <div>

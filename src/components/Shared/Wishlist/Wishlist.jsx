@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { useSelector } from 'react-redux';
@@ -14,7 +15,7 @@ const Wishlist = ({ setWishlistOpen }) => {
         setTimeout(() => setWishlistOpen(false), 300);
     };
 
-    return (
+    return ReactDOM.createPortal(
         <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[150]"
             onClick={handleClose}
@@ -71,7 +72,8 @@ const Wishlist = ({ setWishlistOpen }) => {
                     </div>
                 )}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

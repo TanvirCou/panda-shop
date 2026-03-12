@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
@@ -225,69 +226,72 @@ const UserOrderDetails = () => {
       </div>
 
       
-      {open && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 w-9 h-9 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors"
-            >
-              <RxCross1 size={14} />
-            </button>
-
-            <div className="p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-5">Leave a Review</h2>
-
-              
-              <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 mb-6">
-                <img
-                  src={selectedItem?.images[0]}
-                  alt=""
-                  className="w-14 h-14 rounded-xl object-contain bg-white border border-gray-100"
-                />
-                <p className="font-semibold text-sm text-gray-900">{selectedItem?.name}</p>
-              </div>
-
-              
-              <div className="mb-6">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wide block mb-3">
-                  Rating <span className="text-red-500">*</span>
-                </label>
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((i) =>
-                    rating >= i ? (
-                      <AiFillStar key={i} size={32} color="orange" className="cursor-pointer" onClick={() => setRating(i)} />
-                    ) : (
-                      <AiOutlineStar key={i} size={32} color="orange" className="cursor-pointer" onClick={() => setRating(i)} />
-                    )
-                  )}
-                </div>
-              </div>
-
-              
-              <div className="mb-6">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wide block mb-2">
-                  Your Review <span className="text-gray-400 normal-case font-medium">(Optional)</span>
-                </label>
-                <textarea
-                  value={review}
-                  onChange={(e) => setReview(e.target.value)}
-                  rows="5"
-                  placeholder="Share your experience with this product..."
-                  className="w-full border border-gray-200 bg-gray-50 rounded-xl p-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
-                />
-              </div>
-
+      {open &&
+        ReactDOM.createPortal(
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[150] flex items-center justify-center p-4">
+            <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
               <button
-                onClick={reviewHandler}
-                className="w-full py-3 bg-gray-900 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-all duration-300"
+                onClick={() => setOpen(false)}
+                className="absolute right-4 top-4 w-9 h-9 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors"
               >
-                Submit Review
+                <RxCross1 size={14} />
               </button>
+
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-5">Leave a Review</h2>
+
+                
+                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 mb-6">
+                  <img
+                    src={selectedItem?.images[0]}
+                    alt=""
+                    className="w-14 h-14 rounded-xl object-contain bg-white border border-gray-100"
+                  />
+                  <p className="font-semibold text-sm text-gray-900">{selectedItem?.name}</p>
+                </div>
+
+                
+                <div className="mb-6">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wide block mb-3">
+                    Rating <span className="text-red-500">*</span>
+                  </label>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((i) =>
+                      rating >= i ? (
+                        <AiFillStar key={i} size={32} color="orange" className="cursor-pointer" onClick={() => setRating(i)} />
+                      ) : (
+                        <AiOutlineStar key={i} size={32} color="orange" className="cursor-pointer" onClick={() => setRating(i)} />
+                      )
+                    )}
+                  </div>
+                </div>
+
+                
+                <div className="mb-6">
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wide block mb-2">
+                    Your Review <span className="text-gray-400 normal-case font-medium">(Optional)</span>
+                  </label>
+                  <textarea
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    rows="5"
+                    placeholder="Share your experience with this product..."
+                    className="w-full border border-gray-200 bg-gray-50 rounded-xl p-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
+                  />
+                </div>
+
+                <button
+                  onClick={reviewHandler}
+                  className="w-full py-3 bg-gray-900 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-all duration-300"
+                >
+                  Submit Review
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )
+      }
     </div>
   );
 };
