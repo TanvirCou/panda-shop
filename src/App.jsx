@@ -58,7 +58,7 @@ function App() {
 
   const getStripeApiKey = async () => {
     const res = await axios.get(
-      "http://localhost:3000/api/payment/stripe-api-key"
+      "https://panda-shop-server-production.up.railway.app/api/payment/stripe-api-key"
     );
     setStripeApiKey(res.data.stripeApiKey);
   };
@@ -78,7 +78,7 @@ function App() {
   // useEffect(() => {
   //  const getUser = async() => {
   //   try {
-  //     const res = await axios.get("http://localhost:3000/api/user/get", {withCredentials: true});
+  //     const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/user/get", {withCredentials: true});
   //     toast.success(res.data.message);
   //   } catch(err) {
   //     console.log(err);

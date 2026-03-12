@@ -28,7 +28,7 @@ const AllEvents = () => {
     const handleDelete = async (id) => {
         try {
             const res = await axios.delete(
-                `http://localhost:3000/api/event/delete-event/${id}`,
+                `https://panda-shop-server-production.up.railway.app/api/event/delete-event/${id}`,
                 { withCredentials: true }
             );
             toast.success(res.data.message);

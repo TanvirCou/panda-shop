@@ -37,7 +37,7 @@ const AdminUsers = () => {
         e.preventDefault();
         try {
             const res = await axios.delete(
-                `http://localhost:3000/api/user/delete-user/${userId}`,
+                `https://panda-shop-server-production.up.railway.app/api/user/delete-user/${userId}`,
                 { withCredentials: true }
             );
             toast.success(res.data.message);

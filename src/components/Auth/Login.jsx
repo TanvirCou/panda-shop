@@ -28,12 +28,12 @@ const Login = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:3000/api/user/login",
+        "https://panda-shop-server-production.up.railway.app/api/user/login",
         { email, password },
         { withCredentials: true }
       );
       // Fetch user to determine role-based redirect
-      const res = await axios.get("http://localhost:3000/api/user/get", {
+      const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/user/get", {
         withCredentials: true,
       });
       const role = res.data?.user?.role;

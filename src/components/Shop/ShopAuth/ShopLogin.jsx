@@ -18,7 +18,7 @@ const ShopLogin = () => {
         e.preventDefault();
         try {
             await axios.post(
-                "http://localhost:3000/api/shop/shop-login",
+                "https://panda-shop-server-production.up.railway.app/api/shop/shop-login",
                 { email, password },
                 { withCredentials: true }
             );

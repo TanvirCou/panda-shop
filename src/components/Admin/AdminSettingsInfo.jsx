@@ -63,7 +63,7 @@ const AdminSettingsInfo = () => {
         };
         try {
             const res = await axios.put(
-                "http://localhost:3000/api/user/update-user-info",
+                "https://panda-shop-server-production.up.railway.app/api/user/update-user-info",
                 userData,
                 { withCredentials: true }
             );

@@ -67,7 +67,7 @@ const CreateEvent = () => {
         if (uploading) { toast.error("Please wait for the image to finish uploading"); return; }
         setSubmitting(true);
         try {
-            await axios.post("http://localhost:3000/api/event/create-event", {
+            await axios.post("https://panda-shop-server-production.up.railway.app/api/event/create-event", {
                 name, description, category, tags,
                 originalPrice, discountPrice, stock,
                 start_date: startDate,

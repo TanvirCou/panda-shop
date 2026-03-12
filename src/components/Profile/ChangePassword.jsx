@@ -43,7 +43,7 @@ const ChangePassword = () => {
         setLoading(true);
         try {
             await axios.put(
-                "http://localhost:3000/api/user/update-user-password",
+                "https://panda-shop-server-production.up.railway.app/api/user/update-user-password",
                 { oldPassword, newPassword },
                 { withCredentials: true }
             );

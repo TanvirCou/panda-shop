@@ -22,7 +22,7 @@ const DashboardProducts = () => {
     const handleDelete = async (id) => {
         try {
             const res = await axios.delete(
-                `http://localhost:3000/api/product/delete-product/${id}`,
+                `https://panda-shop-server-production.up.railway.app/api/product/delete-product/${id}`,
                 { withCredentials: true }
             );
             toast.success(res.data.message);

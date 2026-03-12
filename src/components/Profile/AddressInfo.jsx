@@ -39,7 +39,7 @@ const AddressInfo = () => {
         setLoading(true);
         try {
             await axios.put(
-                "http://localhost:3000/api/user/update-user-addresses",
+                "https://panda-shop-server-production.up.railway.app/api/user/update-user-addresses",
                 { country, city, zipCode, address1, address2, addressType },
                 { withCredentials: true }
             );
@@ -56,7 +56,7 @@ const AddressInfo = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/user/delete-user-address/${id}`, { withCredentials: true });
+            await axios.delete(`https://panda-shop-server-production.up.railway.app/api/user/delete-user-address/${id}`, { withCredentials: true });
             toast.success("Address deleted successfully");
             dispatch(fetchUser());
         } catch (error) {

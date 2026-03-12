@@ -46,7 +46,7 @@ const CouponCode = () => {
     const fetchCouponCodes = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:3000/api/coupon-code/all-coupon-codes/${shop.shop._id}`, { withCredentials: true });
+            const res = await axios.get(`https://panda-shop-server-production.up.railway.app/api/coupon-code/all-coupon-codes/${shop.shop._id}`, { withCredentials: true });
             setCouponCodes(res.data);
         } catch (error) {
             toast.error("Failed to load coupon codes");
@@ -62,7 +62,7 @@ const CouponCode = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:3000/api/coupon-code/delete-coupon-code/${id}`, { withCredentials: true });
+            const res = await axios.delete(`https://panda-shop-server-production.up.railway.app/api/coupon-code/delete-coupon-code/${id}`, { withCredentials: true });
             toast.success(res.data.message);
             fetchCouponCodes();
         } catch (error) {
@@ -75,7 +75,7 @@ const CouponCode = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:3000/api/coupon-code/create-coupon-code",
+            await axios.post("https://panda-shop-server-production.up.railway.app/api/coupon-code/create-coupon-code",
                 { name, value, minAmount, maxAmount, selectedProduct, shopId: shop.shop._id },
                 { withCredentials: true }
             );

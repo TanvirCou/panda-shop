@@ -49,7 +49,7 @@ const ShopSettings = () => {
         setSaving(true);
         try {
             const res = await axios.put(
-                "http://localhost:3000/api/shop/update-shop-info",
+                "https://panda-shop-server-production.up.railway.app/api/shop/update-shop-info",
                 { name, description, address, phoneNumber, zipCode, avatar: avatarUrl || undefined },
                 { withCredentials: true }
             );

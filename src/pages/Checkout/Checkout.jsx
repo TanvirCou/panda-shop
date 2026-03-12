@@ -1,7 +1,7 @@
 import {
-  CardNumberElement,
-  useElements,
-  useStripe,
+    CardNumberElement,
+    useElements,
+    useStripe,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -60,7 +60,7 @@ const Checkout = () => {
     const name = couponCode;
 
     const res = await axios.get(
-      `http://localhost:3000/api/coupon-code/get-coupon-value/${name}`
+      `https://panda-shop-server-production.up.railway.app/api/coupon-code/get-coupon-value/${name}`
     );
 
     const shopId = res.data.couponCode?.shopId;
@@ -181,7 +181,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/order/create-order",
+        "https://panda-shop-server-production.up.railway.app/api/order/create-order",
         order
       );
       toast.success("order successfully");
@@ -203,7 +203,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/payment/process",
+        "https://panda-shop-server-production.up.railway.app/api/payment/process",
         paymentData
       );
 
@@ -229,7 +229,7 @@ const Checkout = () => {
           };
 
           const res = await axios.post(
-            "http://localhost:3000/api/order/create-order",
+            "https://panda-shop-server-production.up.railway.app/api/order/create-order",
             order
           );
           toast.success("order successfully");
@@ -260,7 +260,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/order/create-order",
+        "https://panda-shop-server-production.up.railway.app/api/order/create-order",
         order
       );
       toast.success("order successfully");

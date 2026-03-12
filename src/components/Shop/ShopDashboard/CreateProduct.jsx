@@ -85,7 +85,7 @@ const CreateProduct = () => {
         }
         setSubmitting(true);
         try {
-            await axios.post("http://localhost:3000/api/product/create-product", {
+            await axios.post("https://panda-shop-server-production.up.railway.app/api/product/create-product", {
                 name, description, category, tags,
                 originalPrice, discountPrice, stock,
                 images: imgUrl,

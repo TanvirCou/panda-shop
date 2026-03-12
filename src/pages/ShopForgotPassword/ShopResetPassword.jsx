@@ -49,7 +49,7 @@ const ShopResetPassword = () => {
         }
         setLoading(true);
         try {
-            await axios.post(`http://localhost:3000/api/shop/reset-password/${token}`, { password, confirmPassword });
+            await axios.post(`https://panda-shop-server-production.up.railway.app/api/shop/reset-password/${token}`, { password, confirmPassword });
             setDone(true);
             setTimeout(() => navigate('/shop-auth'), 3000);
         } catch (err) {

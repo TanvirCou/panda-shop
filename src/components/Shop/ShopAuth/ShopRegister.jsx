@@ -43,7 +43,7 @@ const ShopRegister = ({ setActive }) => {
         } else {
             const data = { name, email, password, phoneNumber, address, zipCode, avatar: file };
             try {
-                const res = await axios.post("http://localhost:3000/api/shop/shop-register", data);
+                const res = await axios.post("https://panda-shop-server-production.up.railway.app/api/shop/shop-register", data);
                 toast.success(res.data.message);
                 setName("");
                 setEmail("");

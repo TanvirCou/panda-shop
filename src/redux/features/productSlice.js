@@ -5,7 +5,7 @@ export const createProduct = createAsyncThunk(
   "product/createProduct",
   async (newProduct) => {
     const res = await axios.post(
-      "http://localhost:3000/api/product/create-product",
+      "https://panda-shop-server-production.up.railway.app/api/product/create-product",
       newProduct
     );
     return res.data;
@@ -16,7 +16,7 @@ export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
   async (shopId) => {
     const res = await axios.get(
-      `http://localhost:3000/api/product/all-products/${shopId}`
+      `https://panda-shop-server-production.up.railway.app/api/product/all-products/${shopId}`
     );
     return res.data;
   }
@@ -26,7 +26,7 @@ export const deleteProduct = createAsyncThunk(
   "product/deleteProduct",
   async (productId) => {
     const res = await axios.delete(
-      `http://localhost:3000/api/product/delete-product/${productId}`,
+      `https://panda-shop-server-production.up.railway.app/api/product/delete-product/${productId}`,
       { withCredentials: true }
     );
     return res.data;
@@ -37,7 +37,7 @@ export const fetchAllProduct = createAsyncThunk(
   "product/fetchAllProduct",
   async () => {
     const res = await axios.get(
-      `http://localhost:3000/api/product/get-all-products`
+      `https://panda-shop-server-production.up.railway.app/api/product/get-all-products`
     );
     return res.data;
   }

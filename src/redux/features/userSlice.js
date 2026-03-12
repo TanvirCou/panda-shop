@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const res = await axios.get("http://localhost:3000/api/user/get", {
+  const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/user/get", {
     withCredentials: true,
   });
   return res.data;
@@ -10,7 +10,7 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
 
 export const fetchAllUser = createAsyncThunk("user/fetchAllUser", async () => {
   const res = await axios.get(
-    "http://localhost:3000/api/user/admin-all-users",
+    "https://panda-shop-server-production.up.railway.app/api/user/admin-all-users",
     { withCredentials: true }
   );
   return res.data;
@@ -20,7 +20,7 @@ export const updateUserInfo = createAsyncThunk(
   "user/updateUserInfo",
   async (user) => {
     const res = await axios.put(
-      "http://localhost:3000/api/user/update-user-info",
+      "https://panda-shop-server-production.up.railway.app/api/user/update-user-info",
       user,
       { withCredentials: true }
     );
@@ -32,7 +32,7 @@ export const updateAddresses = createAsyncThunk(
   "user/updateAddresses",
   async (address) => {
     const res = await axios.put(
-      "http://localhost:3000/api/user/update-user-addresses",
+      "https://panda-shop-server-production.up.railway.app/api/user/update-user-addresses",
       address,
       { withCredentials: true }
     );
@@ -45,7 +45,7 @@ export const deleteAddresses = createAsyncThunk(
   "user/deleteAddresses",
   async (id) => {
     const res = await axios.delete(
-      `http://localhost:3000/api/user/delete-user-address/${id}`,
+      `https://panda-shop-server-production.up.railway.app/api/user/delete-user-address/${id}`,
       { withCredentials: true }
     );
     return res.data;

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchShop = createAsyncThunk("shop/fetchShop", async () => {
-  const res = await axios.get("http://localhost:3000/api/shop/get", {
+  const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/shop/get", {
     withCredentials: true,
   });
   return res.data;
@@ -10,14 +10,14 @@ export const fetchShop = createAsyncThunk("shop/fetchShop", async () => {
 
 export const fetchAllShop = createAsyncThunk("shop/fetchAllShop", async () => {
   const res = await axios.get(
-    "http://localhost:3000/api/shop/admin-all-shops",
+    "https://panda-shop-server-production.up.railway.app/api/shop/admin-all-shops",
     { withCredentials: true }
   );
   return res.data;
 });
 
 export const logoutShop = createAsyncThunk("shop/logoutShop", async () => {
-  const res = await axios.get("http://localhost:3000/api/shop/logout", {
+  const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/shop/logout", {
     withCredentials: true,
   });
   return res.data;

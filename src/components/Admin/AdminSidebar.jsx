@@ -26,7 +26,7 @@ const AdminSideBar = ({ active }) => {
 
     const handleLogout = async () => {
         try {
-            const res = await axios2.get("http://localhost:3000/api/user/logout", {
+            const res = await axios2.get("https://panda-shop-server-production.up.railway.app/api/user/logout", {
                 withCredentials: true,
             });
             toast.success(res.data.message || "Logged out successfully");

@@ -51,7 +51,7 @@ const SignUp = ({ setActive }) => {
       const data = { name, email, password, avatar: file };
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/user/register",
+          "https://panda-shop-server-production.up.railway.app/api/user/register",
           data
         );
         toast.success(res.data.message);

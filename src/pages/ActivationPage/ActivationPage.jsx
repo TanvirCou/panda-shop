@@ -13,7 +13,7 @@ const ActivationPage = () => {
             const activationId = async () => {
                 try {
                     await axios.post(
-                        "http://localhost:3000/api/user/activation",
+                        "https://panda-shop-server-production.up.railway.app/api/user/activation",
                         { activation_token: token }
                     );
                     setLoading(false);

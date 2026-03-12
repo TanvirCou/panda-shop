@@ -70,7 +70,7 @@ const ProductInfo = ({ data, eventData }) => {
   const handleClick = async (shopId) => {
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/chat/createChat`,
+        `https://panda-shop-server-production.up.railway.app/api/chat/createChat`,
         { userId: shopId },
         { withCredentials: true }
       );

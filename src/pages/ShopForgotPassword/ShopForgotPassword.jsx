@@ -14,7 +14,7 @@ const ShopForgotPassword = () => {
         setError('');
         setLoading(true);
         try {
-            await axios.post('http://localhost:3000/api/shop/forgot-password', { email });
+            await axios.post('https://panda-shop-server-production.up.railway.app/api/shop/forgot-password', { email });
             setSent(true);
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong. Try again.');
