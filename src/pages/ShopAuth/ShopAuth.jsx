@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ShopLogin from '../../components/Shop/ShopAuth/ShopLogin';
 import ShopRegister from '../../components/Shop/ShopAuth/ShopRegister';
 
@@ -40,12 +40,12 @@ const ShopAuth = () => {
 
                 
                 <div className="relative z-10">
-                    <span className="text-2xl font-black text-white tracking-tight">
+                    <Link to="/" className="text-2xl font-black text-white tracking-tight">
                         Panda<span className="text-cyan-100">Shop</span>
                         <span className="ml-2 text-xs font-bold bg-white/20 text-white px-2 py-0.5 rounded-full align-middle">
                             Seller
                         </span>
-                    </span>
+                    </Link>
                 </div>
 
                 
@@ -83,10 +83,10 @@ const ShopAuth = () => {
             <div className="flex-1 h-full overflow-y-auto flex flex-col items-center bg-gray-50 px-6 py-12 sm:px-10">
                 
                 <div className="lg:hidden mb-8 text-center">
-                    <span className="text-2xl font-black text-gray-800 tracking-tight">
+                    <Link to="/" className="text-2xl font-black text-gray-800 tracking-tight">
                         Panda<span className="text-cyan-500">Shop</span>
                         <span className="ml-2 text-xs font-bold bg-cyan-100 text-cyan-600 px-2 py-0.5 rounded-full align-middle">Seller</span>
-                    </span>
+                    </Link>
                 </div>
 
                 <div className="w-full max-w-[440px] my-auto">

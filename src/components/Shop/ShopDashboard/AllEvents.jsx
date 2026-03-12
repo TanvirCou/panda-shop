@@ -117,8 +117,8 @@ const AllEvents = () => {
                                             <td className="px-5 py-4">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-10 h-10 rounded-xl overflow-hidden bg-gray-50 border border-gray-100 flex-shrink-0">
-                                                        {event.images?.[0]
-                                                            ? <img src={event.images[0]} alt={event.name} className="w-full h-full object-contain p-0.5" />
+                                                        {event?.images
+                                                            ? <img src={event.images} alt={event.name} className="w-full h-full object-contain p-0.5" />
                                                             : <div className="w-full h-full flex items-center justify-center text-lg">🎪</div>
                                                         }
                                                     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "../../components/Auth/Login";
 import SignUp from "../../components/Auth/SignUp";
 
@@ -41,9 +41,9 @@ const Auth = () => {
 
         
         <div className="relative z-10">
-          <span className="text-2xl font-black text-white tracking-tight">
+          <Link to="/" className="text-2xl font-black text-white tracking-tight">
             Panda<span className="text-emerald-200">Shop</span>
-          </span>
+          </Link>
         </div>
 
         
@@ -81,9 +81,9 @@ const Auth = () => {
       <div className="flex-1 h-full overflow-y-auto flex flex-col items-center bg-gray-50 px-6 py-12 sm:px-10">
         
         <div className="lg:hidden mb-8 text-center">
-          <span className="text-2xl font-black text-gray-800 tracking-tight">
+          <Link to="/" className="text-2xl font-black text-gray-800 tracking-tight">
             Panda<span className="text-emerald-500">Shop</span>
-          </span>
+          </Link>
         </div>
 
         <div className="w-full max-w-[400px] my-auto">

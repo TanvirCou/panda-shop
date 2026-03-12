@@ -71,7 +71,7 @@ const ProductCart = ({ data, isEvent }) => {
             )}
 
             
-            <div className={`absolute top-3 right-3 z-10 flex flex-col gap-1.5 transition-all duration-300 ${hovered ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+            <div className={`absolute top-3 right-3 z-10 flex flex-col gap-1.5 transition-all duration-300 translate-x-0 opacity-100 md:${hovered ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
                 <button
                     onClick={() => click ? handleRemoveFromWishList(data) : handleAddToWishList(data)}
                     title={click ? 'Remove from wishlist' : 'Add to wishlist'}
@@ -153,7 +153,7 @@ const ProductCart = ({ data, isEvent }) => {
             
             <button
                 onClick={() => addToCartHandler(data?._id)}
-                className={`w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-xs font-bold tracking-wide transition-all duration-300 ${hovered ? 'opacity-100 max-h-12' : 'opacity-0 max-h-0 overflow-hidden py-0'}`}
+                className={`w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white text-xs font-bold tracking-wide transition-all duration-300 opacity-100 max-h-12 md:${hovered ? 'opacity-100 max-h-12' : 'opacity-0 max-h-0 overflow-hidden py-0'}`}
             >
                 <IoCartOutline size={15} />
                 ADD TO CART

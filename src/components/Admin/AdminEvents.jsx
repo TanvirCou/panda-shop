@@ -90,9 +90,9 @@ const AdminEvents = () => {
                                         <td className="px-5 py-3.5 text-xs font-bold text-gray-400">{index + 1}</td>
                                         <td className="px-5 py-3.5">
                                             <div className="flex items-center gap-2.5">
-                                                {event.images?.[0]?.url ? (
+                                                {event?.images ? (
                                                     <img
-                                                        src={event.images[0].url}
+                                                        src={event.images}
                                                         alt={event.name}
                                                         className="w-8 h-8 rounded-lg object-cover flex-shrink-0 ring-1 ring-gray-100"
                                                     />

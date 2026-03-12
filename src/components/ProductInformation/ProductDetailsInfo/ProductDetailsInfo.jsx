@@ -23,7 +23,7 @@ const ProductDetailsInfo = ({ data }) => {
         <div className="bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 
-                <div className="border-b border-gray-100">
+                <div className="md:border-b md:border-gray-100">
                     <div className="flex gap-1 overflow-x-auto">
                         {tabs.map(tab => (
                             <button

@@ -72,9 +72,9 @@ const ResetPassword = () => {
 
                 
                 <div className="relative z-10">
-                    <span className="text-2xl font-black text-white tracking-tight">
+                    <Link to="/" className="text-2xl font-black text-white tracking-tight">
                         Panda<span className="text-emerald-200">Shop</span>
-                    </span>
+                    </Link>
                 </div>
 
                 <div className="relative z-10 space-y-4">
@@ -100,9 +100,9 @@ const ResetPassword = () => {
             <div className="flex-1 h-full overflow-y-auto flex flex-col items-center bg-gray-50 px-6 py-12 sm:px-10">
                 
                 <div className="lg:hidden mb-8 text-center">
-                    <span className="text-2xl font-black text-gray-800 tracking-tight">
+                    <Link to="/" className="text-2xl font-black text-gray-800 tracking-tight">
                         Panda<span className="text-emerald-500">Shop</span>
-                    </span>
+                    </Link>
                 </div>
 
                 <div className="w-full max-w-[440px] my-auto">
