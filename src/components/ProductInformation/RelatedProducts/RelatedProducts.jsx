@@ -1,22 +1,30 @@
 /* eslint-disable react/prop-types */
-import ProductCart from '../../Shared/ProductCart/ProductCart';
 import { useSelector } from 'react-redux';
+import ProductCart from '../../Shared/ProductCart/ProductCart';
 
 const RelatedProducts = ({ data }) => {
     const { allProducts } = useSelector(state => state.product);
-    const products = allProducts && allProducts.allProducts.filter(i => i?.category === data?.category && i._id !== data?._id);
+    const products = allProducts && allProducts.allProducts.filter(
+        i => i?.category === data?.category && i._id !== data?._id
+    );
+
+    if (!products || products.length === 0) return null;
 
     return (
-        <div className='w-full bg-gray-100 mt-12'>
-            <div className='px-12 py-6'>
-                <p className='text-xl font-semibold pb-4'>Related Products</p>
-                <div className='grid grid-cols-1 gap-[5px] sm:grid-cols-2 sm:gap-[10px] md:grid-cols-3 md:gap-[15px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[25px]'>
-                    {
-                        products && products.map((i, index) => <ProductCart data={i} key={index} />)
-                    }
+        <div className="bg-gray-50 border-t border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="flex items-center gap-4 mb-8">
+                    <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap">
+                        Related Products
+                    </h2>
+                    <div className="h-px bg-gray-200 flex-1" />
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-5">
+                    {products.map((i, index) => (
+                        <ProductCart data={i} key={index} />
+                    ))}
                 </div>
             </div>
-
         </div>
     );
 };

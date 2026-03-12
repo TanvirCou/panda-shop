@@ -1,18 +1,18 @@
 import DashboardHeader from '../../components/Shop/ShopDashboard/DashboardHeader';
-import DashboardSideBar from '../../components/Shop/ShopDashboard/DashboardSideBar';
 import DashboardProducts from '../../components/Shop/ShopDashboard/DashboardProducts';
+import DashboardSideBar from '../../components/Shop/ShopDashboard/DashboardSideBar';
 
 const DashboardAllProducts = () => {
     return (
-        <div className='bg-gray-100 h-screen'>
+        <div className="min-h-screen flex flex-col bg-gray-50">
             <DashboardHeader />
-            <div className='flex w-full'>
-                <div className='w-[80px] md:w-[330px]'>
+            <div className="flex flex-1 overflow-hidden">
+                <aside className="w-[58px] md:w-[220px] lg:w-[240px] flex-shrink-0 sticky top-[60px] h-[calc(100vh-60px)] overflow-y-auto">
                     <DashboardSideBar active={3} />
-                </div>
-                <div className='w-[80%] overflow-y-scroll h-[90vh] webkit'>
-                    <DashboardProducts active={3} />
-                </div>
+                </aside>
+                <main className="flex-1 overflow-y-auto h-[calc(100vh-60px)]">
+                    <DashboardProducts />
+                </main>
             </div>
         </div>
     );

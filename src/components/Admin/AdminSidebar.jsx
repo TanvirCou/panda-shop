@@ -1,70 +1,111 @@
 /* eslint-disable react/prop-types */
-import { FiPackage, FiShoppingBag } from 'react-icons/fi';
-import { MdOutlineDashboard, MdOutlineEvent, MdOutlineSettings } from 'react-icons/md';
-import { PiMoney } from "react-icons/pi";
-import { Link } from 'react-router-dom';
-import "../../App.css";
+import axios2 from 'axios';
 import { FaShopify, FaUserFriends } from 'react-icons/fa';
+import { FiLogOut, FiPackage, FiShoppingBag } from 'react-icons/fi';
+import { MdOutlineDashboard, MdOutlineEvent, MdOutlineSettings } from 'react-icons/md';
+import { PiMoney } from 'react-icons/pi';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { fetchUser } from '../../redux/features/userSlice';
+
+const NAV_ITEMS = [
+    { id: 1,  to: "/admin/dashboard",                  icon: MdOutlineDashboard, label: "Dashboard" },
+    { id: 2,  to: "/admin/dashboard/all-orders",        icon: FiShoppingBag,      label: "All Orders" },
+    { id: 3,  to: "/admin/dashboard/all-shops",         icon: FaShopify,          label: "All Shops" },
+    { id: 4,  to: "/admin/dashboard/all-users",         icon: FaUserFriends,      label: "All Users" },
+    { id: 5,  to: "/admin/dashboard/all-products",      icon: FiPackage,          label: "All Products" },
+    { id: 6,  to: "/admin/dashboard/all-events",        icon: MdOutlineEvent,     label: "All Events" },
+    { id: 7,  to: "/admin/dashboard/withdraw-request",  icon: PiMoney,            label: "Withdrawals" },
+    { id: 8,  to: "/admin/settings",                    icon: MdOutlineSettings,  label: "Settings" },
+];
 
 const AdminSideBar = ({ active }) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = async () => {
+        try {
+            const res = await axios2.get("http://localhost:3000/api/user/logout", {
+                withCredentials: true,
+            });
+            toast.success(res.data.message || "Logged out successfully");
+            dispatch(fetchUser());
+            navigate("/auth");
+        } catch (err) {
+            toast.error("Logout failed");
+            console.log(err);
+        }
+    };
+
     return (
-        <div className='w-full h-[93vh] md:h-[90vh] flex flex-col justify-center md:block bg-white shadow-md pt-4 overflow-y-scroll webkit'>
-            <Link to="/admin/dashboard">
-                <div className={`flex items-center mx-6 py-5 ${active === 1 ? "text-red-600" : "text-gray-800"}`}>
-                    <MdOutlineDashboard size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>Dashboard</p>
-                </div>
-            </Link>
+        <div className="h-full w-full bg-white border-r border-gray-100 shadow-sm flex flex-col py-3 overflow-y-auto">
+            
+            <div className="hidden md:block px-5 mb-4">
+                <div className="h-0.5 w-full bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full opacity-60" />
+            </div>
 
-            <Link to="/admin/dashboard/all-orders">
-                <div className={`flex items-center mx-6 py-5 ${active === 2 ? "text-red-600" : "text-gray-800"}`}>
-                    <FiShoppingBag size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>All Orders</p>
-                </div>
-            </Link>
+            <nav className="flex flex-col gap-0.5 px-2 flex-1">
+                {NAV_ITEMS.map(({ id, to, icon: Icon, label }) => {
+                    const isActive = active === id;
+                    return (
+                        <Link key={id} to={to} className="w-full">
+                            <div
+                                title={label}
+                                className={`flex items-center justify-center md:justify-start gap-0 md:gap-3 px-2 md:px-3 py-2.5 rounded-xl transition-all duration-200 group
+                                    ${isActive
+                                        ? 'bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-700 border border-indigo-100'
+                                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
+                                    }`}
+                            >
+                                
+                                <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200
+                                    ${isActive
+                                        ? 'bg-gradient-to-br from-indigo-500 to-blue-500 text-white shadow-md shadow-indigo-200'
+                                        : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'
+                                    }`}
+                                >
+                                    <Icon size={16} />
+                                </div>
 
-            <Link to="/admin/dashboard/all-shops">
-                <div className={`flex items-center mx-6 py-5 ${active === 3 ? "text-red-600" : "text-gray-800"}`}>
-                    <FaShopify size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>All Shops</p>
-                </div>
-            </Link>
+                                
+                                <span className={`hidden md:block text-sm font-semibold truncate transition-colors duration-200
+                                    ${isActive ? 'text-indigo-700' : 'text-gray-600 group-hover:text-gray-800'}`}
+                                >
+                                    {label}
+                                </span>
 
-            <Link to="/admin/dashboard/all-users">
-                <div className={`flex items-center mx-6 py-5 ${active === 4 ? "text-red-600" : "text-gray-800"}`}>
-                    <FaUserFriends size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>All Users</p>
-                </div>
-            </Link>
+                                
+                                {isActive && (
+                                    <div className="absolute right-1 md:static md:ml-auto w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
+                                )}
+                            </div>
+                        </Link>
+                    );
+                })}
+            </nav>
 
-            <Link to="/admin/dashboard/all-products">
-                <div className={`flex items-center mx-6 py-5 ${active === 5 ? "text-red-600" : "text-gray-800"}`}>
-                    <FiPackage size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>All Products</p>
-                </div>
-            </Link>
+            
+            <div className="px-2 pt-2 border-t border-gray-100 mt-2">
+                <button
+                    onClick={handleLogout}
+                    title="Logout"
+                    className="w-full flex items-center justify-center md:justify-start gap-0 md:gap-3 px-2 md:px-3 py-2.5 rounded-xl text-red-500 hover:bg-red-50 transition-all duration-200 group"
+                >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-red-50 text-red-400 group-hover:bg-red-100 flex items-center justify-center transition-colors duration-200">
+                        <FiLogOut size={16} />
+                    </div>
+                    <span className="hidden md:block text-sm font-semibold text-red-500">Logout</span>
+                </button>
+            </div>
 
-            <Link to="/admin/dashboard/all-events">
-                <div className={`flex items-center mx-6 py-5 ${active === 6 ? "text-red-600" : "text-gray-800"}`}>
-                    <MdOutlineEvent size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>All Events</p>
-                </div>
-            </Link>
-
-
-            <Link to="/admin/dashboard/withdraw-request">
-                <div className={`flex items-center mx-6 py-5 ${active === 7 ? "text-red-600" : "text-gray-800"}`}>
-                    <PiMoney size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>Withdraw Request</p>
-                </div>
-            </Link>
-
-            <Link to="/profile">
-                <div className={`flex items-center mx-6 py-5 ${active === 8 ? "text-red-600" : "text-gray-800"}`}>
-                    <MdOutlineSettings size={25} />
-                    <p className='font-medium mx-2 md:block hidden'>Settings</p>
-                </div>
-            </Link>
+            
+            <div className="px-5 pt-3 hidden md:block">
+                <div className="h-0.5 w-full bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full opacity-30" />
+                <p className="text-[10px] text-gray-300 font-medium mt-3 text-center">
+                    © {new Date().getFullYear()} PandaShop Admin
+                </p>
+            </div>
         </div>
     );
 };

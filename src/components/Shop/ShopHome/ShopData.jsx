@@ -1,90 +1,127 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import ProductCart from '../../Shared/ProductCart/ProductCart';
-import { Link } from 'react-router-dom';
+import { IoCalendarOutline, IoChatbubbleOutline, IoGridOutline, IoStorefrontOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import ProductCart from '../../Shared/ProductCart/ProductCart';
 import Ratings from '../../Shared/Ratings/Ratings';
+
+const TABS = [
+    { id: 1, label: "Products", icon: IoGridOutline },
+    { id: 2, label: "Events", icon: IoCalendarOutline },
+    { id: 3, label: "Reviews", icon: IoChatbubbleOutline },
+];
 
 const ShopData = ({ products, events, id }) => {
     const [active, setActive] = useState(1);
     const { shop } = useSelector(state => state.shop);
 
-    const allReviews = products && products?.products.map(i => i.reviews).flat();
-
-    console.log(events);
+    const allReviews = products?.products.map(i => i.reviews).flat() || [];
+    const isOwner = shop?.shop?._id === id;
 
     return (
-        <div className='w-full md:h-[95vh] py-6 md:py-4 md:overflow-y-scroll md:sticky webkit px-4'>
-            <div className='w-full md:flex items-center justify-between'>
-                <div className='flex'>
-                    <p onClick={() => setActive(1)} className={`text-lg font-medium pr-8 cursor-pointer ${active === 1 ? "text-red-600" : "text-gray-800"}`}>Shop Products</p>
-                    <p onClick={() => setActive(2)} className={`text-lg font-medium pr-8 cursor-pointer ${active === 2 ? "text-red-600" : "text-gray-800"}`}>Running Events</p>
-                    <p onClick={() => setActive(3)} className={`text-lg font-medium pr-8 cursor-pointer ${active === 3 ? "text-red-600" : "text-gray-800"}`}>Shop Reviews</p>
+        <div className="w-full flex flex-col min-h-full">
+            
+            <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
+                <div className="flex gap-1 bg-gray-100/70 p-1 rounded-2xl">
+                    {TABS.map(tab => {
+                        const Icon = tab.icon;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActive(tab.id)}
+                                className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                                    active === tab.id
+                                        ? "bg-white text-gray-900 shadow-sm"
+                                        : "text-gray-500 hover:text-gray-700"
+                                }`}
+                            >
+                                <Icon size={15} />
+                                {tab.label}
+                            </button>
+                        );
+                    })}
                 </div>
-                {
-                    (shop && shop?.shop?._id === id) ?
-                        <Link to="/shop/dashboard">
-                            <div className='flex justify-end md:block'>
-                                <button className='bg-black text-white text-sm font-medium py-1.5 px-4 rounded-md mt-3 md:mt-0'>Go to Dashboard</button>
-                            </div></Link> : ""
-                }
 
+                {isOwner && (
+                    <Link to="/shop/dashboard">
+                        <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-700 text-white text-sm font-semibold rounded-xl transition-colors duration-200">
+                            <IoStorefrontOutline size={16} />
+                            Dashboard
+                        </button>
+                    </Link>
+                )}
             </div>
 
-            <br />
-
-            {
-                active === 1 &&
-                <div className='grid grid-cols-1 gap-[5px] sm:grid-cols-2 sm:gap-[10px] md:grid-cols-2 md:gap-[15px] lg:grid-cols-3 lg:gap-[20px] xl:grid-cols-4 xl:gap-[25px]'>
-                    {
-                        products && products.products.map((i, index) => <ProductCart data={i} key={index} />)
-                    }
-                </div>
-            }
-
-            {
-                active === 2 &&
+            
+            {active === 1 && (
                 <div>
-                    {
-                        events.events.length > 0 ? events.events.map((i, index) => (
-                            <div key={index} className='grid grid-cols-1 gap-[5px] sm:grid-cols-2 sm:gap-[10px] md:grid-cols-3 md:gap-[15px] lg:grid-cols-3 lg:gap-[20px] xl:grid-cols-4 xl:gap-[25px]'>
-                                <ProductCart data={i} isEvent={true} />
-                            </div>
-                        )) :
-
-                            <div className='w-full h-[500px] flex items-center justify-center text-xl font-medium'>
-                                No Event Found
-                            </div>
-
-                    }
+                    {products?.products.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+                            {products.products.map((item, index) => (
+                                <ProductCart data={item} key={index} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-100 rounded-2xl">
+                            <span className="text-4xl mb-3">🛍️</span>
+                            <p className="font-semibold text-gray-400">No products yet</p>
+                            <p className="text-sm text-gray-300 mt-1">This shop hasn't added any products</p>
+                        </div>
+                    )}
                 </div>
-            }
+            )}
 
-            {
-                active === 3 ?
-                    <>
-                        {
-                            allReviews && allReviews.map((i, index) => (
-                                <div key={index} className='flex py-2 px-2 bg-white mb-2 rounded-md'>
-                                    <img src={i?.user.avatar} alt="" className='w-10 h-10 rounded-full object-cover' />
-                                    <div className='ml-3'>
-                                        <div className='flex items-center'>
-                                            <p className='font-medium mr-2'>{i?.user.name}</p>
-                                            <Ratings rating={i?.rating} />
+            
+            {active === 2 && (
+                <div>
+                    {events?.events.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                            {events.events.map((item, index) => (
+                                <ProductCart data={item} isEvent={true} key={index} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-100 rounded-2xl">
+                            <span className="text-4xl mb-3">📅</span>
+                            <p className="font-semibold text-gray-400">No active events</p>
+                            <p className="text-sm text-gray-300 mt-1">Check back later for promotions and events</p>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            
+            {active === 3 && (
+                <div>
+                    {allReviews.length > 0 ? (
+                        <div className="space-y-3">
+                            {allReviews.map((review, index) => (
+                                <div key={index} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex gap-3">
+                                    <img
+                                        src={review?.user.avatar}
+                                        alt={review?.user.name}
+                                        className="w-10 h-10 rounded-xl object-cover flex-shrink-0"
+                                    />
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                                            <p className="text-sm font-bold text-gray-900">{review?.user.name}</p>
+                                            <Ratings rating={review?.rating} />
                                         </div>
-                                        <p className='text-sm font-normal mt-1'>{i?.comment}</p>
+                                        <p className="text-sm text-gray-500 mt-1 leading-relaxed">{review?.comment}</p>
                                     </div>
                                 </div>
-                            ))
-                        }
-                        {
-                            allReviews && allReviews.length === 0 && <div className='flex justify-center w-full py-6'>
-                                <p className='text-md font-medium text-gray-600'>No reviews yet</p>
-                            </div>
-                        }
-                    </> : null
-
-            }
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-100 rounded-2xl">
+                            <span className="text-4xl mb-3">⭐</span>
+                            <p className="font-semibold text-gray-400">No reviews yet</p>
+                            <p className="text-sm text-gray-300 mt-1">Be the first to leave a review</p>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

@@ -9,103 +9,140 @@ const ProductDetailsInfo = ({ data }) => {
     const { allProducts } = useSelector(state => state.product);
 
     const totalProduct = allProducts?.allProducts.filter(i => i?.shopId === data?.shopId);
-
     const totalReview = totalProduct.reduce((acc, i) => acc + i?.reviews.length, 0);
-
     const shopTotalRating = totalProduct.reduce((acc, i) => acc + (i?.ratings ? i.ratings : 0), 0);
-
     const shopAvgRating = shopTotalRating / totalReview;
 
+    const tabs = [
+        { id: 1, label: "Description" },
+        { id: 2, label: `Reviews (${data?.reviews?.length || 0})` },
+        { id: 3, label: "Seller Info" },
+    ];
+
     return (
-        <div className='my-10 px-6 w-full '>
-            <div className='bg-gray-200 w-full py-4 rounded-md'>
-                <div className='flex items-center justify-between border-b border-gray-300 pt-4 mx-2 md:mx-8'>
-                    <div onClick={() => setActive(1)} className='relative cursor-pointer mx-4 md:mx-0 text-center'>
-                        <p className='font-semibold text-md md:text-lg '>Product Details</p>
-                        {
-                            active === 1 ? <div className='absolute left-0 h-[3px] w-full bg-[crimson]'></div> : null
-                        }
-                    </div>
-                    <div onClick={() => setActive(2)} className='relative cursor-pointer mx-4 md:mx-0 text-center'>
-                        <p className='font-semibold text-lg'>Product Reviews</p>
-                        {
-                            active === 2 ? <div className='absolute left-0 h-[3px] w-full bg-[crimson]'></div> : null
-                        }
-                    </div>
-                    <div onClick={() => setActive(3)} className='relative cursor-pointer mx-4 md:mx-0 text-center'>
-                        <p className='font-semibold text-lg'>Seller Information</p>
-                        {
-                            active === 3 ? <div className='absolute left-0 h-[3px] w-full bg-[crimson]'></div> : null
-                        }
+        <div className="bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                
+                <div className="border-b border-gray-100">
+                    <div className="flex gap-1 overflow-x-auto">
+                        {tabs.map(tab => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActive(tab.id)}
+                                className={`relative flex-shrink-0 px-6 py-3.5 text-sm font-semibold transition-all duration-200 ${
+                                    active === tab.id
+                                        ? "text-emerald-600"
+                                        : "text-gray-500 hover:text-gray-700"
+                                }`}
+                            >
+                                {tab.label}
+                                {active === tab.id && (
+                                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-500 rounded-full" />
+                                )}
+                            </button>
+                        ))}
                     </div>
                 </div>
-                <div className='px-6 md:px-10 py-4'>
-                    {
-                        active === 1 ?
-                            <div className='text-md font-medium text-gray-600 whitespace-pre-line'>
-                                {data?.description}
-                            </div> : null
-                    }
-                    {
-                        active === 2 ?
-                            <>
-                                {
-                                    data && data?.reviews.map((i, index) => (
-                                        <div key={index} className='flex'>
-                                            <img src={i?.user.avatar} alt="" className='w-10 h-10 rounded-full object-cover' />
-                                            <div className='ml-3'>
-                                                <p className='font-medium'>{i?.user.name}</p>
-                                                <Ratings rating={i?.rating} />
-                                                <p className='text-sm font-normal mt-1'>{i?.comment}</p>
+
+                
+                <div className="py-8">
+
+                    
+                    {active === 1 && (
+                        <div className="max-w-3xl">
+                            <p className="text-gray-600 leading-relaxed text-[15px] whitespace-pre-line">
+                                {data?.description || "No description available."}
+                            </p>
+                        </div>
+                    )}
+
+                    
+                    {active === 2 && (
+                        <div className="space-y-6 max-w-3xl">
+                            {data?.reviews?.length > 0 ? (
+                                data.reviews.map((rev, index) => (
+                                    <div key={index} className="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                                        <img
+                                            src={rev?.user.avatar}
+                                            alt={rev?.user.name}
+                                            className="w-11 h-11 rounded-full object-cover flex-shrink-0 ring-2 ring-white shadow"
+                                        />
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center justify-between flex-wrap gap-2">
+                                                <p className="font-semibold text-gray-900 text-sm">{rev?.user.name}</p>
+                                                <Ratings rating={rev?.rating} />
                                             </div>
-                                        </div>
-                                    ))
-                                }
-                                {
-                                    data && data?.reviews.length === 0 && <div className='flex justify-center w-full py-6'>
-                                        <p className='text-md font-medium text-gray-600'>No reviews yet</p>
-                                    </div>
-                                }
-                            </> : null
-
-                    }
-                    {
-                        active === 3 ?
-                            <div className='block md:flex w-full py-6'>
-                                <div className='w-full md:w-1/2'>
-                                    <div className='flex items-center'>
-                                        <Link to={`/shop/${data?.shop._id}`}>
-                                            <img src={data?.shop.avatar} alt="" className='w-12 h-12 rounded-full object-cover' />
-                                        </Link>
-                                        <div>
-                                            <Link to={`/shop/${data?.shop._id}`}>
-                                                <p className='text-md font-medium text-teal-600 px-2'>{data?.shop.name}</p>
-                                            </Link>
-                                            <p className='text-sm font-medium px-2'>{shopAvgRating ? `(${shopAvgRating}/5) Ratings` : "No review"}</p>
+                                            <p className="text-gray-500 text-sm mt-1.5 leading-relaxed">
+                                                {rev?.comment}
+                                            </p>
                                         </div>
                                     </div>
-
-                                    <p className='text-md font-medium text-gray-600 pt-6'>{data?.shop.description}</p>
+                                ))
+                            ) : (
+                                <div className="text-center py-16 border-2 border-dashed border-gray-100 rounded-3xl">
+                                    <p className="text-5xl mb-4">💬</p>
+                                    <p className="font-semibold text-gray-700">No reviews yet</p>
+                                    <p className="text-sm text-gray-400 mt-1">Be the first to review this product</p>
                                 </div>
-                                <div className='w-full md:w-1/2 mt-6 md:mt-0 flex flex-col items-end'>
-                                    <div className='flex items-center py-1.5'>
-                                        <p className='text-md font-medium '>Joined on:</p>
-                                        <p className='text-md font-medium text-gray-600 pl-2'>{data?.shop.createdAt.slice(0, 10)}</p>
-                                    </div>
-                                    <div className='flex items-center py-1.5'>
-                                        <p className='text-md font-medium '>Total Products:</p>
-                                        <p className='text-md font-medium text-gray-600 pl-2'>{totalProduct?.length}</p>
-                                    </div>
-                                    <div className='flex items-center py-1.5'>
-                                        <p className='text-md font-medium '>Total Reviews:</p>
-                                        <p className='text-md font-medium text-gray-600 pl-2'>{totalReview}</p>
-                                    </div>
-                                    <Link to={`/shop/${data?.shop._id}`}>
-                                        <button className='w-fit bg-black text-white px-6 py-2 mt-2 rounded-md font-medium'>Visit Shop</button>
+                            )}
+                        </div>
+                    )}
+
+                    
+                    {active === 3 && (
+                        <div className="flex flex-col lg:flex-row gap-8">
+                            
+                            <div className="flex-1 flex flex-col gap-5">
+                                <div className="flex items-center gap-4">
+                                    <Link to={`/shop/${data?.shop._id}`} className="relative flex-shrink-0">
+                                        <img
+                                            src={data?.shop.avatar}
+                                            alt={data?.shop.name}
+                                            className="w-16 h-16 rounded-2xl object-cover shadow-md"
+                                        />
+                                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full" />
                                     </Link>
+                                    <div>
+                                        <Link to={`/shop/${data?.shop._id}`}>
+                                            <h3 className="font-bold text-gray-900 text-lg hover:text-emerald-600 transition-colors">
+                                                {data?.shop.name}
+                                            </h3>
+                                        </Link>
+                                        <p className="text-sm text-gray-500">
+                                            {shopAvgRating ? `${shopAvgRating.toFixed(1)} / 5 rating` : "Verified Seller"}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div> : null
-                    }
+
+                                {data?.shop.description && (
+                                    <p className="text-gray-500 text-sm leading-relaxed max-w-md">
+                                        {data.shop.description}
+                                    </p>
+                                )}
+
+                                <Link to={`/shop/${data?.shop._id}`}>
+                                    <button className="px-6 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-emerald-600 transition-colors">
+                                        Visit Shop
+                                    </button>
+                                </Link>
+                            </div>
+
+                            
+                            <div className="lg:w-72 grid grid-cols-2 gap-4 content-start">
+                                {[
+                                    { label: "Member Since", value: data?.shop.createdAt?.slice(0, 10) },
+                                    { label: "Total Products", value: totalProduct?.length },
+                                    { label: "Total Reviews", value: totalReview },
+                                    { label: "Avg. Rating", value: shopAvgRating ? `${shopAvgRating.toFixed(1)} / 5` : "—" },
+                                ].map((stat, i) => (
+                                    <div key={i} className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{stat.label}</p>
+                                        <p className="text-base font-bold text-gray-900 mt-1">{stat.value}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

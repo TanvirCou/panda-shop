@@ -1,85 +1,89 @@
 /* eslint-disable react/prop-types */
-import { AiOutlineLock, AiOutlineShopping } from 'react-icons/ai';
-import { IoLogOutOutline, IoMapOutline, IoPersonOutline } from 'react-icons/io5';
-import { HiReceiptRefund } from "react-icons/hi";;
+import axios from "axios";
+import { AiOutlineLock, AiOutlineShopping } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa6";
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../redux/features/userSlice';
-import { MdOutlineDashboard } from 'react-icons/md';
+import { HiReceiptRefund } from "react-icons/hi";
+import {
+    IoLogOutOutline,
+    IoMapOutline,
+    IoPersonOutline,
+} from "react-icons/io5";
+import { MdOutlineDashboard } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { fetchUser } from "../../redux/features/userSlice";
+
+const NAV_ITEMS = [
+  { id: 1, label: "Profile", icon: IoPersonOutline },
+  { id: 2, label: "Orders", icon: AiOutlineShopping },
+  { id: 3, label: "Refunds", icon: HiReceiptRefund },
+  { id: 4, label: "Track Order", icon: IoMapOutline },
+  { id: 5, label: "Password", icon: AiOutlineLock },
+  { id: 6, label: "Address", icon: FaRegAddressCard },
+];
 
 const ProfileSidebar = ({ active, setActive }) => {
-    const { user } = useSelector(state => state.user);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const logoutHandler = async () => {
-        try {
-            const res = await axios.get("https://panda-shop.onrender.com/api/user/logout", { withCredentials: true });
-            toast.success(res.data.message);
-            dispatch(fetchUser());
-            navigate("/");
-        } catch (err) {
-            console.log(err.message);
-        }
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/user/logout", {
+        withCredentials: true,
+      });
+      toast.success(res.data.message);
+      dispatch(fetchUser());
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
     }
-    return (
-        <div className='px-2 md:px-8 md:pt-3 pb-2'>
-            <div className='bg-white w-full h-[90vh] md:h-[75vh] flex flex-col justify-center rounded-md shadow-sm py-0'>
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(1)}>
-                    <IoPersonOutline size={18} color={`${active === 1 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 1 ? "text-[red]" : "text-black"}`}>Profile</p>
-                </div>
+  };
 
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(2)}>
-                    <AiOutlineShopping size={18} color={`${active === 2 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 2 ? "text-[red]" : "text-black"}`}>Orders</p>
-                </div>
+  return (
+    <div className="sticky top-6">
+      
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
+          <button
+            key={id}
+            onClick={() => setActive(id)}
+            className={`w-full flex items-center gap-3 px-4 py-3.5 text-left transition-all duration-150 border-b border-gray-50 last:border-0 ${
+              active === id
+                ? "bg-emerald-50 text-emerald-700"
+                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            }`}
+          >
+            <Icon size={18} className={active === id ? "text-emerald-600" : "text-gray-400"} />
+            <span className={`hidden md:block text-sm font-semibold ${active === id ? "text-emerald-700" : ""}`}>
+              {label}
+            </span>
+            {active === id && (
+              <span className="ml-auto hidden md:block w-1.5 h-5 bg-emerald-500 rounded-full" />
+            )}
+          </button>
+        ))}
 
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(3)}>
-                    <HiReceiptRefund size={18} color={`${active === 3 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 3 ? "text-[red]" : "text-black"}`}>Refunds</p>
-                </div>
-
-                {/* <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(4)}>
-                    <AiOutlineInbox size={18} color={`${active === 4 ? "red" : "black"}`}/>
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 4 ? "text-[red]" : "text-black"}`}>Inbox</p>
-                </div> */}
-
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(4)}>
-                    <IoMapOutline size={18} color={`${active === 4 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 4 ? "text-[red]" : "text-black"}`}>Track Order</p>
-                </div>
-
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(5)}>
-                    <AiOutlineLock size={18} color={`${active === 5 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 5 ? "text-[red]" : "text-black"}`}>Change Password</p>
-                </div>
-
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={() => setActive(6)}>
-                    <FaRegAddressCard size={18} color={`${active === 6 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 6 ? "text-[red]" : "text-black"}`}>Address</p>
-                </div>
-
-                {
-                    user && user?.user.role === "Admin" &&
-                    <Link to="/admin/dashboard">
-                        <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4'>
-                            <MdOutlineDashboard size={18} color={`${active === 7 ? "red" : "black"}`} />
-                            <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 8 ? "text-[red]" : "text-black"}`}>Go to Dashboard</p>
-                        </div>
-                    </Link>
-                }
-
-                <div className='flex items-center cursor-pointer px-6 md:px-8 py-5 md:py-4' onClick={logoutHandler}>
-                    <IoLogOutOutline size={18} color={`${active === 8 ? "red" : "black"}`} />
-                    <p className={`hidden md:block text-sm font-medium pl-3 pt-0.5 ${active === 9 ? "text-[red]" : "text-black"}`}>Logout</p>
-                </div>
+        {user?.user?.role === "Admin" && (
+          <Link to="/admin/dashboard">
+            <div className="flex items-center gap-3 px-4 py-3.5 border-t border-gray-50 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">
+              <MdOutlineDashboard size={18} className="text-gray-400" />
+              <span className="hidden md:block text-sm font-semibold">Dashboard</span>
             </div>
-        </div>
-    );
+          </Link>
+        )}
+
+        <button
+          onClick={logoutHandler}
+          className="w-full flex items-center gap-3 px-4 py-3.5 border-t border-gray-100 text-red-500 hover:bg-red-50 transition-all"
+        >
+          <IoLogOutOutline size={18} />
+          <span className="hidden md:block text-sm font-semibold">Logout</span>
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default ProfileSidebar;

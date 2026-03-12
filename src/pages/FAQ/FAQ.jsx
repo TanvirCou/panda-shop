@@ -1,7 +1,7 @@
-import Header from '../../components/Shared/Header/Header';
-import Footer from '../../components/Shared/Footer/Footer';
-import Faq from '../../components/Faq/Faq';
 import { useEffect } from 'react';
+import Faq from '../../components/Faq/Faq';
+import Footer from '../../components/Shared/Footer/Footer';
+import Header from '../../components/Shared/Header/Header';
 
 const FAQ = () => {
 
@@ -10,7 +10,7 @@ const FAQ = () => {
     }, []);
 
     return (
-        <div className='bg-gray-100'>
+        <div className="min-h-screen bg-gray-50">
             <Header activeHeading={5} />
             <Faq />
             <Footer />

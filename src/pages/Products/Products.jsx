@@ -1,9 +1,9 @@
-import AllProducts from '../../components/Products/AllProducts/AllProducts';
-import Header from '../../components/Shared/Header/Header';
-import Footer from '../../components/Shared/Footer/Footer';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LoadingAnimation from '../../components/Loader/LoadingAnimation';
-import { useEffect } from 'react';
+import AllProducts from '../../components/Products/AllProducts/AllProducts';
+import Footer from '../../components/Shared/Footer/Footer';
+import Header from '../../components/Shared/Header/Header';
 
 const Products = () => {
     const { isProductLoading } = useSelector(state => state.product);
@@ -12,17 +12,13 @@ const Products = () => {
         window.scrollTo(0, 0);
     }, [])
 
-    return (
-        <div className='bg-gray-100'>
-            {
-                isProductLoading ? <LoadingAnimation /> :
-                    <>
-                        <Header activeHeading={3} />
-                        <AllProducts />
-                        <Footer />
-                    </>
-            }
+    if (isProductLoading) return <LoadingAnimation />;
 
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <Header activeHeading={3} />
+            <AllProducts />
+            <Footer />
         </div>
     );
 };

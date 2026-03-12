@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import { IoEye, IoEyeOff } from 'react-icons/io5';
-import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
-import { toast } from 'react-toastify';
-
+import { useState } from "react";
+import { IoCallOutline, IoCloudUploadOutline, IoCodeSlashOutline, IoEye, IoEyeOff, IoLocationOutline, IoLockClosedOutline, IoMailOutline, IoStorefrontOutline } from "react-icons/io5";
+import { RxAvatar } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 const ShopRegister = ({ setActive }) => {
     const [passShow, setPassShow] = useState(false);
@@ -17,12 +16,10 @@ const ShopRegister = ({ setActive }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [file, setFile] = useState(null);
-
     const [avatar, setAvatar] = useState(null);
 
     const handleFile = (pics) => {
         setAvatar(pics);
-
         const data = new FormData();
         data.append("file", pics);
         data.append("upload_preset", "panda-shop");
@@ -36,10 +33,7 @@ const ShopRegister = ({ setActive }) => {
                 setFile(data.url.toString());
                 console.log(data.url.toString());
             })
-            .catch((err) => {
-                console.log(err);
-
-            });
+            .catch((err) => console.log(err));
     };
 
     const handleRegister = async (e) => {
@@ -47,17 +41,9 @@ const ShopRegister = ({ setActive }) => {
         if (password !== confirmPassword) {
             alert("Password don't match!");
         } else {
-            const data = {
-                name: name,
-                email: email,
-                password: password,
-                phoneNumber: phoneNumber,
-                address: address,
-                zipCode: zipCode,
-                avatar: file
-            }
+            const data = { name, email, password, phoneNumber, address, zipCode, avatar: file };
             try {
-                const res = await axios.post("https://panda-shop.onrender.com/api/shop/shop-register", data);
+                const res = await axios.post("http://localhost:3000/api/shop/shop-register", data);
                 toast.success(res.data.message);
                 setName("");
                 setEmail("");
@@ -74,65 +60,105 @@ const ShopRegister = ({ setActive }) => {
         }
     };
 
+    const inputClass = "w-full h-11 bg-white border border-gray-200 rounded-xl pl-10 pr-4 text-sm font-medium text-gray-800 placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200";
+
     return (
-        <form onSubmit={handleRegister}>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Shop Name</p>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder='Enter your shop name' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
-            </div>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Email Address</p>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder='Enter your email' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
+        <form onSubmit={handleRegister} className="space-y-4">
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Shop Name</label>
+                <div className="relative">
+                    <IoStorefrontOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} required placeholder="Enter your shop name" className={inputClass} />
+                </div>
             </div>
 
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Phone Number</p>
-                <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required placeholder='Enter your phone number' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
-            </div>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Address</p>
-                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required placeholder='Enter your address' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
-            </div>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Zip Code</p>
-                <input type="number" value={zipCode} onChange={(e) => setZipCode(e.target.value)} required placeholder='Enter your zip code' className='w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500' />
-            </div>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Password</p>
-                <div className='relative flex justify-end items-center'>
-                    <input type={!passShow ? `password` : `text`} value={password} onChange={(e) => setPassword(e.target.value)} required minLength="6" placeholder='Enter your password' className='flex justify-center w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500 ' />
-                    {!passShow ?
-                        <IoEye size={22} onClick={() => setPassShow(true)} className='cursor-pointer absolute mx-1.5' /> :
-                        <IoEyeOff size={22} onClick={() => setPassShow(false)} className='cursor-pointer  absolute mx-1.5' />
-                    }
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email Address</label>
+                <div className="relative">
+                    <IoMailOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Enter your email" className={inputClass} />
                 </div>
             </div>
-            <div className='px-4 py-1.5'>
-                <p className='text-md font-medium'>Confirm Password</p>
-                <div className='relative flex justify-end items-center'>
-                    <input type={!confirmPassShow ? `password` : `text`} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder='Enter your password again' className='flex justify-center w-full h-10 border-2 border-gray-300 px-2 rounded-md placeholder:text-md placeholder:font-medium text-md font-medium focus:outline-teal-500 ' />
-                    {!confirmPassShow ?
-                        <IoEye size={22} onClick={() => setConfirmPassShow(true)} className='cursor-pointer absolute mx-1.5' /> :
-                        <IoEyeOff size={22} onClick={() => setConfirmPassShow(false)} className='cursor-pointer  absolute mx-1.5' />
-                    }
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Phone Number</label>
+                <div className="relative">
+                    <IoCallOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required placeholder="Enter your phone number" className={inputClass} />
                 </div>
             </div>
-            <div className='px-4 py-2.5 flex items-center'>
-                <div className='h-8 w-8 rounded-full'>
-                    {avatar ? <img src={URL.createObjectURL(avatar)} alt="" className='h-full w-full object-cover rounded-full' /> :
-                        <RxAvatar className='w-8 h-8' />
-                    }
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Address</label>
+                <div className="relative">
+                    <IoLocationOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required placeholder="Enter your address" className={inputClass} />
                 </div>
-                <div className='px-4'>
-                    <label htmlFor="file-input">
-                        <p className='text-sm font-medium border border-gray-300 w-fit py-1.5 px-4 rounded-md cursor-pointer'>Upload a file</p>
-                        <input type="file" name="avatar" id="file-input" className='sr-only' onChange={(e) => handleFile(e.target.files[0])} />
+            </div>
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Zip Code</label>
+                <div className="relative">
+                    <IoCodeSlashOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type="number" value={zipCode} onChange={(e) => setZipCode(e.target.value)} required placeholder="Enter your zip code" className={inputClass} />
+                </div>
+            </div>
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Password</label>
+                <div className="relative">
+                    <IoLockClosedOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type={passShow ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required minLength="6" placeholder="Enter your password" className={`${inputClass} pr-10`} />
+                    <button type="button" onClick={() => setPassShow(!passShow)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        {passShow ? <IoEyeOff size={18} /> : <IoEye size={18} />}
+                    </button>
+                </div>
+            </div>
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Confirm Password</label>
+                <div className="relative">
+                    <IoLockClosedOutline size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input type={confirmPassShow ? "text" : "password"} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required placeholder="Enter your password again" className={`${inputClass} pr-10`} />
+                    <button type="button" onClick={() => setConfirmPassShow(!confirmPassShow)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        {confirmPassShow ? <IoEyeOff size={18} /> : <IoEye size={18} />}
+                    </button>
+                </div>
+            </div>
+
+            
+            <div className="space-y-1.5">
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Shop Logo</label>
+                <div className="flex items-center gap-4 p-3 bg-white border border-gray-200 rounded-xl shadow-sm">
+                    <div className="w-11 h-11 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        {avatar ? (
+                            <img src={URL.createObjectURL(avatar)} alt="" className="h-full w-full object-cover" />
+                        ) : (
+                            <RxAvatar className="w-7 h-7 text-gray-400" />
+                        )}
+                    </div>
+                    <label htmlFor="shop-file-input" className="flex items-center gap-2 cursor-pointer text-sm font-semibold text-cyan-600 hover:text-cyan-500 transition-colors">
+                        <IoCloudUploadOutline size={18} />
+                        {avatar ? avatar.name?.slice(0, 20) + "..." : "Upload shop logo"}
+                        <input type="file" name="avatar" id="shop-file-input" className="sr-only" onChange={(e) => handleFile(e.target.files[0])} />
                     </label>
                 </div>
             </div>
-            <div className='px-4 py-1.5'>
-                <button className='bg-teal-600 hover:bg-teal-700 hover:text-gray-300 w-full h-10 rounded-md text-white text-md font-medium'>Register</button>
-            </div>
+
+            
+            <button
+                type="submit"
+                className="w-full h-11 mt-2 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-white text-sm font-bold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98]"
+            >
+                Create My Shop
+            </button>
         </form>
     );
 };

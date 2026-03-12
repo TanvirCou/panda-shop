@@ -1,19 +1,18 @@
-import React from 'react';
+import AdminEvents from '../../components/Admin/AdminEvents';
 import AdminHeader from '../../components/Admin/AdminHeader';
 import AdminSideBar from '../../components/Admin/AdminSidebar';
-import AdminEvents from '../../components/Admin/AdminEvents';
 
 const AdminAllEvents = () => {
     return (
-        <div className='bg-gray-100 h-screen'>
+        <div className="bg-gray-50 min-h-screen flex flex-col">
             <AdminHeader />
-            <div className='flex w-full'>
-                <div className='w-[80px] md:w-[330px]'>
+            <div className="flex flex-1 overflow-hidden">
+                <div className="w-[60px] md:w-[240px] flex-shrink-0 sticky top-[60px] h-[calc(100vh-60px)] overflow-hidden">
                     <AdminSideBar active={6} />
                 </div>
-                <div className='w-[80%] overflow-y-scroll h-[90vh] webkit'>
+                <main className="flex-1 overflow-y-auto h-[calc(100vh-60px)]">
                     <AdminEvents />
-                </div>
+                </main>
             </div>
         </div>
     );

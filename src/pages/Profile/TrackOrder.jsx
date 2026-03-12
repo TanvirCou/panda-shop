@@ -1,12 +1,14 @@
-import Header from '../../components/Shared/Header/Header';
-import Footer from '../../components/Shared/Footer/Footer';
 import TrackOrderDetails from '../../components/Profile/TrackOrderDetails';
+import Footer from '../../components/Shared/Footer/Footer';
+import Header from '../../components/Shared/Header/Header';
 
 const TrackOrder = () => {
     return (
-        <div>
+        <div className="bg-gray-50 min-h-screen flex flex-col">
             <Header />
-            <TrackOrderDetails />
+            <div className="flex-1">
+                <TrackOrderDetails />
+            </div>
             <Footer />
         </div>
     );

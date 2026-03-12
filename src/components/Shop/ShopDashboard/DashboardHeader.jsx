@@ -1,48 +1,50 @@
-import { AiOutlineGift } from 'react-icons/ai';
-import { FiPackage, FiShoppingBag } from 'react-icons/fi';
-import { MdOutlineEvent, MdOutlineMessage } from 'react-icons/md';
+import { useState } from 'react';
+import { IoStorefrontOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const DashboardHeader = () => {
     const { shop } = useSelector(state => state.shop);
-    console.log(shop);
+    const [notifOpen, setNotifOpen] = useState(false);
+
+    if (!shop?.shop) return null;
 
     return (
-        <>
-            {
-                shop && shop?.shop &&
+        <div className="w-full h-[60px] bg-gradient-to-r from-cyan-600 via-sky-500 to-cyan-500 flex items-center justify-between px-4 md:px-8 sticky top-0 z-[100] shadow-lg shadow-cyan-900/20">
+            
+            <Link to="/" className="flex items-center gap-2">
+                <span className="text-lg font-black text-white tracking-tight">
+                    Panda<span className="text-cyan-100">Shop</span>
+                    <span className="ml-2 text-[10px] font-bold bg-white/20 text-white px-1.5 py-0.5 rounded-full align-middle">Seller</span>
+                </span>
+            </Link>
 
-                <div className='w-full h-16 flex items-center justify-between px-5 md:px-8 shadow-md z-30 top-0 left-0 sticky'>
-                    <Link to="/">
-                        <div className='font-bold text-3xl cursor-pointer items-center font-[Poppins] 
-                text-gray-800'>
-                            Panda-Shop
-                        </div>
-                    </Link>
-                    <div className='flex items-center'>
-                        <Link to="/shop/dashboard/coupon-code" className='hidden md:block'>
-                            <AiOutlineGift size={28} color='black' className='mx-4' />
-                        </Link>
-                        <Link to="/shop/dashboard/all-events" className='hidden md:block'>
-                            <MdOutlineEvent size={28} color='black' className='mx-4' />
-                        </Link>
-                        <Link to="/shop/dashboard/orders" className='hidden md:block'>
-                            <FiShoppingBag size={28} color='black' className='mx-4' />
-                        </Link>
-                        <Link to="/shop/dashboard/all-products" className='hidden md:block'>
-                            <FiPackage size={28} color='black' className='mx-4' />
-                        </Link>
-                        <Link to="/dashboard-messages" className='hidden md:block'>
-                            <MdOutlineMessage size={28} color='black' className='mx-4' />
-                        </Link>
-                        <Link to={`/shop/${shop?.shop?._id}`}>
-                            <img src={shop.shop.avatar} alt="" className='w-10 h-10 rounded-full object-cover ml-4' />
-                        </Link>
+            
+            <div className="flex items-center gap-2 md:gap-3">
+                
+                <Link
+                    to={`/shop/${shop.shop._id}`}
+                    title="View Public Shop"
+                    className="hidden md:flex w-9 h-9 items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+                >
+                    <IoStorefrontOutline size={18} />
+                </Link>
+
+                
+                <div className="hidden md:block w-px h-6 bg-white/20 mx-1" />
+
+                
+                <Link to={`/shop/${shop.shop._id}`} className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-xl overflow-hidden border-2 border-white/30">
+                        <img src={shop.shop.avatar} alt={shop.shop.name} className="w-full h-full object-cover" />
                     </div>
-                </div>
-            }
-        </>
+                    <div className="hidden md:block">
+                        <p className="text-xs font-bold text-white leading-tight">{shop.shop.name}</p>
+                        <p className="text-[10px] text-sky-100">Seller</p>
+                    </div>
+                </Link>
+            </div>
+        </div>
     );
 };
 

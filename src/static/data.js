@@ -222,20 +222,20 @@ export const navItems = [
       title: "Shoes",
       subTitle: "",
       image_Url:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBQPQMVNRd6TtDkGs2dCri0Y-rxKkFOiEWw&usqp=CAU",
+        "https://i.postimg.cc/SQtgNNw3/shoe.png",
     },
     {
       id: 6,
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+        "https://i.postimg.cc/WzXLhLcr/gift.jpg",
     },
     {
       id: 7,
       title: "Pet Care",
       subTitle: "",
-      image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+      image_Url: "https://logowik.com/content/uploads/images/animal-care-pet91179.logowik.com.webp",
     },
     {
       id: 8,
@@ -676,4 +676,13 @@ export const navItems = [
       answer: " We accept visa,mastercard,paypal payment method also we have cash on delivery system."
     },
   ];
+
+
+  export const brands = [
+    { name: "Sony", url: "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo.png" },
+    { name: "Dell", url: "https://logos-world.net/wp-content/uploads/2020/08/Dell-Logo-1989-2016.png" },
+    { name: "LG", url: "https://i.postimg.cc/rwqjf0WS/lg.png" },
+    { name: "Apple", url: "https://i.postimg.cc/3NnN7cLf/Apple-Logo.png" },
+    { name: "Samsung", url: "https://i.postimg.cc/PqVkXkTG/samsung.png" },
+];
   

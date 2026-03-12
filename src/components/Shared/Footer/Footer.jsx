@@ -4,78 +4,103 @@ import {
     AiFillYoutube,
     AiOutlineTwitter,
 } from "react-icons/ai";
-import { footerProductLinks, footerSupportLinks, footercompanyLinks } from '../../../static/data';
 import { Link } from 'react-router-dom';
+import { footerProductLinks, footerSupportLinks, footercompanyLinks } from '../../../static/data';
 
 const Footer = () => {
     return (
-        <div className='bg-black w-full'>
-            <div className='bg-teal-500 w-full block md:flex justify-between items-center py-10 px-8'>
-                <p className='text-white text-2xl md:text-3xl font-medium leading-10'><span className='text-gray-800'>Subscribe</span> us for get news <br /> events and offers</p>
-                <div>
-                    <input type="email" placeholder='Enter your email' className='h-10 w-52 md:w-60 px-2 rounded-md placeholder:font-medium focus:outline-gray-600' />
-                    <button className='w-fit px-3 py-2 mx-2 rounded-md bg-black text-white font-medium'>Submit</button>
+        <div className="w-full bg-gray-950">
+            
+            <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-teal-500 w-full">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-8 md:px-12 py-10">
+                    <div>
+                        <p className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight">
+                            Subscribe for news,<br className="hidden md:block" /> events &amp; offers
+                        </p>
+                        <p className="text-emerald-100 text-sm mt-1 font-medium">Join thousands of happy customers.</p>
+                    </div>
+                    <div className="flex items-center gap-2 w-full md:w-auto">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="flex-1 md:w-64 h-11 px-4 rounded-xl bg-white/15 backdrop-blur-sm border border-white/30 text-white placeholder:text-white/60 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/20 transition-all duration-200"
+                        />
+                        <button className="h-11 px-5 bg-gray-900 hover:bg-gray-800 text-white text-sm font-bold rounded-xl transition-colors duration-200 whitespace-nowrap active:scale-95">
+                            Subscribe
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div className='w-full px-8 pt-12 pb-12 lg:pb-8 '>
-                <div className='block lg:flex'>
-                    <div className='w-full lg:w-1/4 text-white text-center lg:text-start lg:px-4 px-0 pb-10 lg:pb-0'>
-                        <p className='text-3xl font-bold'>Panda-Chat</p>
-                        <p className='text-sm pt-5 pb-4'>The home and elements needed to <br /> create beautiful products.</p>
-                        <div className='flex items-center justify-center lg:justify-start'>
-                            <AiFillFacebook size={25} className="cursor-pointer" />
-                            <AiOutlineTwitter size={25} className='ml-[15px] cursor-pointer' />
-                            <AiFillInstagram size={25} className='ml-[15px] cursor-pointer' />
-                            <AiFillYoutube size={25} className='ml-[15px] cursor-pointer' />
+            
+            <div className="max-w-7xl mx-auto px-8 md:px-12 pt-14 pb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-800">
+                    
+                    <div className="lg:col-span-1">
+                        <p className="text-2xl font-black text-white tracking-tight">
+                            Panda<span className="text-emerald-400">Shop</span>
+                        </p>
+                        <p className="text-gray-400 text-sm mt-3 mb-5 leading-relaxed">
+                            The home and elements needed to create beautiful products.
+                        </p>
+                        <div className="flex items-center gap-3">
+                            {[
+                                { Icon: AiFillFacebook, label: "Facebook" },
+                                { Icon: AiOutlineTwitter, label: "Twitter" },
+                                { Icon: AiFillInstagram, label: "Instagram" },
+                                { Icon: AiFillYoutube, label: "YouTube" },
+                            ].map(({ Icon, label }) => (
+                                <button
+                                    key={label}
+                                    title={label}
+                                    className="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-800 hover:bg-emerald-500 text-gray-400 hover:text-white transition-all duration-200"
+                                >
+                                    <Icon size={18} />
+                                </button>
+                            ))}
                         </div>
                     </div>
 
-                    <div className='w-full lg:w-3/4'>
-                        <div className='block lg:flex justify-around'>
-                            <ul className='text-center lg:text-start pb-10 lg:pb-0'>
-                                <h1 className='text-lg font-semibold text-white'>Company</h1>
-                                {footerProductLinks && footerProductLinks.map((i, index) => (
-                                    <li key={index}>
-                                        <Link to={i.link} className='text-gray-500 leading-6 text-sm font-medium'>
-                                            {i.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <ul className='text-center lg:text-start pb-10 lg:pb-0'>
-                                <h1 className='text-lg font-semibold text-white'>Shop</h1>
-                                {footercompanyLinks && footercompanyLinks.map((i, index) => (
-                                    <li key={index}>
-                                        <Link to={i.link} className='text-gray-500 leading-6 text-sm font-medium'>
-                                            {i.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <ul className='text-center lg:text-start pb-10 lg:pb-0'>
-                                <h1 className='text-lg font-semibold text-white'>Support</h1>
-                                {footerSupportLinks && footerSupportLinks.map((i, index) => (
-                                    <li key={index}>
-                                        <Link to={i.link} className='text-gray-500 leading-6 text-sm font-medium'>
-                                            {i.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    
+                    <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        {[
+                            { heading: "Company", links: footerProductLinks },
+                            { heading: "Shop", links: footercompanyLinks },
+                            { heading: "Support", links: footerSupportLinks },
+                        ].map(({ heading, links }) => (
+                            <div key={heading}>
+                                <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-4">
+                                    {heading}
+                                </h3>
+                                <ul className="space-y-2.5">
+                                    {links && links.map((i, index) => (
+                                        <li key={index}>
+                                            <Link
+                                                to={i.link}
+                                                className="text-gray-400 hover:text-emerald-400 text-sm font-medium transition-colors duration-150"
+                                            >
+                                                {i.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                <div className='block lg:flex justify-around items-center pt-6 lg:pt-[56px] text-center lg:text-start'>
-                    <div className='pb-4 lg:pb-0 flex justify-center'>
-                        <img src="https://hamart-shop.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffooter-payment.a37c49ac.png&w=640&q=75" alt="" className='' />
-                    </div>
-                    <p className='text-gray-500 text-sm font-medium py-2 lg:py-0'>Terms · Privacy Policy</p>
-                    <p className='text-gray-500 text-sm font-medium py-2 lg:py-0'>© {new Date().getFullYear()} No-One, All rights reserved.</p>
-
+                
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-7">
+                    
+                    <img
+                        src="https://hamart-shop.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffooter-payment.a37c49ac.png&w=640&q=75"
+                        alt="Payment methods"
+                        className="h-8 object-contain opacity-60"
+                    />
+                    <p className="text-gray-500 text-sm font-medium">Terms · Privacy Policy</p>
+                    <p className="text-gray-500 text-sm font-medium">
+                        © {new Date().getFullYear()} PandaShop, All rights reserved.
+                    </p>
                 </div>
             </div>
         </div>
