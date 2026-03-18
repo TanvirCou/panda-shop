@@ -17,6 +17,7 @@ const ShopRegister = ({ setActive }) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [file, setFile] = useState(null);
     const [avatar, setAvatar] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleFile = (pics) => {
         setAvatar(pics);
@@ -43,6 +44,7 @@ const ShopRegister = ({ setActive }) => {
         } else {
             const data = { name, email, password, phoneNumber, address, zipCode, avatar: file };
             try {
+                setLoading(true);
                 const res = await axios.post("https://panda-shop-server-production.up.railway.app/api/shop/shop-register", data);
                 toast.success(res.data.message);
                 setName("");
@@ -56,6 +58,8 @@ const ShopRegister = ({ setActive }) => {
                 setActive(true);
             } catch (err) {
                 toast.error(err.response.data.message);
+            } finally {
+                setLoading(false);
             }
         }
     };
@@ -155,9 +159,17 @@ const ShopRegister = ({ setActive }) => {
             
             <button
                 type="submit"
-                className="w-full h-11 mt-2 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-white text-sm font-bold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98]"
+                disabled={loading}
+                className="w-full h-11 mt-2 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-white text-sm font-bold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             >
-                Create My Shop
+                {loading ? (
+                    <svg className='animate-spin h-5 w-5 text-white' viewBox='0 0 24 24' fill='none'>
+                        <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4' />
+                        <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z' />
+                    </svg>
+                ) : (
+                    "Create My Shop"
+                )}
             </button>
         </form>
     );

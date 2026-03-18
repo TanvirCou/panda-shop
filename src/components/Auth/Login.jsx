@@ -20,6 +20,7 @@ const Login = () => {
   const [passShow, setPassShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await axios.post(
         "https://panda-shop-server-production.up.railway.app/api/user/login",
         { email, password },
@@ -47,6 +49,8 @@ const Login = () => {
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,10 +127,56 @@ const Login = () => {
       
       <button
         type="submit"
-        className="w-full h-11 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-200/60 hover:shadow-emerald-300/70 active:scale-[0.985] transition-all duration-200 tracking-wide"
+        disabled={loading}
+        className="w-full h-11 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-semibold text-sm rounded-xl shadow-md shadow-emerald-200/60 hover:shadow-emerald-300/70 active:scale-[0.985] disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-200 tracking-wide flex items-center justify-center"
       >
-        Sign In →
+        {loading ? (
+            <svg className='animate-spin h-5 w-5 text-white' viewBox='0 0 24 24' fill='none'>
+                <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4' />
+                <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z' />
+            </svg>
+        ) : (
+            "Sign In →"
+        )}
       </button>
+
+      <div className="relative flex items-center justify-center pb-2">
+        <div className="absolute inset-x-0 mt-3 flex items-center">
+          <div className="w-full border-t border-gray-200" />
+        </div>
+        <div className="relative px-4 bg-white text-[10px] font-bold tracking-wider text-gray-400 uppercase mt-3">
+          For Recruiters
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mt-4">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            setEmail("kazi.tanvir.cou@gmail.com");
+            setPassword("tanvir1234");
+            toast.info("Demo User loaded! Click Sign In.");
+          }}
+          className="w-full h-[42px] bg-white hover:bg-emerald-50 text-emerald-600 border border-emerald-100 text-xs font-bold rounded-xl shadow-sm transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-[0.98]"
+        >
+          <IoEye size={16} />
+          Demo User
+        </button>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            setEmail("ahmed.tnvr999@gmail.com");
+            setPassword("tanvir1234");
+            toast.info("Demo Admin loaded! Click Sign In.");
+          }}
+          className="w-full h-[42px] bg-white hover:bg-teal-50 text-teal-600 border border-teal-100 text-xs font-bold rounded-xl shadow-sm transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-[0.98]"
+        >
+          <IoEye size={16} />
+          Demo Admin
+        </button>
+      </div>
     </form>
   );
 };

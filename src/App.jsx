@@ -15,6 +15,7 @@ import AdminAllUsers from "./pages/Admin/AdminAllUsers";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminSettings from "./pages/Admin/AdminSettings";
 import AdminWithdrawRequest from "./pages/Admin/AdminWithdrawRequest";
+import AISearchPage from "./pages/AISearchPage/AISearchPage";
 import Auth from "./pages/Auth/Auth";
 import BestSelling from "./pages/BestSelling/BestSelling";
 import Checkout from "./pages/Checkout/Checkout";
@@ -111,6 +112,7 @@ function App() {
         <Route path='/product/:id' element={<ProductInformation />} />
         <Route path='/best-selling' element={<BestSelling />} />
         <Route path='/events' element={<Events />} />
+        <Route path='/ai-assistant' element={<AISearchPage />} />
         <Route path='/faq' element={<FAQ />} />
         <Route path='/auth' element={<Auth />} />
         <Route path='/activation/:token' element={<ActivationPage />} />

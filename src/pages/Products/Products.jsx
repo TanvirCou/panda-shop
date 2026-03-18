@@ -16,7 +16,7 @@ const Products = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Header activeHeading={3} />
+            <Header activeHeading={4} />
             <AllProducts />
             <Footer />
         </div>

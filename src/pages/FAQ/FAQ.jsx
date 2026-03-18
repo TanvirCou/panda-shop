@@ -11,7 +11,7 @@ const FAQ = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Header activeHeading={5} />
+            <Header activeHeading={6} />
             <Faq />
             <Footer />
         </div>

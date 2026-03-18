@@ -5,6 +5,10 @@ export const navItems = [
       url: "/",
     },
     {
+      title: "AI Assistant",
+      url: "/ai-assistant",
+    },
+    {
       title: "Best Selling",
       url: "/best-selling",
     },

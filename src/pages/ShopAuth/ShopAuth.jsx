@@ -92,10 +92,10 @@ const ShopAuth = () => {
                 <div className="w-full max-w-[440px] my-auto">
                     
                     <div className="mb-7">
-                        <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+                        <h1 className="text-2xl text-center lg:text-left font-bold text-gray-900 tracking-tight">
                             {active ? "Welcome back, Seller" : "Open your store"}
                         </h1>
-                        <p className="text-sm text-gray-400 mt-1">
+                        <p className="text-sm text-gray-400 mt-1 text-center lg:text-left">
                             {active
                                 ? "Sign in to access your seller dashboard."
                                 : "Fill in the details below to create your shop."}

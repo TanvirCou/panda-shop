@@ -1,4 +1,4 @@
-# 🛒 PandaShop — Full-Stack Multi-Vendor E-Commerce Platform
+# 🛒 PandaShop — AI-Powered Multi-Vendor E-Commerce Platform
 
 [![React](https://img.shields.io/badge/React-18-blue)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-purple)](https://vitejs.dev/)
@@ -8,7 +8,7 @@
 ## Overview
 
 **PandaShop** is a full-featured multi-vendor e-commerce web application built with React 18, Vite, and Tailwind CSS.
-It implements complete user authentication, product management, order processing, event listings, and role-based dashboards for **Users**, **Shop Owners**, and **Administrators**.
+It implements an advanced **AI-powered Shopping Assistant** alongside complete user authentication, product management, order processing, event listings, and role-based dashboards for **Users**, **Shop Owners**, and **Administrators**.
 
 ---
 
@@ -89,6 +89,12 @@ For testing the application with different roles:
 
 ### 🛍️ Shopping Experience
 
+- **✨ AI Shopping Assistant (New)**
+  - Advanced conversational semantic search powered by Google's **Gemini AI**.
+  - Analyzes natural language constraints (e.g. "Gaming laptops under $1000") and identifies user intent.
+  - Utilizes backend **In-Memory Cosine Similarity** mathematics against vector embeddings to rank and return the most semantically relevant products.
+  - Beautiful, dynamic split-component interface with loading states and intent analysis chips.
+
 - **Home Page**
   - **Product Search** — Search with keyword filtering
   - **Category Navigation** — Filter products by category
@@ -163,6 +169,10 @@ For testing the application with different roles:
 
 ![Home Page Screenshot](https://i.postimg.cc/KvDCp69D/panda-shop-homepage.jpg)
 
+### AI Shopping Assistant
+
+![AI Shopping Assistant Screenshot](https://i.postimg.cc/J0y82GhM/ai-assistant-shopping.jpg)
+
 ### Product Details
 
 ![Product Details Screenshot](https://i.postimg.cc/KYxPqWHq/panda-shop-product-details.jpg)
@@ -186,7 +196,7 @@ For testing the application with different roles:
 | **State Management** | React-Redux 9.0.4 |
 | **Routing** | React Router DOM v6 6.21.1 |
 | **HTTP Client** | Axios 1.6.4 |
-| **Animations** | Lottie (react-lottie) 1.2.4 |
+| **Animations** | Lottie (react-lottie 1.2.4) |
 | **Charts** | Recharts 3.8.0 |
 | **Notifications** | React Toastify 9.1.3 |
 | **Icons** | React Icons 4.12.0 |
@@ -201,6 +211,7 @@ For testing the application with different roles:
 **src/App.jsx** — Main app component with routing logic  
 **src/index.css** — Global CSS file  
 **src/components/** — UI components  
+**src/hooks/** — Custom React hooks  
 **src/pages/** — Core page-level components corresponding to application routes  
 **src/redux/** — Redux Toolkit store configuration and feature-based state management  
 **src/Routes/** — Custom route modules for protected and role-based navigation  
@@ -234,11 +245,11 @@ npm run dev       # or yarn dev / pnpm dev
 ## 🔮 Future Enhancements
 
 - **Real Payment Gateway Integration** — Integrate Stripe, SSLCommerz, or PayPal for real transactions
+- **AI Vendor Assistant** — Generative AI tool to help sellers auto-generate SEO-optimized product descriptions and titles
 - **Product Comparison** — Side-by-side comparison of multiple products
 - **Live Chat Support** — Real-time communication between buyers and sellers
 - **Multi-language Support (i18n)** — Support for Bangla, English, and other languages
 - **Push Notifications** — Order updates and promotional alerts
-- **Product Recommendations** — AI-powered personalized suggestions
 - **Mobile App** — React Native companion application
 - **Light/Dark Mode Theme** — Support for user-controlled theme switching
 

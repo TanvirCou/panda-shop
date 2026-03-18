@@ -7,6 +7,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { RxAvatar, RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDebounce } from "../../../hooks/useDebounce";
 import { categoriesData } from "../../../static/data";
 import Cart from "../Cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
@@ -27,13 +28,17 @@ const Header = ({ activeHeading }) => {
     const { allProducts } = useSelector(state => state.product);
     const { wishList } = useSelector(state => state.wishList);
 
-    const handleSearch = (e) => {
-        const term = e.target.value;
-        setSearch(term);
+    const debouncedFilter = useDebounce((term) => {
         const filteredData = allProducts && allProducts.allProducts.filter((product) =>
             product.name.toLowerCase().includes(term.toLowerCase())
         );
         setSearchData(filteredData);
+    }, 300);
+
+    const handleSearch = (e) => {
+        const term = e.target.value;
+        setSearch(term);
+        debouncedFilter(term);
     };
 
     useEffect(() => {
@@ -50,7 +55,7 @@ const Header = ({ activeHeading }) => {
     }, []);
 
     const { user, isAuthenticated } = useSelector(state => state.user);
-    console.log(user);
+    // console.log(user);
 
     return (
         <div>

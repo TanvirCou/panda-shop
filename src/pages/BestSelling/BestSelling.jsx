@@ -16,7 +16,7 @@ const BestSelling = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Header activeHeading={2} />
+            <Header activeHeading={3} />
             <BestSellingProduct />
             <Footer />
         </div>

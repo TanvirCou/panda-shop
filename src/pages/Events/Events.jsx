@@ -16,7 +16,7 @@ const Events = () => {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <Header activeHeading={4} />
+            <Header activeHeading={5} />
 
             <div className="mx-4 md:mx-12 pt-[90px] md:pt-8 mb-12">
                 

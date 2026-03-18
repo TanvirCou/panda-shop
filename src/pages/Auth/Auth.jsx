@@ -89,10 +89,10 @@ const Auth = () => {
         <div className="w-full max-w-[400px] my-auto">
           
           <div className="mb-7">
-            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+            <h1 className="text-2xl font-bold text-gray-900 tracking-tight text-center lg:text-left">
               {active ? "Welcome back" : "Create an account"}
             </h1>
-            <p className="text-sm text-gray-400 mt-1">
+            <p className="text-sm text-gray-400 mt-1 text-center lg:text-left">
               {active
                 ? "Sign in to access your account."
                 : "Fill in the details below to get started."}
