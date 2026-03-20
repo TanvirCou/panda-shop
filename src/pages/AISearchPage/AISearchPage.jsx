@@ -46,7 +46,7 @@ const AISearchPage = () => {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Header activeHeading={2} />
 
-            <div className="flex-1 w-full bg-gradient-to-br from-emerald-50 via-white to-teal-0 pt-24 md:pt-16 pb-20 mx-4 md:mx-12">
+            <div className="flex-1 w-full bg-gradient-to-br from-emerald-50 via-white to-teal-0 pt-24 md:pt-16 pb-5 md:pb-10 px-4 md:px-12">
                 <div className="max-w-7xl mx-auto">
                     
                     <div className="text-center mb-12">
