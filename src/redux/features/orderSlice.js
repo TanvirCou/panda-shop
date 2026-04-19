@@ -5,7 +5,7 @@ export const fetchOrder = createAsyncThunk(
   "order/fetchOrder",
   async (userId) => {
     const res = await axios.get(
-      `https://panda-shop-server-production.up.railway.app/api/order/get-all-orders/${userId}`
+      `https://panda-shop-server-production-v2.up.railway.app/api/order/get-all-orders/${userId}`
     );
     return res.data;
   }
@@ -15,7 +15,7 @@ export const fetchShopOrder = createAsyncThunk(
   "order/fetchShopOrder",
   async (shopId) => {
     const res = await axios.get(
-      `https://panda-shop-server-production.up.railway.app/api/order/get-shop-all-orders/${shopId}`
+      `https://panda-shop-server-production-v2.up.railway.app/api/order/get-shop-all-orders/${shopId}`
     );
     return res.data;
   }
@@ -25,7 +25,7 @@ export const fetchAdminOrder = createAsyncThunk(
   "order/fetchAdminOrder",
   async () => {
     const res = await axios.get(
-      `https://panda-shop-server-production.up.railway.app/api/order/admin-all-orders`,
+      `https://panda-shop-server-production-v2.up.railway.app/api/order/admin-all-orders`,
       { withCredentials: true }
     );
     return res.data;

@@ -4,9 +4,9 @@ import { AiOutlineLock, AiOutlineShopping } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa6";
 import { HiReceiptRefund } from "react-icons/hi";
 import {
-    IoLogOutOutline,
-    IoMapOutline,
-    IoPersonOutline,
+  IoLogOutOutline,
+  IoMapOutline,
+  IoPersonOutline,
 } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,9 +30,12 @@ const ProfileSidebar = ({ active, setActive }) => {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/user/logout", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://panda-shop-server-production-v2.up.railway.app/api/user/logout",
+        {
+          withCredentials: true,
+        }
+      );
       toast.success(res.data.message);
       dispatch(fetchUser());
       navigate("/");
@@ -42,9 +45,8 @@ const ProfileSidebar = ({ active, setActive }) => {
   };
 
   return (
-    <div className="sticky top-0">
-      
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className='sticky top-0'>
+      <div className='bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden'>
         {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
@@ -55,31 +57,40 @@ const ProfileSidebar = ({ active, setActive }) => {
                 : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
             }`}
           >
-            <Icon size={18} className={active === id ? "text-emerald-600" : "text-gray-400"} />
-            <span className={`hidden md:block text-sm font-semibold ${active === id ? "text-emerald-700" : ""}`}>
+            <Icon
+              size={18}
+              className={active === id ? "text-emerald-600" : "text-gray-400"}
+            />
+            <span
+              className={`hidden md:block text-sm font-semibold ${
+                active === id ? "text-emerald-700" : ""
+              }`}
+            >
               {label}
             </span>
             {active === id && (
-              <span className="ml-auto hidden md:block w-1.5 h-5 bg-emerald-500 rounded-full" />
+              <span className='ml-auto hidden md:block w-1.5 h-5 bg-emerald-500 rounded-full' />
             )}
           </button>
         ))}
 
         {user?.user?.role === "Admin" && (
-          <Link to="/admin/dashboard">
-            <div className="flex items-center gap-3 px-4 py-3.5 border-t border-gray-50 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all">
-              <MdOutlineDashboard size={18} className="text-gray-400" />
-              <span className="hidden md:block text-sm font-semibold">Dashboard</span>
+          <Link to='/admin/dashboard'>
+            <div className='flex items-center gap-3 px-4 py-3.5 border-t border-gray-50 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-all'>
+              <MdOutlineDashboard size={18} className='text-gray-400' />
+              <span className='hidden md:block text-sm font-semibold'>
+                Dashboard
+              </span>
             </div>
           </Link>
         )}
 
         <button
           onClick={logoutHandler}
-          className="w-full flex items-center gap-3 px-4 py-3.5 border-t border-gray-100 text-red-500 hover:bg-red-50 transition-all"
+          className='w-full flex items-center gap-3 px-4 py-3.5 border-t border-gray-100 text-red-500 hover:bg-red-50 transition-all'
         >
           <IoLogOutOutline size={18} />
-          <span className="hidden md:block text-sm font-semibold">Logout</span>
+          <span className='hidden md:block text-sm font-semibold'>Logout</span>
         </button>
       </div>
     </div>

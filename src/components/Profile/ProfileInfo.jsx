@@ -7,14 +7,16 @@ import { fetchUser } from "../../redux/features/userSlice";
 import LoadingAnimation from "../Loader/LoadingAnimation";
 
 const Field = ({ label, type, value, onChange, placeholder }) => (
-  <div className="flex flex-col gap-1.5">
-    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">{label}</label>
+  <div className='flex flex-col gap-1.5'>
+    <label className='text-xs font-bold text-gray-500 uppercase tracking-wide'>
+      {label}
+    </label>
     <input
       type={type}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="h-11 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+      className='h-11 px-4 rounded-xl border border-gray-200 bg-gray-50 text-sm font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all'
     />
   </div>
 );
@@ -52,7 +54,7 @@ const ProfileInfo = () => {
     const userData = { name, email, phoneNumber, password, avatar: file };
     try {
       const res = await axios.put(
-        "https://panda-shop-server-production.up.railway.app/api/user/update-user-info",
+        "https://panda-shop-server-production-v2.up.railway.app/api/user/update-user-info",
         userData,
         { withCredentials: true }
       );
@@ -69,72 +71,75 @@ const ProfileInfo = () => {
   if (isLoading) return <LoadingAnimation />;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-      <h2 className="text-xl font-bold text-gray-900 mb-6">My Profile</h2>
+    <div className='bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8'>
+      <h2 className='text-xl font-bold text-gray-900 mb-6'>My Profile</h2>
 
-      
-      <div className="flex items-center gap-5 mb-8 pb-8 border-b border-gray-100">
-        <div className="relative flex-shrink-0">
+      <div className='flex items-center gap-5 mb-8 pb-8 border-b border-gray-100'>
+        <div className='relative flex-shrink-0'>
           <img
             src={avatar ? URL.createObjectURL(avatar) : user?.user?.avatar}
             alt={user?.user?.name}
-            className="w-24 h-24 rounded-2xl object-cover ring-4 ring-emerald-50"
+            className='w-24 h-24 rounded-2xl object-cover ring-4 ring-emerald-50'
           />
           <label
-            htmlFor="avatar"
-            className="absolute -bottom-2 -right-2 w-8 h-8 bg-gray-900 hover:bg-emerald-600 text-white rounded-xl flex items-center justify-center cursor-pointer transition-colors shadow-md"
+            htmlFor='avatar'
+            className='absolute -bottom-2 -right-2 w-8 h-8 bg-gray-900 hover:bg-emerald-600 text-white rounded-xl flex items-center justify-center cursor-pointer transition-colors shadow-md'
           >
             <MdOutlinePermMedia size={14} />
             <input
-              type="file"
-              name="avatar"
-              id="avatar"
-              className="sr-only"
+              type='file'
+              name='avatar'
+              id='avatar'
+              className='sr-only'
               onChange={(e) => handleFile(e.target.files[0])}
             />
           </label>
         </div>
         <div>
-          <p className="font-bold text-gray-900 text-lg">{user?.user?.name}</p>
-          <p className="text-sm text-gray-500">{user?.user?.email}</p>
-          <p className="text-xs text-gray-400 mt-1">Click the camera icon to update your photo</p>
+          <p className='font-bold text-gray-900 text-lg'>{user?.user?.name}</p>
+          <p className='text-sm text-gray-500'>{user?.user?.email}</p>
+          <p className='text-xs text-gray-400 mt-1'>
+            Click the camera icon to update your photo
+          </p>
         </div>
       </div>
 
-      
-      <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <form
+        onSubmit={handleUpdate}
+        className='grid grid-cols-1 md:grid-cols-2 gap-5'
+      >
         <Field
-          label="Full Name"
-          type="text"
+          label='Full Name'
+          type='text'
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Enter your full name"
+          placeholder='Enter your full name'
         />
         <Field
-          label="Email Address"
-          type="email"
+          label='Email Address'
+          type='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
+          placeholder='Enter your email'
         />
         <Field
-          label="Phone Number"
-          type="number"
+          label='Phone Number'
+          type='number'
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="Enter your phone number"
+          placeholder='Enter your phone number'
         />
         <Field
-          label="Password (to confirm changes)"
-          type="password"
+          label='Password (to confirm changes)'
+          type='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter your password"
+          placeholder='Enter your password'
         />
-        <div className="md:col-span-2 pt-2">
+        <div className='md:col-span-2 pt-2'>
           <button
-            type="submit"
-            className="px-8 py-3 bg-gray-900 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-emerald-200/50"
+            type='submit'
+            className='px-8 py-3 bg-gray-900 hover:bg-emerald-600 text-white text-sm font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-emerald-200/50'
           >
             Save Changes
           </button>

@@ -32,7 +32,9 @@ const ShopHome = () => {
     setShopLoading(true);
     const getShop = async () => {
       try {
-        const res = await axios.get(`https://panda-shop-server-production.up.railway.app/api/shop/get-shop-info/${id}`);
+        const res = await axios.get(
+          `https://panda-shop-server-production-v2.up.railway.app/api/shop/get-shop-info/${id}`
+        );
         setData(res.data);
         setShopLoading(false);
       } catch (error) {
@@ -48,32 +50,30 @@ const ShopHome = () => {
     dispatch(fetchEvent(id));
   }, [id, dispatch]);
 
-  const isLoading = loading || shopLoading || isProductLoading || isEventLoading;
+  const isLoading =
+    loading || shopLoading || isProductLoading || isEventLoading;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className='min-h-screen flex flex-col bg-gray-50'>
       <Header />
 
       {isLoading ? (
-        <div className="flex-1 flex items-center justify-center">
+        <div className='flex-1 flex items-center justify-center'>
           <LoadingAnimation />
         </div>
       ) : (
-        <main className="flex-1 pt-[50px] md:pt-0">
-          
-          <div className="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-teal-500 h-2" />
+        <main className='flex-1 pt-[50px] md:pt-0'>
+          <div className='w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-teal-500 h-2' />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-            <div className="flex flex-col md:flex-row gap-6">
-              
-              <aside className="w-full md:w-[280px] lg:w-[300px] flex-shrink-0">
-                <div className="md:sticky md:top-6">
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8'>
+            <div className='flex flex-col md:flex-row gap-6'>
+              <aside className='w-full md:w-[280px] lg:w-[300px] flex-shrink-0'>
+                <div className='md:sticky md:top-6'>
                   <ShopInfo data={data} products={products} id={id} />
                 </div>
               </aside>
 
-              
-              <div className="flex-1 min-w-0">
+              <div className='flex-1 min-w-0'>
                 <ShopData products={products} events={events} id={id} />
               </div>
             </div>

@@ -59,7 +59,7 @@ function App() {
 
   const getStripeApiKey = async () => {
     const res = await axios.get(
-      "https://panda-shop-server-production.up.railway.app/api/payment/stripe-api-key"
+      "https://panda-shop-server-production-v2.up.railway.app/api/payment/stripe-api-key"
     );
     setStripeApiKey(res.data.stripeApiKey);
   };
@@ -79,7 +79,7 @@ function App() {
   // useEffect(() => {
   //  const getUser = async() => {
   //   try {
-  //     const res = await axios.get("https://panda-shop-server-production.up.railway.app/api/user/get", {withCredentials: true});
+  //     const res = await axios.get("https://panda-shop-server-production-v2.up.railway.app/api/user/get", {withCredentials: true});
   //     toast.success(res.data.message);
   //   } catch(err) {
   //     console.log(err);
@@ -146,7 +146,10 @@ function App() {
 
         <Route path='/shop-auth' element={<ShopAuth />} />
         <Route path='/shop/forgot-password' element={<ShopForgotPassword />} />
-        <Route path='/shop/reset-password/:token' element={<ShopResetPassword />} />
+        <Route
+          path='/shop/reset-password/:token'
+          element={<ShopResetPassword />}
+        />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/reset-password/:token' element={<ResetPassword />} />
         <Route path='/shop/:id' element={<ShopHome />} />
