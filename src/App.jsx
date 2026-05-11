@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AiChatbot from "./components/AiChatbot/AiChatbot";
 import ActivationPage from "./pages/ActivationPage/ActivationPage";
 import AdminAllEvents from "./pages/Admin/AdminAllEvents";
 import AdminAllOrders from "./pages/Admin/AdminAllOrders";
@@ -342,6 +343,7 @@ function App() {
         pauseOnHover
         theme='dark'
       />
+      <AiChatbot />
     </BrowserRouter>
   );
 }

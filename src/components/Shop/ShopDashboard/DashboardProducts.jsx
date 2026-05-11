@@ -5,7 +5,7 @@ import { FiArrowRight, FiEye, FiPlus, FiSearch } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { fetchProduct } from "../../../redux/features/productSlice";
+import { fetchAllProduct, fetchProduct } from "../../../redux/features/productSlice";
 import LoadingAnimation from "../../Loader/LoadingAnimation";
 
 const DashboardProducts = () => {
@@ -27,6 +27,7 @@ const DashboardProducts = () => {
       );
       toast.success(res.data.message);
       dispatch(fetchProduct(shop?.shop._id));
+      dispatch(fetchAllProduct());
     } catch (error) {
       toast.error(error.response?.data?.message || "Delete failed");
     } finally {

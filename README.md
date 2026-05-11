@@ -8,7 +8,7 @@
 ## Overview
 
 **PandaShop** is a full-featured multi-vendor e-commerce web application built with React 18, Vite, and Tailwind CSS.
-It implements an advanced **AI-powered Shopping Assistant** alongside complete user authentication, product management, order processing, event listings, and role-based dashboards for **Users**, **Shop Owners**, and **Administrators**.
+It implements an advanced **AI-powered Shopping Assistant** and a global **AI Chatbot**, alongside complete user authentication, product management, order processing, event listings, and role-based dashboards for **Users**, **Shop Owners**, and **Administrators**.
 
 ---
 
@@ -22,6 +22,7 @@ It implements an advanced **AI-powered Shopping Assistant** alongside complete u
 
 - **Client (This Repo):** [Frontend Repository](https://github.com/TanvirCou/panda-shop)
 - **Server:** [Backend Repository](https://github.com/TanvirCou/panda-shop-server)
+- **n8n Automation:** [n8n Workflows Repository](https://github.com/TanvirCou/n8n-automation-projects) *(Contains the **Panda-Bot** AI conversational workflow alongside other automation scripts)*
 
 ---
 
@@ -89,11 +90,19 @@ For testing the application with different roles:
 
 ### 🛍️ Shopping Experience
 
-- **✨ AI Shopping Assistant (New)**
-  - Advanced conversational semantic search powered by Google's **Gemini AI**.
+- **✨ AI Shopping Assistant**
+  - Advanced conversational semantic search powered by Google's **Gemini AI** and **Pinecone Vector Database**.
   - Analyzes natural language constraints (e.g. "Gaming laptops under $1000") and identifies user intent.
-  - Utilizes backend **In-Memory Cosine Similarity** mathematics against vector embeddings to rank and return the most semantically relevant products.
+  - Replaces manual in-memory cosine similarity with lightning-fast cloud vector retrieval, ranking the most semantically relevant products.
   - Beautiful, dynamic split-component interface with loading states and intent analysis chips.
+
+- **💬 AI Chatbot**
+  - A persistent, Messenger-style floating chatbot accessible globally on all pages.
+  - Uses `localStorage` to securely persist `sessionId` and chat history across page reloads and site navigation.
+  - Real-time Q&A using **Retrieval-Augmented Generation (RAG)** against rich product metadata and FAQs stored dynamically in Pinecone namespaces.
+  - Connected directly to a custom `n8n` webhook. 
+  - Graceful UI handling for Markdown responses, network connection failures, API quotas, and overloaded AI instances.
+  - Fully animated, responsive Tailwind UI with immediate scroll-to-bottom mechanics to mimic professional customer support chat widgets.
 
 - **Home Page**
   - **Product Search** — Search with keyword filtering
@@ -173,6 +182,10 @@ For testing the application with different roles:
 
 ![AI Shopping Assistant Screenshot](https://i.postimg.cc/J0y82GhM/ai-assistant-shopping.jpg)
 
+### AI Chatbot
+
+![AI Chatbot Screenshot](https://i.postimg.cc/44HyVbNq/ai-chatbot-pic.png)
+
 ### Product Details
 
 ![Product Details Screenshot](https://i.postimg.cc/KYxPqWHq/panda-shop-product-details.jpg)
@@ -238,16 +251,16 @@ npm install       # or yarn install / pnpm install
 npm run dev       # or yarn dev / pnpm dev
 ```
 
-> **Note:** The client requires the backend server to be running. See the [Backend Repository](https://github.com/TanvirCou/panda-shop-server) README for setup instructions.
+> **Note:** The client requires the backend Node.js server to be running for core features. See the [Backend Repository](https://github.com/TanvirCou/panda-shop-server) README for setup instructions. 
+> 
+> **AI Chatbot Note:** For the Interactive AI Chatbot to function locally, your standalone **n8n Automation Server** must also be active and connected. See the [n8n Workflows Repository](https://github.com/TanvirCou/n8n-automation-projects) for deployment instructions.
 
 ---
 
 ## 🔮 Future Enhancements
 
-- **Real Payment Gateway Integration** — Integrate Stripe, SSLCommerz, or PayPal for real transactions
 - **AI Vendor Assistant** — Generative AI tool to help sellers auto-generate SEO-optimized product descriptions and titles
 - **Product Comparison** — Side-by-side comparison of multiple products
-- **Live Chat Support** — Real-time communication between buyers and sellers
 - **Multi-language Support (i18n)** — Support for Bangla, English, and other languages
 - **Push Notifications** — Order updates and promotional alerts
 - **Mobile App** — React Native companion application

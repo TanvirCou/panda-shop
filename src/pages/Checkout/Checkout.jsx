@@ -1,7 +1,7 @@
 import {
-  CardNumberElement,
-  useElements,
-  useStripe,
+    CardNumberElement,
+    useElements,
+    useStripe,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useEffect, useState } from "react";

@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FiArrowLeft, FiArrowRight, FiPackage } from "react-icons/fi";
 import {
-  IoCallOutline,
-  IoCardOutline,
-  IoLocationOutline,
+    IoCallOutline,
+    IoCardOutline,
+    IoLocationOutline,
 } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";

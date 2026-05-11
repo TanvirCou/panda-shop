@@ -2,15 +2,15 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-  IoCallOutline,
-  IoCloudUploadOutline,
-  IoCodeSlashOutline,
-  IoEye,
-  IoEyeOff,
-  IoLocationOutline,
-  IoLockClosedOutline,
-  IoMailOutline,
-  IoStorefrontOutline,
+    IoCallOutline,
+    IoCloudUploadOutline,
+    IoCodeSlashOutline,
+    IoEye,
+    IoEyeOff,
+    IoLocationOutline,
+    IoLockClosedOutline,
+    IoMailOutline,
+    IoStorefrontOutline,
 } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
 import { toast } from "react-toastify";

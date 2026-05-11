@@ -3,18 +3,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import {
-  IoCartOutline,
-  IoShieldCheckmarkOutline,
-  IoStorefrontOutline,
-  IoSwapHorizontalOutline,
+    IoCartOutline,
+    IoShieldCheckmarkOutline,
+    IoStorefrontOutline,
+    IoSwapHorizontalOutline,
 } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addToCart } from "../../../redux/features/cartSlice";
 import {
-  addToWishList,
-  removeFromWishList,
+    addToWishList,
+    removeFromWishList,
 } from "../../../redux/features/wishListSlice";
 
 const ProductInfo = ({ data, eventData }) => {

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
-  IoAlertCircleOutline,
-  IoCheckmarkCircleOutline,
+    IoAlertCircleOutline,
+    IoCheckmarkCircleOutline,
 } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom";
 

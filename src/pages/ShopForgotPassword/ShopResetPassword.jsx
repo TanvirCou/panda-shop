@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-  IoArrowBackOutline,
-  IoEyeOffOutline,
-  IoEyeOutline,
-  IoLockClosedOutline,
+    IoArrowBackOutline,
+    IoEyeOffOutline,
+    IoEyeOutline,
+    IoLockClosedOutline,
 } from "react-icons/io5";
 import { Link, useNavigate, useParams } from "react-router-dom";
 

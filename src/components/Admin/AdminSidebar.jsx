@@ -3,9 +3,9 @@ import axios2 from "axios";
 import { FaShopify, FaUserFriends } from "react-icons/fa";
 import { FiLogOut, FiPackage, FiShoppingBag } from "react-icons/fi";
 import {
-  MdOutlineDashboard,
-  MdOutlineEvent,
-  MdOutlineSettings,
+    MdOutlineDashboard,
+    MdOutlineEvent,
+    MdOutlineSettings,
 } from "react-icons/md";
 import { PiMoney } from "react-icons/pi";
 import { useDispatch } from "react-redux";

@@ -4,7 +4,7 @@ import { FiPackage, FiX } from "react-icons/fi";
 import { LuImagePlus } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { fetchProduct } from "../../../redux/features/productSlice";
+import { fetchAllProduct, fetchProduct } from "../../../redux/features/productSlice";
 import { categoriesData } from "../../../static/data";
 
 const inputClass =
@@ -103,6 +103,7 @@ const CreateProduct = () => {
       );
       toast.success("Product created successfully!");
       dispatch(fetchProduct(shop.shop._id));
+      dispatch(fetchAllProduct());
       setName("");
       setDescription("");
       setCategory("");
