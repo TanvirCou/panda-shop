@@ -29,7 +29,7 @@ const AISearchPage = () => {
       setProducts([]);
 
       const res = await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/ai/search",
+        "https://panda-shop-server-production-v3.up.railway.app/api/ai/search",
         { prompt }
       );
 

@@ -60,7 +60,7 @@ const Checkout = () => {
     const name = couponCode;
 
     const res = await axios.get(
-      `https://panda-shop-server-production-v2.up.railway.app/api/coupon-code/get-coupon-value/${name}`
+      `https://panda-shop-server-production-v3.up.railway.app/api/coupon-code/get-coupon-value/${name}`
     );
 
     const shopId = res.data.couponCode?.shopId;
@@ -181,7 +181,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/order/create-order",
+        "https://panda-shop-server-production-v3.up.railway.app/api/order/create-order",
         order
       );
       toast.success("order successfully");
@@ -203,7 +203,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/payment/process",
+        "https://panda-shop-server-production-v3.up.railway.app/api/payment/process",
         paymentData
       );
 
@@ -229,7 +229,7 @@ const Checkout = () => {
           };
 
           const res = await axios.post(
-            "https://panda-shop-server-production-v2.up.railway.app/api/order/create-order",
+            "https://panda-shop-server-production-v3.up.railway.app/api/order/create-order",
             order
           );
           toast.success("order successfully");
@@ -260,7 +260,7 @@ const Checkout = () => {
 
     try {
       const res = await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/order/create-order",
+        "https://panda-shop-server-production-v3.up.railway.app/api/order/create-order",
         order
       );
       toast.success("order successfully");

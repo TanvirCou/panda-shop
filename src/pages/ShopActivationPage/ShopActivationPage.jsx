@@ -14,7 +14,7 @@ const ShopActivationPage = () => {
       const activateShop = async () => {
         try {
           await axios.post(
-            "https://panda-shop-server-production-v2.up.railway.app/api/shop/shop-activation",
+            "https://panda-shop-server-production-v3.up.railway.app/api/shop/shop-activation",
             {
               activation_token: token,
             }

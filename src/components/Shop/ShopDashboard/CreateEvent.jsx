@@ -94,7 +94,7 @@ const CreateEvent = () => {
     setSubmitting(true);
     try {
       await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/event/create-event",
+        "https://panda-shop-server-production-v3.up.railway.app/api/event/create-event",
         {
           name,
           description,

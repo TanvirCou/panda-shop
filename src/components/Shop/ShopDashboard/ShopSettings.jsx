@@ -70,7 +70,7 @@ const ShopSettings = () => {
     setSaving(true);
     try {
       const res = await axios.put(
-        "https://panda-shop-server-production-v2.up.railway.app/api/shop/update-shop-info",
+        "https://panda-shop-server-production-v3.up.railway.app/api/shop/update-shop-info",
         {
           name,
           description,

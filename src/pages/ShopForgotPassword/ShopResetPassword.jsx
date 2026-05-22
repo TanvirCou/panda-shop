@@ -60,7 +60,7 @@ const ShopResetPassword = () => {
     setLoading(true);
     try {
       await axios.post(
-        `https://panda-shop-server-production-v2.up.railway.app/api/shop/reset-password/${token}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/shop/reset-password/${token}`,
         { password, confirmPassword }
       );
       setDone(true);

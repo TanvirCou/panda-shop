@@ -54,7 +54,7 @@ const ProfileInfo = () => {
     const userData = { name, email, phoneNumber, password, avatar: file };
     try {
       const res = await axios.put(
-        "https://panda-shop-server-production-v2.up.railway.app/api/user/update-user-info",
+        "https://panda-shop-server-production-v3.up.railway.app/api/user/update-user-info",
         userData,
         { withCredentials: true }
       );

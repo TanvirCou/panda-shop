@@ -45,7 +45,7 @@ const UserOrderDetails = () => {
     };
     try {
       await axios.put(
-        "https://panda-shop-server-production-v2.up.railway.app/api/product/create-new-review",
+        "https://panda-shop-server-production-v3.up.railway.app/api/product/create-new-review",
         reviewDetails,
         { withCredentials: true }
       );
@@ -73,7 +73,7 @@ const UserOrderDetails = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://panda-shop-server-production-v2.up.railway.app/api/order/order-refund/${id}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/order/order-refund/${id}`,
         { status: "Processing for Refund" }
       );
       toast.success(res.data.message);

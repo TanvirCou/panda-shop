@@ -88,7 +88,7 @@ const CreateProduct = () => {
     setSubmitting(true);
     try {
       await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/product/create-product",
+        "https://panda-shop-server-production-v3.up.railway.app/api/product/create-product",
         {
           name,
           description,

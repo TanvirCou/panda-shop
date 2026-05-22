@@ -57,7 +57,7 @@ const CouponCode = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `https://panda-shop-server-production-v2.up.railway.app/api/coupon-code/all-coupon-codes/${shop.shop._id}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/coupon-code/all-coupon-codes/${shop.shop._id}`,
         { withCredentials: true }
       );
       setCouponCodes(res.data);
@@ -76,7 +76,7 @@ const CouponCode = () => {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
-        `https://panda-shop-server-production-v2.up.railway.app/api/coupon-code/delete-coupon-code/${id}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/coupon-code/delete-coupon-code/${id}`,
         { withCredentials: true }
       );
       toast.success(res.data.message);
@@ -92,7 +92,7 @@ const CouponCode = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/coupon-code/create-coupon-code",
+        "https://panda-shop-server-production-v3.up.railway.app/api/coupon-code/create-coupon-code",
         {
           name,
           value,

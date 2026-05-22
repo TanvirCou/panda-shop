@@ -64,7 +64,7 @@ const ShopRegister = ({ setActive }) => {
       try {
         setLoading(true);
         const res = await axios.post(
-          "https://panda-shop-server-production-v2.up.railway.app/api/shop/shop-register",
+          "https://panda-shop-server-production-v3.up.railway.app/api/shop/shop-register",
           data
         );
         toast.success(res.data.message);

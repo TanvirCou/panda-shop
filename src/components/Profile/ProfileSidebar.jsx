@@ -31,7 +31,7 @@ const ProfileSidebar = ({ active, setActive }) => {
   const logoutHandler = async () => {
     try {
       const res = await axios.get(
-        "https://panda-shop-server-production-v2.up.railway.app/api/user/logout",
+        "https://panda-shop-server-production-v3.up.railway.app/api/user/logout",
         {
           withCredentials: true,
         }

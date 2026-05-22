@@ -53,7 +53,7 @@ const SignUp = ({ setActive }) => {
       try {
         setLoading(true);
         const res = await axios.post(
-          "https://panda-shop-server-production-v2.up.railway.app/api/user/register",
+          "https://panda-shop-server-production-v3.up.railway.app/api/user/register",
           data
         );
         toast.success(res.data.message);

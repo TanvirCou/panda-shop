@@ -18,7 +18,7 @@ const ShopInfo = ({ data, products, id }) => {
 
   const handleLogout = async () => {
     await axios.get(
-      "https://panda-shop-server-production-v2.up.railway.app/api/shop/logout",
+      "https://panda-shop-server-production-v3.up.railway.app/api/shop/logout",
       { withCredentials: true }
     );
     dispatch(fetchShop());

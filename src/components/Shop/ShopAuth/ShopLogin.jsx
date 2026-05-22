@@ -25,7 +25,7 @@ const ShopLogin = () => {
     try {
       setLoading(true);
       await axios.post(
-        "https://panda-shop-server-production-v2.up.railway.app/api/shop/shop-login",
+        "https://panda-shop-server-production-v3.up.railway.app/api/shop/shop-login",
         { email, password },
         { withCredentials: true }
       );

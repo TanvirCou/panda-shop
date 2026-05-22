@@ -87,7 +87,7 @@ const OrderDetails = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `https://panda-shop-server-production-v2.up.railway.app/api/order/update-order-status/${data._id}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/order/update-order-status/${data._id}`,
         { status },
         { withCredentials: true }
       );
@@ -104,7 +104,7 @@ const OrderDetails = () => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://panda-shop-server-production-v2.up.railway.app/api/order/order-refund-success/${data._id}`,
+        `https://panda-shop-server-production-v3.up.railway.app/api/order/order-refund-success/${data._id}`,
         { status },
         { withCredentials: true }
       );
