@@ -22,7 +22,7 @@ It implements an advanced **AI-powered Shopping Assistant** and a global **AI Ch
 
 - **Client (This Repo):** [Frontend Repository](https://github.com/TanvirCou/panda-shop)
 - **Server:** [Backend Repository](https://github.com/TanvirCou/panda-shop-server)
-- **n8n Automation:** [n8n Workflows Repository](https://github.com/TanvirCou/n8n-automation-projects) *(Contains the **Panda-Bot** AI conversational workflow alongside other automation scripts)*
+- **n8n Automation:** [n8n Workflows Repository](https://github.com/TanvirCou/n8n-automation-projects) _(Contains the **Panda-Bot** AI conversational workflow alongside other automation scripts)_
 
 ---
 
@@ -30,11 +30,11 @@ It implements an advanced **AI-powered Shopping Assistant** and a global **AI Ch
 
 For testing the application with different roles:
 
-| Role | Email | Password |
-|---|---|---|
+| Role              | Email                       | Password     |
+| ----------------- | --------------------------- | ------------ |
 | **Standard User** | `kazi.tanvir.cou@gmail.com` | `tanvir1234` |
-| **Shop Owner** | `kta516930@gmail.com` | `tanvir1234` |
-| **Administrator** | `ahmed.tnvr999@gmail.com` | `tanvir1234` |
+| **Shop Owner**    | `kta516930@gmail.com`       | `tanvir1234` |
+| **Administrator** | `ahmed.tnvr999@gmail.com`   | `tanvir1234` |
 
 ---
 
@@ -91,32 +91,37 @@ For testing the application with different roles:
 ### 🛍️ Shopping Experience
 
 - **✨ AI Shopping Assistant**
+
   - Advanced conversational semantic search powered by Google's **Gemini AI** and **Pinecone Vector Database**.
   - Analyzes natural language constraints (e.g. "Gaming laptops under $1000") and identifies user intent.
   - Replaces manual in-memory cosine similarity with lightning-fast cloud vector retrieval, ranking the most semantically relevant products.
   - Beautiful, dynamic split-component interface with loading states and intent analysis chips.
 
 - **💬 AI Chatbot**
+
   - A persistent, Messenger-style floating chatbot accessible globally on all pages.
   - Uses `localStorage` to securely persist `sessionId` and chat history across page reloads and site navigation.
   - Real-time Q&A using **Retrieval-Augmented Generation (RAG)** against rich product metadata and FAQs stored dynamically in Pinecone namespaces.
-  - Connected directly to a custom `n8n` webhook. 
+  - Connected directly to a custom `n8n` webhook.
   - Graceful UI handling for Markdown responses, network connection failures, API quotas, and overloaded AI instances.
   - Fully animated, responsive Tailwind UI with immediate scroll-to-bottom mechanics to mimic professional customer support chat widgets.
 
 - **Home Page**
+
   - **Product Search** — Search with keyword filtering
   - **Category Navigation** — Filter products by category
   - **Best Selling Products** — Products showcased by sales volume
   - **Events Section** — Active sales events with countdown timers
 
 - **Product & Event Detail Pages**
+
   - Full product info: images, description, pricing, stock
   - Quantity selector with live stock awareness
   - **Add to Cart / Wishlist** toggle
-  - **Review System:** Only purchasers can submit reviews; edit/delete own reviews  
+  - **Review System:** Only purchasers can submit reviews; edit/delete own reviews
 
 - **FAQ Pages**
+
   - Common questions answered
 
 - **Shops Directory**
@@ -202,17 +207,17 @@ For testing the application with different roles:
 
 ## 🛠 Tech Stack
 
-| Category | Technology |
-|---|---|
-| **Framework** | React 18.2.0 (Vite 5.0.8) |
-| **Styling** | Tailwind CSS 3.4.0 + DaisyUI 4.6.0 |
-| **State Management** | React-Redux 9.0.4 |
-| **Routing** | React Router DOM v6 6.21.1 |
-| **HTTP Client** | Axios 1.6.4 |
-| **Animations** | Lottie (react-lottie 1.2.4) |
-| **Charts** | Recharts 3.8.0 |
-| **Notifications** | React Toastify 9.1.3 |
-| **Icons** | React Icons 4.12.0 |
+| Category             | Technology                         |
+| -------------------- | ---------------------------------- |
+| **Framework**        | React 18.2.0 (Vite 5.0.8)          |
+| **Styling**          | Tailwind CSS 3.4.0 + DaisyUI 4.6.0 |
+| **State Management** | React-Redux 9.0.4                  |
+| **Routing**          | React Router DOM v6 6.21.1         |
+| **HTTP Client**      | Axios 1.6.4                        |
+| **Animations**       | Lottie (react-lottie 1.2.4)        |
+| **Charts**           | Recharts 3.8.0                     |
+| **Notifications**    | React Toastify 9.1.3               |
+| **Icons**            | React Icons 4.12.0                 |
 
 ---
 
@@ -251,8 +256,8 @@ npm install       # or yarn install / pnpm install
 npm run dev       # or yarn dev / pnpm dev
 ```
 
-> **Note:** The client requires the backend Node.js server to be running for core features. See the [Backend Repository](https://github.com/TanvirCou/panda-shop-server) README for setup instructions. 
-> 
+> **Note:** The client requires the backend Node.js server to be running for core features. See the [Backend Repository](https://github.com/TanvirCou/panda-shop-server) README for setup instructions.
+>
 > **AI Chatbot Note:** For the Interactive AI Chatbot to function locally, your standalone **n8n Automation Server** must also be active and connected. See the [n8n Workflows Repository](https://github.com/TanvirCou/n8n-automation-projects) for deployment instructions.
 
 ---
