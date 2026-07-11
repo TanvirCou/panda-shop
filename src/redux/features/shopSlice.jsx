@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchShop = createAsyncThunk("shop/fetchShop", async () => {
   const res = await axios.get(
-    "https://panda-shop-server-production-v3.up.railway.app/api/shop/get",
+    "https://panda-shop-server-v3.up.railway.app/api/shop/get",
     {
       withCredentials: true,
     }
@@ -13,7 +13,7 @@ export const fetchShop = createAsyncThunk("shop/fetchShop", async () => {
 
 export const fetchAllShop = createAsyncThunk("shop/fetchAllShop", async () => {
   const res = await axios.get(
-    "https://panda-shop-server-production-v3.up.railway.app/api/shop/admin-all-shops",
+    "https://panda-shop-server-v3.up.railway.app/api/shop/admin-all-shops",
     { withCredentials: true }
   );
   return res.data;
@@ -21,7 +21,7 @@ export const fetchAllShop = createAsyncThunk("shop/fetchAllShop", async () => {
 
 export const logoutShop = createAsyncThunk("shop/logoutShop", async () => {
   const res = await axios.get(
-    "https://panda-shop-server-production-v3.up.railway.app/api/shop/logout",
+    "https://panda-shop-server-v3.up.railway.app/api/shop/logout",
     {
       withCredentials: true,
     }

@@ -33,7 +33,7 @@ const ShopHome = () => {
     const getShop = async () => {
       try {
         const res = await axios.get(
-          `https://panda-shop-server-production-v3.up.railway.app/api/shop/get-shop-info/${id}`
+          `https://panda-shop-server-v3.up.railway.app/api/shop/get-shop-info/${id}`
         );
         setData(res.data);
         setShopLoading(false);

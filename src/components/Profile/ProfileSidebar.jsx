@@ -4,9 +4,9 @@ import { AiOutlineLock, AiOutlineShopping } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa6";
 import { HiReceiptRefund } from "react-icons/hi";
 import {
-    IoLogOutOutline,
-    IoMapOutline,
-    IoPersonOutline,
+  IoLogOutOutline,
+  IoMapOutline,
+  IoPersonOutline,
 } from "react-icons/io5";
 import { MdOutlineDashboard } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +31,7 @@ const ProfileSidebar = ({ active, setActive }) => {
   const logoutHandler = async () => {
     try {
       const res = await axios.get(
-        "https://panda-shop-server-production-v3.up.railway.app/api/user/logout",
+        "https://panda-shop-server-v3.up.railway.app/api/user/logout",
         {
           withCredentials: true,
         }

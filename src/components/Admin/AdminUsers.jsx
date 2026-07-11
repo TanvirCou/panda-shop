@@ -40,7 +40,7 @@ const AdminUsers = () => {
     e.preventDefault();
     try {
       const res = await axios.delete(
-        `https://panda-shop-server-production-v3.up.railway.app/api/user/delete-user/${userId}`,
+        `https://panda-shop-server-v3.up.railway.app/api/user/delete-user/${userId}`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

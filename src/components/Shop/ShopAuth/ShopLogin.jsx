@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-    IoEye,
-    IoEyeOff,
-    IoLockClosedOutline,
-    IoMailOutline,
+  IoEye,
+  IoEyeOff,
+  IoLockClosedOutline,
+  IoMailOutline,
 } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ const ShopLogin = () => {
     try {
       setLoading(true);
       await axios.post(
-        "https://panda-shop-server-production-v3.up.railway.app/api/shop/shop-login",
+        "https://panda-shop-server-v3.up.railway.app/api/shop/shop-login",
         { email, password },
         { withCredentials: true }
       );

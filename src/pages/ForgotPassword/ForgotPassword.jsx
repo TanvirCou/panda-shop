@@ -15,7 +15,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       await axios.post(
-        "https://panda-shop-server-production-v3.up.railway.app/api/user/forgot-password",
+        "https://panda-shop-server-v3.up.railway.app/api/user/forgot-password",
         { email }
       );
       setSent(true);

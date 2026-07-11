@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-    FiAlignLeft,
-    FiCamera,
-    FiMapPin,
-    FiPhone,
-    FiSave,
-    FiShoppingBag,
+  FiAlignLeft,
+  FiCamera,
+  FiMapPin,
+  FiPhone,
+  FiSave,
+  FiShoppingBag,
 } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -70,7 +70,7 @@ const ShopSettings = () => {
     setSaving(true);
     try {
       const res = await axios.put(
-        "https://panda-shop-server-production-v3.up.railway.app/api/shop/update-shop-info",
+        "https://panda-shop-server-v3.up.railway.app/api/shop/update-shop-info",
         {
           name,
           description,

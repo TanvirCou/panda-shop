@@ -3,9 +3,9 @@ import axios2 from "axios";
 import { FaShopify, FaUserFriends } from "react-icons/fa";
 import { FiLogOut, FiPackage, FiShoppingBag } from "react-icons/fi";
 import {
-    MdOutlineDashboard,
-    MdOutlineEvent,
-    MdOutlineSettings,
+  MdOutlineDashboard,
+  MdOutlineEvent,
+  MdOutlineSettings,
 } from "react-icons/md";
 import { PiMoney } from "react-icons/pi";
 import { useDispatch } from "react-redux";
@@ -66,7 +66,7 @@ const AdminSideBar = ({ active }) => {
   const handleLogout = async () => {
     try {
       const res = await axios2.get(
-        "https://panda-shop-server-production-v3.up.railway.app/api/user/logout",
+        "https://panda-shop-server-v3.up.railway.app/api/user/logout",
         {
           withCredentials: true,
         }
