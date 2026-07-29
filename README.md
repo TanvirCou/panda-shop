@@ -252,9 +252,25 @@ cd <project-name>
 # 3️⃣ Install dependencies
 npm install       # or yarn install / pnpm install
 
-# 4️⃣ Run the application locally
+# 4️⃣ Set up environment variables (see below)
+
+# 5️⃣ Run the application locally
 npm run dev       # or yarn dev / pnpm dev
 ```
+
+### ⚙️ Environment Variables
+
+Create a `.env` file in the **root of the `client/` directory** and add the following variables:
+
+```env
+VITE_SERVER_URL=<your_backend_server_url>
+VITE_N8N_URL=<your_n8n_webhook_url>
+```
+
+| Variable | Description |
+| --- | --- |
+| `VITE_SERVER_URL` | The base URL of your **Node.js backend server**. This is used by Axios to make all API requests (auth, products, orders, etc.). <br/> **Example (local):** `http://localhost:8000` <br/> **Example (production):** `https://your-backend.onrender.com` |
+| `VITE_N8N_URL` | The **webhook URL** of your n8n automation workflow that powers the **AI Chatbot (Panda-Bot)**. You get this URL after deploying the n8n workflow. <br/> **Example:** `https://your-n8n-instance.app.n8n.cloud/webhook/panda-bot` |
 
 > **Note:** The client requires the backend Node.js server to be running for core features. See the [Backend Repository](https://github.com/TanvirCou/panda-shop-server) README for setup instructions.
 >
