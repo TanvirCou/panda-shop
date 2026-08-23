@@ -25,7 +25,7 @@ const AdminShops = () => {
     e.preventDefault();
     try {
       const res = await axios.delete(
-        `https://panda-shop-server-v3.up.railway.app/api/shop/delete-shop/${shopId}`,
+        `https://panda-shop-server-v4.up.railway.app/api/shop/delete-shop/${shopId}`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

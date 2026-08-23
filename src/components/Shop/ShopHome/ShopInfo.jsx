@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import {
-  IoCalendarOutline,
-  IoCallOutline,
-  IoLocationOutline,
-  IoLogOutOutline,
-  IoSettingsOutline,
+    IoCalendarOutline,
+    IoCallOutline,
+    IoLocationOutline,
+    IoLogOutOutline,
+    IoSettingsOutline,
 } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const ShopInfo = ({ data, products, id }) => {
 
   const handleLogout = async () => {
     await axios.get(
-      "https://panda-shop-server-v3.up.railway.app/api/shop/logout",
+      "https://panda-shop-server-v4.up.railway.app/api/shop/logout",
       { withCredentials: true }
     );
     dispatch(fetchShop());

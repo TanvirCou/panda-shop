@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
-  fetchAllProduct,
-  fetchProduct,
+    fetchAllProduct,
+    fetchProduct,
 } from "../../../redux/features/productSlice";
 import LoadingAnimation from "../../Loader/LoadingAnimation";
 
@@ -25,7 +25,7 @@ const DashboardProducts = () => {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
-        `https://panda-shop-server-v3.up.railway.app/api/product/delete-product/${id}`,
+        `https://panda-shop-server-v4.up.railway.app/api/product/delete-product/${id}`,
         { withCredentials: true }
       );
       toast.success(res.data.message);

@@ -18,7 +18,7 @@ const Countdown = ({ data }) => {
         typeof timeLeft.seconds === "undefined"
       ) {
         axios.delete(
-          `https://panda-shop-server-v3.up.railway.app/api/event/delete-event/${data?._id}`
+          `https://panda-shop-server-v4.up.railway.app/api/event/delete-event/${data?._id}`
         );
       }
     }

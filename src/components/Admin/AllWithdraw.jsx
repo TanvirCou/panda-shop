@@ -33,7 +33,7 @@ const AllWithdraw = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://panda-shop-server-v3.up.railway.app/api/withdraw/get-all-withdraw-request",
+        "https://panda-shop-server-v4.up.railway.app/api/withdraw/get-all-withdraw-request",
         { withCredentials: true }
       );
       setData(res.data);
@@ -58,7 +58,7 @@ const AllWithdraw = () => {
     }
     try {
       await axios.put(
-        `https://panda-shop-server-v3.up.railway.app/api/withdraw//update-withdraw-request/${withdrawData._id}`,
+        `https://panda-shop-server-v4.up.railway.app/api/withdraw//update-withdraw-request/${withdrawData._id}`,
         { sellerId: withdrawData?.shop._id },
         { withCredentials: true }
       );

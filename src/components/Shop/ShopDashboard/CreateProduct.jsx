@@ -5,8 +5,8 @@ import { LuImagePlus } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
-  fetchAllProduct,
-  fetchProduct,
+    fetchAllProduct,
+    fetchProduct,
 } from "../../../redux/features/productSlice";
 import { categoriesData } from "../../../static/data";
 
@@ -91,7 +91,7 @@ const CreateProduct = () => {
     setSubmitting(true);
     try {
       await axios.post(
-        "https://panda-shop-server-v3.up.railway.app/api/product/create-product",
+        "https://panda-shop-server-v4.up.railway.app/api/product/create-product",
         {
           name,
           description,

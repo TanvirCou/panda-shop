@@ -61,7 +61,7 @@ const WithdrawMoney = () => {
     e.preventDefault();
     try {
       await axios.put(
-        "https://panda-shop-server-v3.up.railway.app/api/shop/update-payment-methods",
+        "https://panda-shop-server-v4.up.railway.app/api/shop/update-payment-methods",
         { bankInfo },
         { withCredentials: true }
       );
@@ -86,7 +86,7 @@ const WithdrawMoney = () => {
     e.preventDefault();
     try {
       await axios.delete(
-        "https://panda-shop-server-v3.up.railway.app/api/shop/delete-withdraw-method",
+        "https://panda-shop-server-v4.up.railway.app/api/shop/delete-withdraw-method",
         { withCredentials: true }
       );
       toast.success("Payment method removed");
@@ -104,7 +104,7 @@ const WithdrawMoney = () => {
     }
     try {
       await axios.post(
-        "https://panda-shop-server-v3.up.railway.app/api/withdraw/create-withdraw-request",
+        "https://panda-shop-server-v4.up.railway.app/api/withdraw/create-withdraw-request",
         { amount: withdrawAmount },
         { withCredentials: true }
       );

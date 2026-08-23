@@ -2,15 +2,15 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-  IoCallOutline,
-  IoCloudUploadOutline,
-  IoCodeSlashOutline,
-  IoEye,
-  IoEyeOff,
-  IoLocationOutline,
-  IoLockClosedOutline,
-  IoMailOutline,
-  IoStorefrontOutline,
+    IoCallOutline,
+    IoCloudUploadOutline,
+    IoCodeSlashOutline,
+    IoEye,
+    IoEyeOff,
+    IoLocationOutline,
+    IoLockClosedOutline,
+    IoMailOutline,
+    IoStorefrontOutline,
 } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
 import { toast } from "react-toastify";
@@ -64,7 +64,7 @@ const ShopRegister = ({ setActive }) => {
       try {
         setLoading(true);
         const res = await axios.post(
-          "https://panda-shop-server-v3.up.railway.app/api/shop/shop-register",
+          "https://panda-shop-server-v4.up.railway.app/api/shop/shop-register",
           data
         );
         toast.success(res.data.message);

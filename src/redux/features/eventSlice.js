@@ -5,7 +5,7 @@ export const createEvent = createAsyncThunk(
   "event/createEvent",
   async (newEvent) => {
     const res = await axios.post(
-      "https://panda-shop-server-v3.up.railway.app/api/event/create-event",
+      "https://panda-shop-server-v4.up.railway.app/api/event/create-event",
       newEvent
     );
     return res.data;
@@ -16,7 +16,7 @@ export const fetchEvent = createAsyncThunk(
   "event/fetchEvent",
   async (shopId) => {
     const res = await axios.get(
-      `https://panda-shop-server-v3.up.railway.app/api/event/all-events/${shopId}`
+      `https://panda-shop-server-v4.up.railway.app/api/event/all-events/${shopId}`
     );
     return res.data;
   }
@@ -26,7 +26,7 @@ export const deleteEvent = createAsyncThunk(
   "product/deleteProduct",
   async (eventId) => {
     const res = await axios.delete(
-      `https://panda-shop-server-v3.up.railway.app/api/event/delete-event/${eventId}`,
+      `https://panda-shop-server-v4.up.railway.app/api/event/delete-event/${eventId}`,
       { withCredentials: true }
     );
     return res.data;
@@ -37,7 +37,7 @@ export const fetchAllEvent = createAsyncThunk(
   "event/fetchAllEvent",
   async () => {
     const res = await axios.get(
-      `https://panda-shop-server-v3.up.railway.app/api/event/get-all-events`
+      `https://panda-shop-server-v4.up.railway.app/api/event/get-all-events`
     );
     return res.data;
   }
